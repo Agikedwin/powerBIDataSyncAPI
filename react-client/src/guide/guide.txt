@@ -1,0 +1,21 @@
+const and let
+
+const: constant value , assigned once and never change
+
+let: new Var, used to assign values 
+
+arrow functions: solve the this key word in javascript
+
+named exports: you import stuff by its named
+default import : imported by default into the file
+
+classes: blue print
+
+Properties: Like variables attached to classes
+methods: Are like functions attached to a classe/object
+
+spread operator: used to split up array elements or object properties( pulls out elements in the old array then adds them to the old array)
+
+Rest operator: used to merge a list of functionarguments into an array
+
+Destructuring: Esily extracts elements or objects properties and store them in a variables

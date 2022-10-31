@@ -1,0 +1,26 @@
+https://www.howtographql.com/typescript-apollo/0-introduction/
+
+Install the necessary packages along with their type definitions:
+
+npm install apollo-server@^ graphql@^ nexus@^
+
+
+Setting up Nexus
+npx ts-node --transpile-only src/schema
+
+
+npm i pg@8.2.1
+
+npm install prisma@ --save-dev
+npm install @prisma/client@
+
+
+npx prisma migrate dev --name "init"
+
+
+
+npx prisma generate
+
+npx ts-node src/script.ts
+
+npm run generate  /// updates schema .graphql and nexus-typegen.ts

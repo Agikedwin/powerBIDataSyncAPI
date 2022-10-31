@@ -1,0 +1,555 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ========================== Models for A to D
+
+// etl_adverse_events
+model AdverseEvents{
+  id Int  @id @default(autoincrement())
+  uuid String
+  mfl_code Int
+  form String?
+  provider Int?
+  patient_id Int
+  visit_id Int?
+  visit_date DateTime? @db.Date
+  location_id Int?
+  encounter_id Int?
+  obs_id Int?
+  cause Int?
+  adverse_event Int?
+  severity Int?
+  start_date DateTime ?   @db.Date
+  action_taken Int?
+  voided Int?  
+  date_created DateTime?   @db.Date
+  date_last_modified DateTime?   @db.Date
+
+  @@map("etl_adverse_events")
+}
+
+//etl_alcohol_drug_abuse_screening
+model AlcoholDrugAbuseScreening {
+    id Int  @id @default(autoincrement())
+    uuid String?
+    mfl_code Int
+    provider Int?
+    patient_id Int
+    visit_id Int?
+    visit_date DateTime?   @db.Date
+    location_id Int?
+    encounter_id Int?
+    alcohol_drinking_frequency String?
+    smoking_frequency String?
+    drugs_use_frequency String?
+    date_created DateTime?   @db.Date
+    date_last_modified DateTime?   @db.Date
+    voided Int?
+
+    @@map("etl_alcohol_drug_abuse_screening")
+
+}
+
+// etl_allergy_chronic_illness
+
+model AllergyChronicIllness{
+  id Int  @id @default(autoincrement())
+  uuid String?
+  mfl_code Int
+  provider Int?
+  patient_id Int
+  visit_id Int?
+  visit_date DateTime?   @db.Date
+  location_id Int?
+  encounter_id Int?
+  obs_id Int?
+  chronic_illness Int?
+  chronic_illness_onset_date DateTime?   @db.Date
+  allergy_causative_agent Int?
+  allergy_reaction Int?
+  allergy_severity Int?
+  allergy_onset_date DateTime?   @db.Date
+  voided Int?
+  date_created DateTime?    @db.Date
+  date_last_modified DateTime?   @db.Date
+
+  @@map("etl_allergy_chronic_illness")
+}
+
+//etl_ART_preparation
+model ARTPreparation {
+    id  Int @id @default(autoincrement()) 
+    uuid String?
+    mfl_code Int
+    patient_id Int?
+    visit_id Int?
+    visit_date DateTime ?   @db.Date
+    location_id Int?
+    encounter_id Int?
+    provider Int?
+    understands_hiv_art_benefits String?
+    screened_negative_substance_abuse String?
+    screened_negative_psychiatric_illness String?
+    HIV_status_disclosure String?
+    trained_drug_admin String?
+    informed_drug_side_effects String?
+    caregiver_committed String?
+    adherance_barriers_identified String?
+    caregiver_location_contacts_known String?
+    ready_to_start_art String?
+    identified_drug_time String?
+    treatment_supporter_engaged String?
+    support_grp_meeting_awareness String?
+    enrolled_in_reminder_system String?
+    other_support_systems String?
+    date_created DateTime?   @db.Date
+    date_last_modified DateTime?   @db.Date
+
+    @@map("etl_ART_preparation")
+
+}
+// Ccc_defaulter_tracing
+
+model CccDefaulterTracing {
+    id Int @id @default(autoincrement())
+    uuid String?
+    mfl_code Int
+    provider Int?
+    patient_id Int?
+    visit_id Int?
+    visit_date DateTime?   @db.Date
+    location_id Int?
+    encounter_id Int?
+    tracing_type Int?
+    reason_for_missed_appointment Int?
+    non_coded_missed_appointment_reason String?
+    tracing_outcome Int?
+    attempt_number Int?
+    is_final_trace Int?
+    true_status Int?
+    cause_of_death Int?
+    comments String?
+    booking_date DateTime?   @db.Date
+    date_created DateTime?   @db.Date
+    date_last_modified DateTime?
+
+    @@map("etl_ccc_defaulter_tracing")
+
+
+}
+
+//etl_cervical_cancer_screening
+
+model CervicalCancerScreening {
+   id Int @id @default(autoincrement())
+   uuid String?
+   mfl_code Int
+  encounter_id Int?
+  encounter_provider Int?
+  patient_id Int?
+  visit_id Int?
+  visit_date DateTime? @db.Date
+  location_id Int?
+  date_created DateTime?    @db.Date
+  date_last_modified DateTime?
+  visit_type String?
+  screening_type String?
+  post_treatment_complication_cause String?
+  post_treatment_complication_other String?
+  screening_method  String?
+  screening_result  String?
+  treatment_method  String?
+  treatment_method_other  String?
+  referred_out  String?
+  referral_facility  String?
+  referral_reason  String?
+  next_appointment_date DateTime? @db.Date
+  voided Int?
+
+  @@map("etl_cervical_cancer_screening")
+}
+// etl_client_enrollment
+model ClientEnrollment {
+  id Int @id @default(autoincrement())
+  uuid String?
+  mfl_code Int
+  client_id Int?
+  visit_id Int?
+  visit_date DateTime ?   @db.Date
+  encounter_id Int?
+  encounter_provider Int?
+  date_created DateTime?   @db.Date
+  date_last_modified DateTime?   @db.Date
+  contacted_for_prevention String ?
+  has_regular_free_sex_partner String ?
+  year_started_sex_work String ? 
+  year_started_sex_with_men String ? 
+  year_started_drugs String?
+  has_expereienced_sexual_violence String ?
+  has_expereienced_physical_violence String ? 
+  ever_tested_for_hiv String ?
+  test_type String ? 
+  share_test_results String ? 
+  willing_to_test String?
+  test_decline_reason  String?
+  receiving_hiv_care  String?
+  care_facility_name String?
+  ccc_number  String?
+  vl_test_done  String?
+  vl_results_date DateTime   ?   @db.Date
+  contact_for_appointment  String ?
+  contact_method  String?
+  buddy_name  String?
+  buddy_phone_number  String?
+  voided Int ?
+
+  @@map("etl_client_enrollment")
+}
+
+//etl_client_trace
+
+model ClientTrace {
+  id Int @id @default(autoincrement())
+  uuid String ?
+  mfl_code Int
+  date_created DateTime?
+  date_last_modified DateTime?   @db.Date
+  encounter_date DateTime?   @db.Date
+  client_id Int?
+  contact_type String ?
+  status String ?
+  unique_patient_no  String?
+  facility_linked_to String ?
+  health_worker_handed_to String ?
+  remarks String ?
+  appointment_date DateTime?   @db.Date
+  voided Int ?
+
+  @@map("etl_client_trace")
+}
+
+// etl_clinical_visit
+
+model ClinicalVisit{
+  id Int @id @default(autoincrement())  
+  uuid String ?
+  mfl_code Int
+  client_id Int ?
+  visit_id Int ?
+  visit_date DateTime ?   @db.Date
+  location_id Int?
+  encounter_id Int ?
+  encounter_provider Int ?
+  date_created DateTime?    @db.Date
+  date_last_modified DateTime?   @db.Date
+  implementing_partner String ?
+  type_of_visit String?
+  visit_reason String?
+  service_delivery_model String?
+  sti_screened String?
+  sti_results String?
+  sti_treated String?
+  sti_referred String?
+  sti_referred_text String?
+  tb_screened String?
+  tb_results String?
+  tb_treated String?
+  tb_referred String?
+  tb_referred_text String?
+  hepatitisB_screened String?
+  hepatitisB_results String?
+  hepatitisB_treated String?
+  hepatitisB_referred String?
+  hepatitisB_text String?
+  hepatitisC_screened String?
+  hepatitisC_results String?
+  hepatitisC_treated String?
+  hepatitisC_referred String?
+  hepatitisC_text String?
+  overdose_screened String?
+  overdose_results String?
+  overdose_treated String?
+  received_naloxone String?
+  overdose_referred String?
+  overdose_text String?
+  abscess_screened String?
+  abscess_results String?
+  abscess_treated String?
+  abscess_referred String?
+  abscess_text String?
+  alcohol_screened String?
+  alcohol_results String?
+  alcohol_treated String?
+  alcohol_referred String?
+  alcohol_text String?
+  cerv_cancer_screened String?
+  cerv_cancer_results String?
+  cerv_cancer_treated String?
+  cerv_cancer_referred String?
+  cerv_cancer_text String?
+  prep_screened String?
+  prep_results String?
+  prep_treated String?
+  prep_referred String?
+  prep_text String?
+  violence_screened String?
+  violence_results String?
+  violence_treated String?
+  violence_referred String?
+  violence_text String?
+  risk_red_counselling_screened String?
+  risk_red_counselling_eligibility String?
+  risk_red_counselling_support String?
+  risk_red_counselling_ebi_provided String?
+  risk_red_counselling_text String?
+  fp_screened String?
+  fp_eligibility String?
+  fp_treated String?
+  fp_referred String?
+  fp_text String?
+  mental_health_screened String?
+  mental_health_results String?
+  mental_health_support String?
+  mental_health_referred String?
+  mental_health_text String?
+  hiv_self_rep_status String?
+  last_hiv_test_setting String?
+  counselled_for_hiv String?
+  //
+  hiv_tested String?
+  test_frequency String?
+  received_results String?
+  test_results String?
+  linked_to_art String?
+  facility_linked_to String?
+  self_test_education String?
+  self_test_kits_given String?
+  self_use_kits String?
+  distribution_kits String?
+  self_tested String?  
+  self_test_date DateTime ?   @db.Date
+
+
+  self_test_frequency String?
+  self_test_results String?
+  test_confirmatory_results String?
+  confirmatory_facility String?
+  self_test_linked_art String?
+  self_test_link_facility String?
+  hiv_care_facility String?
+  other_hiv_care_facility String?
+  initiated_art_this_month String?
+  active_art String?
+  eligible_vl String?
+  vl_test_done String?
+  vl_results String?
+  received_vl_results String?
+  condom_use_education String?
+  post_abortal_care String?
+  linked_to_psychosocial String?
+  male_condoms_no String?
+  female_condoms_no String?
+  lubes_no String?
+  syringes_needles_no String?
+  pep_eligible String?
+  exposure_type String?
+  other_exposure_type String?
+  clinical_notes String?
+  appointment_date DateTime ?   @db.Date
+  voided Int?
+  
+
+  @@map("etl_clinical_visit")
+  // change engine to ENGINE=MyISAM CHARACTER SET latin1; to avoid errors
+}
+
+// etl_contact
+model Contact {
+  id Int @id @default(autoincrement())
+  uuid String?
+  mfl_code Int
+  unique_identifier String ?
+  client_id Int ?
+  visit_id Int?
+  visit_date DateTime ?   @db.Date
+  location_id Int ?
+  encounter_id Int ?
+  encounter_provider Int ?
+  date_created DateTime ? @db.Date
+  date_last_modified DateTime?   @db.Date
+  key_population_type String ?
+  contacted_by_peducator String ?
+  program_name String ?
+  frequent_hotspot_name String ?
+  frequent_hotspot_type String ?
+  year_started_sex_work String ?
+  year_started_sex_with_men String ?
+  year_started_drugs String ?
+  avg_weekly_sex_acts Int ?
+  avg_weekly_anal_sex_acts Int ?
+  avg_daily_drug_injections Int ?
+  contact_person_name String ?
+  contact_person_alias String ?
+  contact_person_phone String ?
+  voided Int ?
+
+  @@map("etl_contact")
+
+}
+// etl_contacts_linked
+model ContactsLinked {
+  id_auto Int @id @default(autoincrement())
+  id Int ?
+  mfl_code Int
+  patient_id Int ?
+  relationship_type Int?
+  baseline_hiv_status String?
+  visit_date DateTime ?   @db.Date
+  final_test_result String ?
+
+  @@map("etl_contacts_linked")
+}
+
+//etl_covid19_assessment
+model Covid19Assessment {
+  id_auto Int @id @default(autoincrement())
+  uuid String?
+  mfl_code Int
+  provider Int ?
+  patient_id Int ?
+  visit_id Int ?
+  visit_date String ? 
+  location_id Int ?
+  encounter_id Int ?
+  obs_id String ? 
+  ever_vaccinated String ? 
+  first_vaccine_type String ? 
+  second_vaccine_type String ? 
+  first_dose String ? 
+  second_dose String ? 
+  first_dose_date String ? 
+  second_dose_date String ? 
+  first_vaccination_verified String ? 
+  second_vaccination_verified String ? 
+  final_vaccination_status String ? 
+  ever_received_booster String ? 
+  booster_vaccine_taken String ? 
+  date_taken_booster_vaccine String ? 
+  booster_sequence String ? 
+  booster_dose_verified String ? 
+  ever_tested_covid_19_positive String ? 
+  symptomatic String ? 
+  date_tested_positive String ? 
+  hospital_admission String ? 
+  admission_unit String ? 
+  on_ventillator String ? 
+  on_oxygen_supplement String ? 
+  date_created DateTime?   @db.Date
+  date_last_modified DateTime ?   @db.Date
+  voided Int ?
+
+  @@map("etl_covid19_assessment")
+}
+ 
+model Link {
+  id          Int      @id @default(autoincrement())   // 4
+  createdAt   DateTime @default(now())  // 5
+  description String
+  url         String
+}
+
+model EtlPatientProgram {
+  id Int @id @default(autoincrement())
+  uuid String
+  mfl_code Int
+  patient_id Int
+  location_id Int
+  program String
+  date_enrolled String
+  date_completed String
+  outcome String
+  date_created String
+  date_last_modified String
+  voided String
+  createdAt   DateTime @default(now()) 
+
+  
+}
+model EtlCurrentInCare {
+    id Int @id @default(autoincrement())
+    patient_id Int
+    mfl_code Int
+    dob DateTime? @db.Date
+    gender String?
+    enroll_date DateTime?   @db.Date
+    latest_enrolment_date String
+    latest_vis_date String
+    latest_tca String
+    stability String
+    disc_patient   Int?
+    effective_disc_date DateTime?  @db.Date
+    date_discontinued DateTime?  @db.Date 
+    started_on_drugs Int? 
+
+    @@map("etl_current_in_care")
+}
+
+model ETLHtsTest {
+    id Int @id @default(autoincrement())
+    visit_id Int
+    patient_id Int
+    encounter_id Int
+    encounter_uuid String
+    mfl_code Int
+    encounter_location Int
+    creator String
+    date_created String
+    date_last_modified String
+    visit_date String
+    test_type String
+    population_type String
+    key_population_type String
+    ever_tested_for_hiv String
+    months_since_last_test String
+    patient_disabled String
+    disability_type String
+    patient_consented String
+    client_tested_as String
+    setting String
+    approach String
+    test_strategy String
+    hts_entry_point String
+    test_1_kit_name String
+    test_1_kit_lot_no String
+    test_1_kit_expiry String
+    test_1_result String
+    test_2_kit_name String
+    test_2_kit_lot_no String
+    test_2_kit_expiry String
+    test_2_result String
+    final_test_result String
+    syphillis_test_result String
+    patient_given_result String
+    couple_discordant String
+    referral_for String
+    referral_facility String
+    other_referral_facility String
+    neg_referral_for String
+    neg_referral_specify String
+    tb_screening String
+    patient_had_hiv_self_test String
+    remarks String
+    voided String
+
+}
+
+

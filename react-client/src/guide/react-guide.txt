@@ -1,0 +1,110 @@
+React: is a javascript library for building user interfaces
+        react makes building complex, interactive and reactive user interfaces simplier
+
+Components driven interface: React is all about Components
+                            - Components is custom react html elements
+                            Components are reusable, separation of concerns
+                            
+React Hooks: all start with the word use eg useState
+useState: React function
+- must be called only within the main  react component  fuction
+- cannot be called in nested functions
+- useSate must have a default state value as initial variable/object/array etc
+- useState returns a function that we can use to assign a new value to the variable 
+-   const [title, setTile] = useState(props.title); the first element in the array is the current state value while the second element is a function for updating that value
+- when you call setState and passed a new value the elemets will change/be updated
+- State is separted on a per instance basis
+- If your current state depends on the prevous state, then use a function to update the state
+
+NB: 
+Props: can ony pass data from parent to child, not child to parent
+
+Two way data binding:
+
+Passing data from parent to child using props
+Passing data from child to Parent we use a function to update the State: the function is declared in the parent component then called in the child component
+
+Lifting state up: Passing data from child to Parent component
+
+Controlled vs Uncontrolled Components:
+Controlled components: The values and genges to the value are not handled in the component itsself but in a parent component.
+Stateless vs Stateful components: Instatefull we have components which manages some state while some components are not(no use state in the component )
+
+FRAGMENT PORTALS AND REFs
+JXS Limitations: You cannot have more than one root jxs elements.
+
+Wrappers: You can create a wrapper that will return children on an element and used it to wrapper jsx elements insted of using divs
+
+Fragments: Allow us to write a cleaner code, not to end up with unnecessary html code , can be used to wrape jxs code eg
+<FRAGMENT> 
+<Mymodal > 
+<Myform />
+</FRAGMENT>
+
+PORTALS: Allow you to render elements outside the root react component.
+
+REFS: Allows us to get access to other dom elements and work with them(useRef hooks is used): Refs can be used to get access to user inputs
+in a text field
+
+ADVANCED CONTEXT:
+- Working with side effects
+- Managing more complex State with Reducers
+- Managing Apps-Wide or Complex-Wide State with CONTEXT
+
+Effect (or a side Effect)
+React Main Job: Render UI and React to User Inputs and also can Rerender UI
+
+useEffect: Is an in build function hook, it takes two arguments ie useEffect(() => { }, [dependecies])
+First arguments: Function that should be executed AFTER every component evaluation If the specific dependecies are changed.
+Second arguments: specified dependeciesof this effect- function only runs if the dependecies changed.
+
+the first argument fuction runs on if one of the arrays of dependecies changes.
+
+NB: Take note of the diffrence btwn useEffect and useSate
+useState:  acepts two arguments initial state and a function, the second argument fuction is used to update the state of the first argument which 
+can eventually upadtes the dom elements.
+useEffect: acepts two two arguments( a function and an array of dependencies ), the function only runs when any of the dependecies changed, useEffect 
+can be ideal for fetching data from some remote server or api calls.
+
+Debouncing: do not use effect when user is typing but only when user posses(do the check)
+Cleanup function: 
+
+
+useReducer: can be used as a replacement for useState() if you need a more powerful state manageent.
+understanding:
+const [state, dispatchFn] = useReducer(reducerFn, initialState, iniFn);
+left side:
+state: The state snapshot used in the component rerender/evaluation cycle
+dispatchFn: Function thst is used to dispatch a new action i.e (trigger an update of the state).
+
+right side:
+reducerFn: (prevous, action) => newState, a function that is triggered automatically once the lateststate snapshot and should return the new,
+updated state.
+
+UseState() vs useReducer()
+useSate()
+- main state manageent 'tool'
+- Greate for independent piece of state
+- Greate if stateUpates are easy
+
+useReducer()
+- Greate if you need more powerful
+- Should be considerd if you have related piece of state/data
+- Can be helpful if you have more complex stateupdates
+
+
+Context API: Allows us to manage state behind the scene in react such that we can directly change from any component state in react and directly 
+pass it to other component in our app  without building prop chain.
+- context returns an object that can contain a Copmponent
+- we wrap all the components that needs the ContexAPI component with it using provider eg < AuthContext.Provider > Components </ AuthContext.Provider >
+- To listen to the AuthContext values we use context consumer or react hooks called useContext.
+
+Context API Limitations:
+- React Context is NOT optimized for hih frequency changes
+
+NB: React hooks  are all those  reac functions that starts with use.. eg useState, useEffect, useReducer, useContext
+
+
+React Hooks RULES:
+- Only call React Hooks in React Functions
+- Only call React Hooks at the Top Level, not in nested functions or block statements or in if statements
