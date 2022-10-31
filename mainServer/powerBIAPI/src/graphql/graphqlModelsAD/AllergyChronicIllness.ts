@@ -21,8 +21,8 @@ export const AllergyChronicIllness = objectType({
        t.nullable.int("allergy_severity"); 
        t.nullable.string("allergy_onset_date"); 
        t.nullable.int("voided"); 
-       t.nullable.int("date_created"); 
-       t.nullable.int("date_last_modified"); 
+       t.nullable.string("date_created"); 
+       t.nullable.string("date_last_modified"); 
 
     },
 });
@@ -33,7 +33,7 @@ let resData:any ;
 export const AllergyChronicIllnessQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getAllergyChronicIllness", {
+        t.nullable.list.nullable.field("getAllergyChronicIllness", {
             type: "AllergyChronicIllness",
             resolve(parent, args, context) {  
                 

@@ -55,7 +55,7 @@ export interface NexusGenObjects {
     voided?: number | null; // Int
   }
   AdverseEvents: { // root type
-    action_taken?: string | null; // String
+    action_taken?: number | null; // Int
     adverse_event?: number | null; // Int
     cause?: number | null; // Int
     date_created?: string | null; // String
@@ -95,8 +95,8 @@ export interface NexusGenObjects {
     allergy_severity?: number | null; // Int
     chronic_illness?: number | null; // Int
     chronic_illness_onset_date?: string | null; // String
-    date_created?: number | null; // Int
-    date_last_modified?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
     encounter_id?: number | null; // Int
     location_id?: number | null; // Int
     obs_id?: number | null; // Int
@@ -112,8 +112,8 @@ export interface NexusGenObjects {
     booking_date?: string | null; // String
     cause_of_death?: number | null; // Int
     comments?: string | null; // String
-    date_created?: number | null; // Int
-    date_last_modified?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
     encounter_id?: number | null; // Int
     is_final_trace?: number | null; // Int
     location_id?: number | null; // Int
@@ -134,8 +134,10 @@ export interface NexusGenObjects {
     encounter_id?: number | null; // Int
     encounter_provider?: number | null; // Int
     location_id?: number | null; // Int
+    next_appointment_date?: string | null; // String
     patient_id?: number | null; // Int
     post_treatment_complication_cause?: string | null; // String
+    post_treatment_complication_other?: string | null; // String
     provider?: number | null; // Int
     referral_facility?: string | null; // String
     referral_reason?: string | null; // String
@@ -479,7 +481,7 @@ export interface NexusGenFieldTypes {
     voided: number | null; // Int
   }
   AdverseEvents: { // field return type
-    action_taken: string | null; // String
+    action_taken: number | null; // Int
     adverse_event: number | null; // Int
     cause: number | null; // Int
     date_created: string | null; // String
@@ -519,8 +521,8 @@ export interface NexusGenFieldTypes {
     allergy_severity: number | null; // Int
     chronic_illness: number | null; // Int
     chronic_illness_onset_date: string | null; // String
-    date_created: number | null; // Int
-    date_last_modified: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
     encounter_id: number | null; // Int
     location_id: number | null; // Int
     obs_id: number | null; // Int
@@ -536,8 +538,8 @@ export interface NexusGenFieldTypes {
     booking_date: string | null; // String
     cause_of_death: number | null; // Int
     comments: string | null; // String
-    date_created: number | null; // Int
-    date_last_modified: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
     encounter_id: number | null; // Int
     is_final_trace: number | null; // Int
     location_id: number | null; // Int
@@ -558,8 +560,10 @@ export interface NexusGenFieldTypes {
     encounter_id: number | null; // Int
     encounter_provider: number | null; // Int
     location_id: number | null; // Int
+    next_appointment_date: string | null; // String
     patient_id: number | null; // Int
     post_treatment_complication_cause: string | null; // String
+    post_treatment_complication_other: string | null; // String
     provider: number | null; // Int
     referral_facility: string | null; // String
     referral_reason: string | null; // String
@@ -868,12 +872,13 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     get: NexusGenRootTypes['EtlPatientProgram'][]; // [EtlPatientProgram!]!
     getARTPreparation: Array<NexusGenRootTypes['ARTPreparation'] | null> | null; // [ARTPreparation]
-    getAdverseEvents: NexusGenRootTypes['AdverseEvents'][]; // [AdverseEvents!]!
+    getAdverseEvents: Array<NexusGenRootTypes['AdverseEvents'] | null> | null; // [AdverseEvents]
     getAlcoholDrugAbuseScreening: Array<NexusGenRootTypes['AlcoholDrugAbuseScreening'] | null> | null; // [AlcoholDrugAbuseScreening]
-    getAllergyChronicIllness: NexusGenRootTypes['AllergyChronicIllness'][]; // [AllergyChronicIllness!]!
-    getCccDefaulterTracing: NexusGenRootTypes['CccDefaulterTracing'][]; // [CccDefaulterTracing!]!
-    getCervicalCancerScreening: NexusGenRootTypes['CervicalCancerScreening'][]; // [CervicalCancerScreening!]!
-    getClientEnrollment: NexusGenRootTypes['ClientEnrollment'][]; // [ClientEnrollment!]!
+    getAllergyChronicIllness: Array<NexusGenRootTypes['AllergyChronicIllness'] | null> | null; // [AllergyChronicIllness]
+    getCccDefaulterTracing: Array<NexusGenRootTypes['CccDefaulterTracing'] | null> | null; // [CccDefaulterTracing]
+    getCervicalCancerScreening: Array<NexusGenRootTypes['CervicalCancerScreening'] | null> | null; // [CervicalCancerScreening]
+    getClientEnrollment: Array<NexusGenRootTypes['ClientEnrollment'] | null> | null; // [ClientEnrollment]
+    getClientTrace: NexusGenRootTypes['ClientTrace'][]; // [ClientTrace!]!
     getClinicalVisit: NexusGenRootTypes['ClinicalVisit'][]; // [ClinicalVisit!]!
     getContactsLinked: NexusGenRootTypes['ContactsLinked'][]; // [ContactsLinked!]!
     getCovid19Assessment: NexusGenRootTypes['Covid19Assessment'][]; // [Covid19Assessment!]!
@@ -910,7 +915,7 @@ export interface NexusGenFieldTypeNames {
     voided: 'Int'
   }
   AdverseEvents: { // field return type name
-    action_taken: 'String'
+    action_taken: 'Int'
     adverse_event: 'Int'
     cause: 'Int'
     date_created: 'String'
@@ -950,8 +955,8 @@ export interface NexusGenFieldTypeNames {
     allergy_severity: 'Int'
     chronic_illness: 'Int'
     chronic_illness_onset_date: 'String'
-    date_created: 'Int'
-    date_last_modified: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
     encounter_id: 'Int'
     location_id: 'Int'
     obs_id: 'Int'
@@ -967,8 +972,8 @@ export interface NexusGenFieldTypeNames {
     booking_date: 'String'
     cause_of_death: 'Int'
     comments: 'String'
-    date_created: 'Int'
-    date_last_modified: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
     encounter_id: 'Int'
     is_final_trace: 'Int'
     location_id: 'Int'
@@ -989,8 +994,10 @@ export interface NexusGenFieldTypeNames {
     encounter_id: 'Int'
     encounter_provider: 'Int'
     location_id: 'Int'
+    next_appointment_date: 'String'
     patient_id: 'Int'
     post_treatment_complication_cause: 'String'
+    post_treatment_complication_other: 'String'
     provider: 'Int'
     referral_facility: 'String'
     referral_reason: 'String'
@@ -1305,6 +1312,7 @@ export interface NexusGenFieldTypeNames {
     getCccDefaulterTracing: 'CccDefaulterTracing'
     getCervicalCancerScreening: 'CervicalCancerScreening'
     getClientEnrollment: 'ClientEnrollment'
+    getClientTrace: 'ClientTrace'
     getClinicalVisit: 'ClinicalVisit'
     getContactsLinked: 'ContactsLinked'
     getCovid19Assessment: 'Covid19Assessment'

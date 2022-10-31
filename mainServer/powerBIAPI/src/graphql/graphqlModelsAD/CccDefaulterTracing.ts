@@ -24,8 +24,8 @@ export const CccDefaulterTracing = objectType({
        t.nullable.int("cause_of_death"); 
        t.nullable.string("comments"); 
        t.nullable.string("booking_date"); 
-       t.nullable.int("date_created"); 
-       t.nullable.int("date_last_modified"); 
+       t.nullable.string("date_created"); 
+       t.nullable.string("date_last_modified"); 
 
     },
 });
@@ -36,7 +36,7 @@ let resData:any ;
 export const CccDefaulterTracingQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getCccDefaulterTracing", {
+        t.nullable.list.nullable.field("getCccDefaulterTracing", {
             type: "CccDefaulterTracing",
             resolve(parent, args, context) {  
                 

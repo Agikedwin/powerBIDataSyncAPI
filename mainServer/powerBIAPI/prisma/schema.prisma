@@ -15,11 +15,9 @@ datasource db {
 
 // etl_adverse_events
 model AdverseEvents{
-  id Int  @id @default(autoincrement())
-  uuid String
-  
+  uuid String?  
   form String?
-  provider Int?
+  provider Int @id
   patient_id Int
   visit_id Int?
   visit_date DateTime? @db.Date

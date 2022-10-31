@@ -28,8 +28,8 @@ let resData:any ;
 export const ClientTraceQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getAdverseEvents", {
-            type: "AdverseEvents",
+        t.nonNull.list.nonNull.field("getClientTrace", {
+            type: "ClientTrace",
             resolve(parent, args, context) {  
                 
                context.prisma.clientTrace.findMany().then(data =>{

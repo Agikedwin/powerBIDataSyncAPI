@@ -97,8 +97,8 @@ export interface NexusGenObjects {
     allergy_severity?: number | null; // Int
     chronic_illness?: number | null; // Int
     chronic_illness_onset_date?: string | null; // String
-    date_created?: number | null; // Int
-    date_last_modified?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
     encounter_id?: number | null; // Int
     location_id?: number | null; // Int
     mfl_code?: number | null; // Int
@@ -532,8 +532,8 @@ export interface NexusGenFieldTypes {
     allergy_severity: number | null; // Int
     chronic_illness: number | null; // Int
     chronic_illness_onset_date: string | null; // String
-    date_created: number | null; // Int
-    date_last_modified: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
     encounter_id: number | null; // Int
     location_id: number | null; // Int
     mfl_code: number | null; // Int
@@ -885,11 +885,11 @@ export interface NexusGenFieldTypes {
   }
   Mutation: { // field return type
     postARTPreparation: NexusGenRootTypes['ARTPreparation']; // ARTPreparation!
-    postAdverseEvents: NexusGenRootTypes['AdverseEvents']; // AdverseEvents!
+    postAdverseEvents: NexusGenRootTypes['AdverseEvents'] | null; // AdverseEvents
     postAlcoholDrugAbuseScreening: NexusGenRootTypes['AlcoholDrugAbuseScreening'] | null; // AlcoholDrugAbuseScreening
-    postAllergyChronicIllness: NexusGenRootTypes['AllergyChronicIllness']; // AllergyChronicIllness!
+    postAllergyChronicIllness: NexusGenRootTypes['AllergyChronicIllness'] | null; // AllergyChronicIllness
     postCccDefaulterTracing: NexusGenRootTypes['CccDefaulterTracing']; // CccDefaulterTracing!
-    postCervicalCancerScreening: NexusGenRootTypes['CervicalCancerScreening']; // CervicalCancerScreening!
+    postCervicalCancerScreening: NexusGenRootTypes['CervicalCancerScreening'] | null; // CervicalCancerScreening
     postClientEnrollment: NexusGenRootTypes['ClientEnrollment']; // ClientEnrollment!
     postClientTrace: NexusGenRootTypes['ClientTrace']; // ClientTrace!
     postClinicalVisit: NexusGenRootTypes['ClinicalVisit']; // ClinicalVisit!
@@ -975,8 +975,8 @@ export interface NexusGenFieldTypeNames {
     allergy_severity: 'Int'
     chronic_illness: 'Int'
     chronic_illness_onset_date: 'String'
-    date_created: 'Int'
-    date_last_modified: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
     encounter_id: 'Int'
     location_id: 'Int'
     mfl_code: 'Int'

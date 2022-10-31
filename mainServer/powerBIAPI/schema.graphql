@@ -30,7 +30,7 @@ type ARTPreparation {
 }
 
 type AdverseEvents {
-  action_taken: String
+  action_taken: Int
   adverse_event: Int
   cause: Int
   date_created: String
@@ -72,8 +72,8 @@ type AllergyChronicIllness {
   allergy_severity: Int
   chronic_illness: Int
   chronic_illness_onset_date: String
-  date_created: Int
-  date_last_modified: Int
+  date_created: String
+  date_last_modified: String
   encounter_id: Int
   location_id: Int
   obs_id: Int
@@ -90,8 +90,8 @@ type CccDefaulterTracing {
   booking_date: String
   cause_of_death: Int
   comments: String
-  date_created: Int
-  date_last_modified: Int
+  date_created: String
+  date_last_modified: String
   encounter_id: Int
   is_final_trace: Int
   location_id: Int
@@ -113,8 +113,10 @@ type CervicalCancerScreening {
   encounter_id: Int
   encounter_provider: Int
   location_id: Int
+  next_appointment_date: String
   patient_id: Int
   post_treatment_complication_cause: String
+  post_treatment_complication_other: String
   provider: Int
   referral_facility: String
   referral_reason: String
@@ -433,12 +435,13 @@ type Mutation {
 type Query {
   get: [EtlPatientProgram!]!
   getARTPreparation: [ARTPreparation]
-  getAdverseEvents: [AdverseEvents!]!
+  getAdverseEvents: [AdverseEvents]
   getAlcoholDrugAbuseScreening: [AlcoholDrugAbuseScreening]
-  getAllergyChronicIllness: [AllergyChronicIllness!]!
-  getCccDefaulterTracing: [CccDefaulterTracing!]!
-  getCervicalCancerScreening: [CervicalCancerScreening!]!
-  getClientEnrollment: [ClientEnrollment!]!
+  getAllergyChronicIllness: [AllergyChronicIllness]
+  getCccDefaulterTracing: [CccDefaulterTracing]
+  getCervicalCancerScreening: [CervicalCancerScreening]
+  getClientEnrollment: [ClientEnrollment]
+  getClientTrace: [ClientTrace!]!
   getClinicalVisit: [ClinicalVisit!]!
   getContactsLinked: [ContactsLinked!]!
   getCovid19Assessment: [Covid19Assessment!]!

@@ -10,7 +10,7 @@ export const AdverseEvents = objectType({
         t.nullable.int("patient_id"); 
         t.nullable.string("form"); 
         t.nullable.int("provider"); 
-        t.nullable.string("action_taken")
+        t.nullable.int("action_taken")
         t.nullable.int("visit_id"); 
         t.nullable.string("visit_date"); 
         t.nullable.int("location_id"); 
@@ -33,7 +33,7 @@ let resData:any ;
 export const AdverseEventsQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getAdverseEvents", {
+        t.nullable.list.nullable.field("getAdverseEvents", {
             type: "AdverseEvents",
             resolve(parent, args, context) {  
                 

@@ -49,7 +49,7 @@ let resData:any ;
 export const ClientEnrollmentQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getClientEnrollment", {
+        t.nullable.list.nullable.field("getClientEnrollment", {
             type: "ClientEnrollment",
             resolve(parent, args, context) {  
                 

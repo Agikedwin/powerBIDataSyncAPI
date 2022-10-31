@@ -105,7 +105,7 @@ CREATE TABLE `etl_ART_preparation` (
 CREATE TABLE `etl_ccc_defaulter_tracing` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uuid` VARCHAR(191) NULL,
-    `mfl_code` INTEGER NOT NULL,
+    `mfl_code` INTEGER  NULL,
     `provider` INTEGER NULL,
     `patient_id` INTEGER NULL,
     `visit_id` INTEGER NULL,

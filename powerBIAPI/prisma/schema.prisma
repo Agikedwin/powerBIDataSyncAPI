@@ -14,12 +14,11 @@ datasource db {
 
 // etl_adverse_events
 model AdverseEvents{
-  id Int  @id @default(autoincrement())
-  uuid String
-  mfl_code Int
+  uuid String?
+  mfl_code Int?
   form String?
   provider Int?
-  patient_id Int
+  patient_id Int @id
   visit_id Int?
   visit_date DateTime? @db.Date
   location_id Int?
@@ -122,7 +121,7 @@ model ARTPreparation {
 model CccDefaulterTracing {
     id Int @id @default(autoincrement())
     uuid String?
-    mfl_code Int
+    mfl_code Int?
     provider Int?
     patient_id Int?
     visit_id Int?

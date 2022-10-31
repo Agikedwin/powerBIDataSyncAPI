@@ -22,8 +22,8 @@ export const AllergyChronicIllness = objectType({
        t.nullable.int("allergy_severity"); 
        t.nullable.string("allergy_onset_date"); 
        t.nullable.int("voided"); 
-       t.nullable.int("date_created"); 
-       t.nullable.int("date_last_modified"); 
+       t.nullable.string("date_created"); 
+       t.nullable.string("date_last_modified"); 
 
     },
 });
@@ -34,7 +34,7 @@ export const AllergyChronicIllnessMutation = extendType({  // 1
     
     type: "Mutation",    
     definition(t) {
-        t.nonNull.field("postAllergyChronicIllness", {
+        t.nullable.field("postAllergyChronicIllness", {
             type: "AllergyChronicIllness",
              args: {
                 uuid: nullable(stringArg()),
@@ -62,11 +62,35 @@ export const AllergyChronicIllnessMutation = extendType({  // 1
             resolve(parent, args, context) { 
                 console.log(args);
 
-                const post = context.prisma.allergyChronicIllness.create({  
+                try {
+                    const post = context.prisma.allergyChronicIllness.create({  
                     
-                    data:args
-                });
-                return post;
+                        data: {
+                            uuid: args.uuid,
+                            provider: args.provider,
+                            patient_id : args.patient_id,
+                            visit_id : args.visit_id,
+                            mfl_code: 12904,
+                            visit_date: args.visit_date != null ? (new Date(args.visit_date * 1).toISOString()) : null,
+                            location_id : args.location_id,
+                            encounter_id : args.encounter_id,
+                            obs_id: args.obs_id,
+                            chronic_illness: args.chronic_illness,
+                            chronic_illness_onset_date: args.chronic_illness_onset_date != null ? (new Date(args.chronic_illness_onset_date * 1).toISOString()) : null,
+                            allergy_causative_agent: args.allergy_causative_agent,
+                            allergy_reaction: args.allergy_reaction,
+                            allergy_severity : args.allergy_severity,
+                            allergy_onset_date : args.allergy_onset_date != null ? (new Date(args.allergy_onset_date * 1).toISOString()) : null,
+                            voided: args.voided,
+                            date_created : args.date_created != null ? (new Date(args.date_created * 1).toISOString()) : null,
+                            date_last_modified: args.date_last_modified,
+                        } 
+                    });
+                    return post;
+                    
+                } catch (error) {
+                    console.error(error)                 
+                }
             },
         });
     },

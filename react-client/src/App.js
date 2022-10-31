@@ -1,39 +1,68 @@
-import React, { useState, useEffect } from 'react';
+import { Fragment, useEffect,useState } from "react";
+import { useSelector, useDispatch} from "react-redux";
+import BasicForm from "./components/Cart/BasicForm";
+import Cart from "./components/Cart/Cart";
+import Layout from "./components/Layout/Layout";
+import Products from "./components/Shop/Products";
+import Notification from "./components/UI/Notification";
+import {sendCartData, fetchCartData } from './store/cart-actions';
+import {sendProductData, fetchProductData } from './store/product-actions';
 
-import Login from './components/Login/Login';
-import Home from './components/Home/Home';
-import MainHeader from './components/MainHeader/MainHeader';
+let isInitial = true;
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const showCart = useSelector((state) => state.ui.cartIsVisible);
+  const cart = useSelector((state) => state.cart);
+  const product = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const notification = useSelector(state => state.ui.notification);
 
-  useEffect(() => {
-    const userLoggedInInfo = localStorage.getItem('isLoggedIn');
-    if (userLoggedInInfo === '1') {
-      setIsLoggedIn(true);
-      }
-  }, []);
 
-  const loginHandler = (email, password) => {
-    // We should of course check email and password
-    // But it's just a dummy/ demo anyways
-    localStorage.setItem('isLoggedIn','1');
-    setIsLoggedIn(true);
-  };
+useEffect(() => {
+  if(isInitial){
+    isInitial = false;
+    return
+  }
+  if(cart.changed){
+    dispatch(sendCartData(cart));
+  }
 
-  const logoutHandler = () => {
-    localStorage.removeItem('isLoggedIn');
-    setIsLoggedIn(false);
-  };
+},[cart, dispatch]);
+
+useEffect(() => {
+  dispatch(fetchCartData())
+}, [dispatch]);
+
+useEffect(() => {
+  if(isInitial){
+    isInitial = false;
+    return
+  }
+  if(product.changed){
+    dispatch(sendProductData(product));
+  }
+
+},[product, dispatch]);
+
+useEffect(() => {
+    dispatch(fetchProductData())
+}, [dispatch]);
+
 
   return (
-    <React.Fragment>
-      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
-      <main>
-        {!isLoggedIn && <Login onLogin={loginHandler} />}
-        {isLoggedIn && <Home onLogout={logoutHandler} />}
-      </main>
-    </React.Fragment>
+    <Fragment> 
+    {notification && <Notification 
+      status ={notification.status}
+      title ={notification.title}
+      message ={notification.message}
+    /> }
+    {/* <Layout>
+      {showCart && <Cart />}
+      <BasicForm />
+      <Products />
+    </Layout> */}
+
+    </Fragment>
   );
 }
 

@@ -79,7 +79,32 @@ export const ARTPreparationMutation = extendType({  // 1
 
                 const post = context.prisma.aRTPreparation.create({  
                     
-                    data:args
+                    data:{
+                        uuid: args.uuid,
+                        patient_id: args.patient_id,
+                        visit_id: args.visit_id,
+                        mfl_code: 12905,
+                        visit_date: args.visit_date != null ? (new Date(args.visit_date * 1).toISOString()) : null,
+                        location_id: args.location_id,
+                        encounter_id: args.encounter_id,
+                        provider: args.provider,
+                        understands_hiv_art_benefits: args.understands_hiv_art_benefits,
+                        screened_negative_substance_abuse: args.screened_negative_substance_abuse,
+                        screened_negative_psychiatric_illness: args.screened_negative_psychiatric_illness,
+                        HIV_status_disclosure: args.HIV_status_disclosure,
+                        trained_drug_admin: args.trained_drug_admin,
+                        informed_drug_side_effects: args.informed_drug_side_effects,
+                        adherance_barriers_identified: args.adherance_barriers_identified,
+                        caregiver_location_contacts_known: args.caregiver_location_contacts_known,
+                        ready_to_start_art: args.ready_to_start_art,
+                        identified_drug_time: args.identified_drug_time,
+                        treatment_supporter_engaged: args.treatment_supporter_engaged,
+                        support_grp_meeting_awareness: args.support_grp_meeting_awareness,
+                        enrolled_in_reminder_system: args.enrolled_in_reminder_system,
+                        other_support_systems: args.other_support_systems,
+                        date_created: args.enroll_date != null ? (new Date(args.date_created * 1).toISOString()) : null,
+                        date_last_modified: args.date_last_modified != null ? (new Date(args.date_last_modified * 1).toISOString()) : null,
+                    }
                 });
                 return post;
             },
