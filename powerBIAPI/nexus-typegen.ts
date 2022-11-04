@@ -191,16 +191,16 @@ export interface NexusGenObjects {
     year_started_sex_with_men?: string | null; // String
   }
   ClientTrace: { // root type
-    appointment_date?: number | null; // Int
+    appointment_date?: string | null; // String
     client_id?: number | null; // Int
     contact_type?: string | null; // String
-    date_created?: number | null; // Int
-    date_last_modified?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
     encounter_date?: string | null; // String
     facility_linked_to?: number | null; // Int
     health_worker_handed_to?: string | null; // String
     mfl_code?: number | null; // Int
-    remarks?: number | null; // Int
+    remarks?: string | null; // String
     status?: string | null; // String
     unique_patient_no?: string | null; // String
     uuid?: string | null; // String
@@ -626,16 +626,16 @@ export interface NexusGenFieldTypes {
     year_started_sex_with_men: string | null; // String
   }
   ClientTrace: { // field return type
-    appointment_date: number | null; // Int
+    appointment_date: string | null; // String
     client_id: number | null; // Int
     contact_type: string | null; // String
-    date_created: number | null; // Int
-    date_last_modified: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
     encounter_date: string | null; // String
     facility_linked_to: number | null; // Int
     health_worker_handed_to: string | null; // String
     mfl_code: number | null; // Int
-    remarks: number | null; // Int
+    remarks: string | null; // String
     status: string | null; // String
     unique_patient_no: string | null; // String
     uuid: string | null; // String
@@ -894,7 +894,7 @@ export interface NexusGenFieldTypes {
     postClientTrace: NexusGenRootTypes['ClientTrace']; // ClientTrace!
     postClinicalVisit: NexusGenRootTypes['ClinicalVisit']; // ClinicalVisit!
     postContactsLinked: NexusGenRootTypes['ContactsLinked']; // ContactsLinked!
-    postCovid19Assessment: NexusGenRootTypes['Covid19Assessment']; // Covid19Assessment!
+    postCovid19Assessment: NexusGenRootTypes['Covid19Assessment'] | null; // Covid19Assessment
     postCurrentInCare: NexusGenRootTypes['EtlCurrentInCare'] | null; // EtlCurrentInCare
     postHtsTest: NexusGenRootTypes['ETLHtsTest']; // ETLHtsTest!
     postProgram: NexusGenRootTypes['EtlPatientProgram']; // EtlPatientProgram!
@@ -1069,16 +1069,16 @@ export interface NexusGenFieldTypeNames {
     year_started_sex_with_men: 'String'
   }
   ClientTrace: { // field return type name
-    appointment_date: 'Int'
+    appointment_date: 'String'
     client_id: 'Int'
     contact_type: 'String'
-    date_created: 'Int'
-    date_last_modified: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
     encounter_date: 'String'
     facility_linked_to: 'Int'
     health_worker_handed_to: 'String'
     mfl_code: 'Int'
-    remarks: 'Int'
+    remarks: 'String'
     status: 'String'
     unique_patient_no: 'String'
     uuid: 'String'
@@ -1527,7 +1527,7 @@ export interface NexusGenArgTypes {
       status?: string | null; // String
       unique_patient_no?: string | null; // String
       uuid?: string | null; // String
-      voided?: string | null; // String
+      voided?: number | null; // Int
     }
     postClinicalVisit: { // args
       abscess_referred?: string | null; // String
@@ -1663,12 +1663,38 @@ export interface NexusGenArgTypes {
       visit_date?: string | null; // String
     }
     postCovid19Assessment: { // args
-      baseline_hiv_status?: string | null; // String
-      final_test_result?: string | null; // String
+      admission_unit?: string | null; // String
+      booster_dose_verified?: string | null; // String
+      booster_sequence?: string | null; // String
+      booster_vaccine_taken?: string | null; // String
+      date_created?: string | null; // String
+      date_last_modified?: string | null; // String
+      date_taken_booster_vaccine?: string | null; // String
+      date_tested_positive?: string | null; // String
+      encounter_id?: number | null; // Int
+      ever_received_booster?: string | null; // String
+      ever_tested_covid_19_positive?: string | null; // String
+      ever_vaccinated?: string | null; // String
+      final_vaccination_status?: string | null; // String
+      first_dose?: string | null; // String
+      first_dose_date?: string | null; // String
+      first_vaccination_verified?: string | null; // String
+      first_vaccine_type?: string | null; // String
+      hospital_admission?: string | null; // String
+      location_id?: number | null; // Int
       mfl_code?: number | null; // Int
+      obs_id?: number | null; // Int
+      on_oxygen_supplement?: string | null; // String
+      on_ventillator?: string | null; // String
       patient_id?: number | null; // Int
-      relationship_type?: number | null; // Int
-      visit_date?: string | null; // String
+      second_dose?: string | null; // String
+      second_dose_date?: string | null; // String
+      second_vaccination_verified?: string | null; // String
+      second_vaccine_type?: string | null; // String
+      symptomatic?: string | null; // String
+      visit_date?: number | null; // Int
+      visit_id?: number | null; // Int
+      voided?: number | null; // Int
     }
     postCurrentInCare: { // args
       date_discontinued?: string | null; // String

@@ -421,7 +421,7 @@ model ContactsLinked {
 //etl_covid19_assessment
 model Covid19Assessment {
   id_auto Int @id @default(autoincrement())
-  uuid String?
+  uuid String ?
   mfl_code Int
   provider Int ?
   patient_id Int ?

@@ -26,7 +26,7 @@ export const Contact = objectType({
        t.nullable.string("year_started_drugs");
        t.nullable.int("avg_weekly_sex_acts");
        t.nullable.string("avg_weekly_anal_sex_acts");
-       t.nullable.int("avg_daily_drug_injections");
+       t.nullable.string("avg_daily_drug_injections");
        t.nullable.string("contact_person_name");
        t.nullable.string("contact_person_alias");
        t.nullable.string("contact_person_phone");
@@ -43,6 +43,7 @@ export const ContactMutation = extendType({  // 1
     definition(t) {
         t.nonNull.field("postContact", {
             type: "Contact",
+            
              args: {
                 uuid : nullable(stringArg()),
                 client_id:  nullable(intArg()),
@@ -75,11 +76,19 @@ export const ContactMutation = extendType({  // 1
             resolve(parent, args, context) { 
                 console.log(args);
 
-                const post = context.prisma.contact.create({  
+                try {
+                    const post = context.prisma.contact.create({  
                     
-                    data:args
-                });
-                return post;
+                        data:args
+                    });
+                    return post;
+                    
+                } catch (error) {
+                    console.log(error);
+                    
+                }
+
+                
             },
         });
     },

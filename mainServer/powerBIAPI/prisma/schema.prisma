@@ -368,7 +368,7 @@ model ClinicalVisit{
 model Contact {
   uuid String?
   
-  unique_identifier String ?
+  unique_identifier String?
   client_id Int @id
   visit_id Int?
   visit_date DateTime ?   @db.Date
@@ -416,7 +416,7 @@ model Covid19Assessment {
   provider Int ?
   patient_id Int @id
   visit_id Int ?
-  visit_date String ? 
+  visit_date DateTime ?   @db.Date
   location_id Int ?
   encounter_id Int ?
   obs_id String ? 
@@ -425,8 +425,8 @@ model Covid19Assessment {
   second_vaccine_type String ? 
   first_dose String ? 
   second_dose String ? 
-  first_dose_date String ? 
-  second_dose_date String ? 
+  first_dose_date  String ? 
+  second_dose_date  String ? 
   first_vaccination_verified String ? 
   second_vaccination_verified String ? 
   final_vaccination_status String ? 

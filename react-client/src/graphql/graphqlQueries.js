@@ -204,7 +204,6 @@ query{
         encounter_id
         encounter_provider
         ever_tested_for_hiv
-        mfl_code
         has_expereienced_physical_violence
         has_expereienced_sexual_violence
         has_regular_free_sex_partner
@@ -226,6 +225,25 @@ query{
         }
         `
 
+    export const getClientTrace = `
+    query {
+      getClientTrace{
+
+                uuid 
+                date_created 
+                date_last_modified:
+                encounter_date
+                client_id 
+                contact_type
+                status
+                unique_patient_no
+                facility_linked_to 
+                health_worker_handed_to 
+                remarks 
+                appointment_date
+      }
+    }
+    `
 
     export const getClinicalVisit = `
 
@@ -359,6 +377,38 @@ query{
         }
         `
 
+  export const getContact = `
+
+    query{
+      getContact {
+        uuid 
+        unique_identifier
+        client_id 
+        visit_id
+        visit_date 
+        location_id 
+        encounter_id 
+        encounter_provider 
+        date_created  
+        date_last_modified 
+        key_population_type 
+        contacted_by_peducator 
+        program_name
+        frequent_hotspot_name 
+        frequent_hotspot_type 
+        year_started_sex_work
+        year_started_sex_with_men 
+        year_started_drugs 
+        avg_weekly_sex_acts 
+        avg_weekly_anal_sex_acts 
+        avg_daily_drug_injections 
+        contact_person_name 
+        contact_person_alias 
+        contact_person_phone 
+        voided 
+        }
+        }
+        `
     export const getContactsLinked = `
 
     query{

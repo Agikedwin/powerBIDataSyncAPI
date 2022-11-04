@@ -167,15 +167,15 @@ type ClientEnrollment {
 }
 
 type ClientTrace {
-  appointment_date: Int
+  appointment_date: String
   client_id: Int
   contact_type: String
-  date_created: Int
-  date_last_modified: Int
+  date_created: String
+  date_last_modified: String
   encounter_date: String
   facility_linked_to: Int
   health_worker_handed_to: String
-  remarks: Int
+  remarks: String
   status: String
   unique_patient_no: String
   uuid: String
@@ -304,6 +304,34 @@ type ClinicalVisit {
   vl_results: String
   vl_test_done: String
   voided: Int
+}
+
+type Contact {
+  avg_daily_drug_injections: String
+  avg_weekly_anal_sex_acts: String
+  avg_weekly_sex_acts: String
+  client_id: Int
+  contact_person_alias: String
+  contact_person_name: String
+  contact_person_phone: String
+  contacted_by_peducator: String
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  encounter_provider: Int
+  frequent_hotspot_name: String
+  frequent_hotspot_type: String
+  key_population_type: String
+  location_id: Int
+  program_name: String
+  unique_identifier: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: String
+  year_started_drugs: String
+  year_started_sex_with_men: String
+  year_started_sex_work: String
 }
 
 type ContactsLinked {
@@ -441,10 +469,11 @@ type Query {
   getCccDefaulterTracing: [CccDefaulterTracing]
   getCervicalCancerScreening: [CervicalCancerScreening]
   getClientEnrollment: [ClientEnrollment]
-  getClientTrace: [ClientTrace!]!
-  getClinicalVisit: [ClinicalVisit!]!
-  getContactsLinked: [ContactsLinked!]!
-  getCovid19Assessment: [Covid19Assessment!]!
+  getClientTrace: [ClientTrace]
+  getClinicalVisit: [ClinicalVisit]
+  getContact: [Contact]
+  getContactsLinked: [ContactsLinked]
+  getCovid19Assessment: [Covid19Assessment]
   getCurrentInCare: [EtlCurrentInCare!]!
   getHtsTest: [ETLHtsTest!]!
 }

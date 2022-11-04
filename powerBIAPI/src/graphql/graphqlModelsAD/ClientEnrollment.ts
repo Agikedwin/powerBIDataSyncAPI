@@ -93,7 +93,40 @@ export const ClientEnrollmentMutation = extendType({  // 1
 
                 const post = context.prisma.clientEnrollment.create({  
                     
-                    data:args
+                    data:{
+
+                        buddy_name: args.buddy_name,
+                        buddy_phone_number: args.buddy_phone_number,
+                        care_facility_name: args.care_facility_name,
+                        ccc_number: args.ccc_number, 
+                        client_id: args.client_id, 
+                        contact_for_appointment: args.contact_for_appointment, 
+                        contact_method: args.contact_method,
+                        contacted_for_prevention: args.contacted_for_prevention,
+                        date_created: args.date_created != null ? (new Date(args.date_created * 1).toISOString()) : null,  
+                        date_last_modified: args.date_last_modified != null ? (new Date(args.date_last_modified * 1).toISOString()) : null,  
+                        encounter_id: args.encounter_id, 
+                        encounter_provider: args.encounter_provider,
+                        ever_tested_for_hiv: args.ever_tested_for_hiv, 
+                        has_expereienced_physical_violence: args.has_expereienced_physical_violence, 
+                        has_expereienced_sexual_violence: args.has_expereienced_sexual_violence,
+                        has_regular_free_sex_partner: args.has_regular_free_sex_partner, 
+                        mfl_code: 12905, 
+                        receiving_hiv_care: args.receiving_hiv_care, 
+                        share_test_results: args.share_test_results, 
+                        test_decline_reason: args.test_decline_reason, 
+                        test_type: args.test_type, uuid: args.uuid,
+                        visit_date: args.visit_date != null ? (new Date(args.visit_date * 1).toISOString()) : null,  
+                        visit_id: args.visit_id, 
+                        vl_results_date: args.vl_results_date != null ? (new Date(args.vl_results_date * 1).toISOString()) : null,  
+                        vl_test_done: args.vl_test_done, 
+                        voided: args.voided,
+                        willing_to_test: args.willing_to_test,
+                        year_started_drugs: args.year_started_drugs,
+                        year_started_sex_with_men: args.year_started_sex_with_men, 
+                        year_started_sex_work: args.year_started_sex_work
+
+                    }
                 });
                 return post;
             },

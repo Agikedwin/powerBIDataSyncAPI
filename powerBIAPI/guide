@@ -24,3 +24,6 @@ npx prisma generate
 npx ts-node src/script.ts
 
 npm run generate  /// updates schema .graphql and nexus-typegen.ts
+
+// format
+https://jsonformatter.curiousconcept.com/#

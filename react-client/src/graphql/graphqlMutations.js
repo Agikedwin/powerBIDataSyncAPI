@@ -127,10 +127,10 @@ postClientEnrollment($buddy_name: String, $buddy_phone_number: String, $care_fac
     $has_expereienced_physical_violence: String, $has_expereienced_sexual_violence: String, $has_regular_free_sex_partner: String,
      $mfl_code: Int, $receiving_hiv_care: String, $share_test_results: String, $test_decline_reason: String, $test_type: String,
      $uuid: String, $visit_date: String, $visit_id: Int, $vl_results_date: String, $vl_test_done: String, $voided: Int, 
-  willing_to_test: String, year_started_drugs: String, $year_started_sex_with_men: String, $year_started_sex_work: String){
+  $willing_to_test: String, $year_started_drugs: String, $year_started_sex_with_men: String, $year_started_sex_work: String){
 
     postClientEnrollment(buddy_name: $buddy_name, buddy_phone_number: $buddy_phone_number, care_facility_name: $care_facility_name,
-       ccc_number: $ccc_number, client_id: $client_id, contact_for_appo$ment: $contact_for_appo, contact_method: $contact_method,
+       ccc_number: $ccc_number, client_id: $client_id, contact_for_appointment: $contact_for_appointment, contact_method: $contact_method,
         contacted_for_prevention: $contacted_for_prevention, date_created: $date_created, date_last_modified: $date_last_modified, 
         encounter_id: $encounter_id, encounter_provider: $encounter_provider, ever_tested_for_hiv: $ever_tested_for_hiv, 
         has_expereienced_physical_violence: $has_expereienced_physical_violence, has_expereienced_sexual_violence: $has_expereienced_sexual_violence,
@@ -138,21 +138,26 @@ postClientEnrollment($buddy_name: String, $buddy_phone_number: String, $care_fac
          share_test_results: $share_test_results, test_decline_reason: $test_decline_reason, test_type: $test_type, uuid: $uuid,
           visit_date: $visit_date, visit_id: $visit_id, vl_results_date: $vl_results_date, vl_test_done: $vl_test_done, voided: $voided,
            willing_to_test: $willing_to_test, year_started_drugs: $year_started_drugs, year_started_sex_with_men: $year_started_sex_with_men, 
-           year_started_sex_work: $year_started_sex_work)
+           year_started_sex_work: $year_started_sex_work){
+            client_id
+           }
   }
 `
 export const postClientTrace = `mutation 
 postClientTrace($appointment_date: String, $client_id: Int, $contact_type: String, $date_created: String, $date_last_modified: String,
   $encounter_date: String, $facility_linked_to: String, $health_worker_handed_to: String,
-   $mfl_code: Int, $remarks: String, $status: String, $unique_patient_no: String, $uuid: String, $voided: String){
+   $mfl_code: Int, $remarks: String, $status: String, $unique_patient_no: String, $uuid: String){
 
-    postClientTrace(appo$ment_date: $ment_date, client_id: $client_id, contact_type: $contact_type, date_created: $date_created,
+    postClientTrace(appointment_date: $appointment_date, client_id: $client_id, contact_type: $contact_type, date_created: $date_created,
        date_last_modified: $date_last_modified, encounter_date: $encounter_date, facility_linked_to: $facility_linked_to, 
        health_worker_handed_to: $health_worker_handed_to, mfl_code: $mfl_code, 
-      remarks: $remarks, status: $status, unique_patient_no: $unique_patient_no, uuid: $uuid, voided: $voided)
+      remarks: $remarks, status: $status, unique_patient_no: $unique_patient_no, uuid: $uuid){
+        client_id
+      }
    }
 `
 
+// Check insertions when the data is available
 export const postClinicalVisit = `mutation 
 
 postClinicalVisit($abscess_referred: String, $$abscess_results: String, $$abscess_screened: String, $$abscess_text: String, 
@@ -228,25 +233,160 @@ postClinicalVisit($abscess_referred: String, $$abscess_results: String, $$absces
              test_confirmatory_results: $test_confirmatory_results, test_frequency: $test_frequency, test_results: $test_results, 
              type_of_visit: $type_of_visit, uuid: $uuid, violence_referred: $violence_referred, violence_results: $violence_results,
               violence_screened: $violence_screened, violence_text: $violence_text, violence_treated: $violence_treated, visit_date: $visit_date,
-               visit_id: $visit_id, visit_reason: $visit_reason, vl_results: $vl_results, vl_test_done: $vl_test_done, voided: $voided)
+               visit_id: $visit_id, visit_reason: $visit_reason, vl_results: $vl_results, vl_test_done: $vl_test_done, voided: $voided){
+                uuid
+               }
        }
 `
 
 
-export const postContactsLinked = `mutation 
+
+export const postContact = ` mutation  
+postContact($uuid String,
+  $mfl_code Int,
+  $unique_identifier String ,
+  $client_id Int ,
+  $visit_id Int,
+  $visit_date  String, 
+  $location_id Int ,
+  $encounter_id Int ,
+  $encounter_provider Int ,
+  $date_created Int , 
+  $date_last_modified Int,
+  $key_population_type String ,
+  $contacted_by_peducator String ,
+  $program_name String ,
+  $frequent_hotspot_name String ,
+  $frequent_hotspot_type String ,
+  $year_started_sex_work String ,
+  $year_started_sex_with_men String ,
+  $year_started_drugs String ,
+  $avg_weekly_sex_acts Int ,
+  $avg_weekly_anal_sex_acts Int ,
+  $avg_daily_drug_injections Int ,
+  $contact_person_name String ,
+  $contact_person_alias String ,
+  $contact_person_phone String ,
+  $voided Int )
+  {
+
+    postContact(
+      uuid : $uuid,
+      mfl_code  : $mfl_code,
+      unique_identifier  : $unique_identifier ,
+      client_id  : $client_id ,
+      visit_id  : $visit_id,
+      visit_date : $visit_date
+      location_id  : $location_id ,
+      encounter_id  : $encounter_id ,
+      encounter_provider  : $encounter_provider ,
+      date_created : $date_created , 
+      date_last_modified  : $date_last_modified,
+      key_population_type  : $date_last_modified ,
+      contacted_by_peducator  : $contacted_by_peducator ,
+      program_name  : $program_name ,
+      frequent_hotspot_name  : $frequent_hotspot_name ,
+      frequent_hotspot_type  : $frequent_hotspot_type ,
+      year_started_sex_work  : $year_started_sex_work ,
+      year_started_sex_with_men  : $year_started_sex_with_men ,
+      year_started_drugs  : $year_started_drugs ,
+      avg_weekly_sex_acts  : $avg_weekly_sex_acts ,
+      avg_weekly_anal_sex_acts  : $avg_weekly_anal_sex_acts ,
+      avg_daily_drug_injections  : $avg_daily_drug_injections ,
+      contact_person_name  : $contact_person_name,
+      contact_person_alias  : $contact_person_alias ,
+      contact_person_phone  : $contact_person_phone ,
+      voided  : $voided 
+    ){
+      client_id
+    }
+  }
+`
+
+
+export const postContactsLinked = ` mutation  
 postContactsLinked($baseline_hiv_status: String, $final_test_result: String, $mfl_code: Int,$ patient_id: Int, 
   $relationship_type: Int, $visit_date: String){
 
     postContactsLinked(baseline_hiv_status: $baseline_hiv_status, final_test_result: $final_test_result, mfl_code: $mfl_code, patient_id: $patient_id, 
-      relationship_type: $relationship_type, visit_date: $visit_date)
+      relationship_type: $relationship_type, visit_date: $visit_date){}
   }
 `
-export const postCovid19Assessment = `mutation 
-postCovid19Assessment($baseline_hiv_status: String, $final_test_result: String, $mfl_code: Int, $patient_id: Int, $relationship_type: Int,
-   $visit_date: String){
 
-    postCovid19Assessment(baseline_hiv_status: $baseline_hiv_status, final_test_result: $final_test_result, mfl_code: $mfl_code, patient_id: $patient_id,
-       relationship_type: $relationship_type, visit_date: $visit_date)
+export const postCovid19Assessment = ` mutation 
+postCovid19Assessment(
+  $provider Int ,
+  $mfl_code Int ,
+  $patient_id Int,
+  $visit_id Int ,
+  $visit_date String , 
+  $location_id Int ,
+  $encounter_id Int ,
+  $obs_id String, 
+  $ever_vaccinated String , 
+  $first_vaccine_type String , 
+  $second_vaccine_type String , 
+  $first_dose String , 
+  $second_dose String , 
+  $first_dose_date String , 
+  $second_dose_date String , 
+  $first_vaccination_verified String , 
+  $second_vaccination_verified String , 
+  $final_vaccination_status String , 
+  $ever_received_booster String , 
+  $booster_vaccine_taken String , 
+  $date_taken_booster_vaccine String , 
+  $booster_sequence String , 
+  $booster_dose_verified String , 
+  $ever_tested_covid_19_positive String , 
+  $symptomatic String , 
+  $date_tested_positive String , 
+  $hospital_admission String , 
+  $admission_unit String , 
+  $on_ventillator String , 
+  $on_oxygen_supplement String , 
+  $date_created String,
+  $date_last_modified String,
+  $voided Int){
+
+    postCovid19Assessment(
+      provider: $provider  ,
+      mfl_code: $mfl_code,
+      patient_id: $patient_id ,
+      visit_id: $visit_id  ,
+      visit_date: $visit_date  , 
+      location_id: $location_id  ,
+      encounter_id: $encounter_id  ,
+      obs_id: $obs_id  , 
+      ever_vaccinated: $ever_vaccinated  , 
+      first_vaccine_type: $first_vaccine_type  , 
+      second_vaccine_type: $second_vaccine_type  , 
+      first_dose: $first_dose  , 
+      second_dose: $second_dose  , 
+      first_dose_date: $first_dose_date  , 
+      second_dose_date: $second_dose_date  , 
+      first_vaccination_verified: $first_vaccination_verified  , 
+      second_vaccination_verified: $second_vaccination_verified  , 
+      final_vaccination_status: $final_vaccination_status  , 
+      ever_received_booster: $ever_received_booster  , 
+      booster_vaccine_taken: $booster_vaccine_taken  , 
+      date_taken_booster_vaccine: $date_taken_booster_vaccine  , 
+      booster_sequence: $booster_sequence  , 
+      booster_dose_verified: $booster_dose_verified  , 
+      ever_tested_covid_19_positive: $ever_tested_covid_19_positive  , 
+      symptomatic: $symptomatic  , 
+      date_tested_positive: $date_tested_positive  , 
+      hospital_admission: $hospital_admission  , 
+      admission_unit: $admission_unit  , 
+      on_ventillator: $on_ventillator  , 
+      on_oxygen_supplement: $on_oxygen_supplement  , 
+      date_created: $date_created ,
+      date_last_modified: $date_last_modified ,
+      voided: $voided
+      ){
+        patient_id
+      }
+    
 }
 `
 

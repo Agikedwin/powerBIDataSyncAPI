@@ -14,10 +14,10 @@ export const ClientTrace = objectType({
        t.nullable.string("unique_patient_no"); 
        t.nullable.int("facility_linked_to"); 
        t.nullable.string("health_worker_handed_to"); 
-       t.nullable.int("remarks"); 
-       t.nullable.int("appointment_date");
-       t.nullable.int("date_created"); 
-       t.nullable.int("date_last_modified"); 
+       t.nullable.string("remarks"); 
+       t.nullable.string("appointment_date");
+       t.nullable.string("date_created"); 
+       t.nullable.string("date_last_modified"); 
 
     },
 });
@@ -28,7 +28,7 @@ let resData:any ;
 export const ClientTraceQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getClientTrace", {
+        t.nullable.list.nullable.field("getClientTrace", {
             type: "ClientTrace",
             resolve(parent, args, context) {  
                 

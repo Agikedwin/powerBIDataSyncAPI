@@ -35,7 +35,15 @@ export const ContactsLinkedMutation = extendType({  // 1
 
                 const post = context.prisma.contactsLinkedLinked.create({  
                     
-                    data:args
+                    data:{
+
+                        baseline_hiv_status: args.baseline_hiv_status,
+                        final_test_result: args.final_test_result,
+                        patient_id: args.patient_id, 
+                        relationship_type: args.relationship_type, 
+                        visit_date: args.visit_date
+                        
+                    }
                 });
                 return post;
             },

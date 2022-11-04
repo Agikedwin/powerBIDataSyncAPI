@@ -14,26 +14,22 @@ export const ContactsLinked = objectType({
 });
 
 
-let resData:any ;
-
+let resData:any;
 
 export const ContactsLinkedQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getContactsLinked", {
+        t.nullable.list.nullable.field("getContactsLinked", {
             type: "ContactsLinked",
             resolve(parent, args, context) {  
                 
                context.prisma.contactsLinked.findMany().then(data =>{
                     resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
+                    console.log(data)                     
+                });             
                 return resData;
             },
         });
     },
 });
+

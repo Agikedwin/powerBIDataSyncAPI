@@ -18,8 +18,8 @@ export const fetchProductData = () => {
     return async (dispatch) => {
 
      // loops thru all the graphql queries 
-      for (let i = 0; i <7; i++) { // graphqlQueryEntries.length
-        for (let j = 0; j < 7; j++) { //graphqlQueryEntries[i].length
+      for (let i = 12; i < 13; i++) { // graphqlQueryEntries.length
+        for (let j = 12; j < 13; j++) { //graphqlQueryEntries[i].length
           console.log("Query deff  ---- ", graphqlQueryEntries[i][1])
           
         
@@ -108,7 +108,7 @@ const sendToGraphQL = async (mutationName, variableName) => {
   })
     .then(r => r.json())
     .then(data => {
-      console.log(data)
+     // console.log(data)
       console.log('Successfully posted :',mutationName)
       
     })
@@ -116,9 +116,7 @@ const sendToGraphQL = async (mutationName, variableName) => {
       console.log(error)
     });
 
-    if(i ===  5){
-      break;
-    }
+    break;
  
   }
  
@@ -131,48 +129,4 @@ const sendToGraphQL = async (mutationName, variableName) => {
 
 
 export const sendProductData =  (product) => {
-    return  async (dispatch) => {
-      dispatch(
-        uiActions.showNotification({
-          status: "pending",
-          title: "Sending...",
-          message: "Sending product data...",
-        })
-      );
-  
-      const sendRequest = async () => {
-        console.log( "the incare testes here");
-
-         const response =  await fetch("http://localhost:3005/product/product", {
-          method: "POST",
-          body: JSON.stringify(product),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        });
-        if (!response.ok) {
-          throw new Error("Sending product data failed");
-        }
-      }; 
-  
-      try {
-         await sendRequest();
-  
-        dispatch(
-          uiActions.showNotification({
-            status: "success",
-            title: "Success...",
-            message: "Sent  cart product successfully",
-          })
-        );
-      } catch (error) {
-        dispatch(
-          uiActions.showNotification({
-            status: "error",
-            title: "Error!...",
-            message: "Sending  product data failed",
-          })
-        );
-      }
-    };
-  };
+}

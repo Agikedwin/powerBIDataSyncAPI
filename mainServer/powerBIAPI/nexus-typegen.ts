@@ -186,15 +186,15 @@ export interface NexusGenObjects {
     year_started_sex_with_men?: string | null; // String
   }
   ClientTrace: { // root type
-    appointment_date?: number | null; // Int
+    appointment_date?: string | null; // String
     client_id?: number | null; // Int
     contact_type?: string | null; // String
-    date_created?: number | null; // Int
-    date_last_modified?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
     encounter_date?: string | null; // String
     facility_linked_to?: number | null; // Int
     health_worker_handed_to?: string | null; // String
-    remarks?: number | null; // Int
+    remarks?: string | null; // String
     status?: string | null; // String
     unique_patient_no?: string | null; // String
     uuid?: string | null; // String
@@ -322,6 +322,33 @@ export interface NexusGenObjects {
     vl_results?: string | null; // String
     vl_test_done?: string | null; // String
     voided?: number | null; // Int
+  }
+  Contact: { // root type
+    avg_daily_drug_injections?: string | null; // String
+    avg_weekly_anal_sex_acts?: string | null; // String
+    avg_weekly_sex_acts?: string | null; // String
+    client_id?: number | null; // Int
+    contact_person_alias?: string | null; // String
+    contact_person_name?: string | null; // String
+    contact_person_phone?: string | null; // String
+    contacted_by_peducator?: string | null; // String
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    encounter_provider?: number | null; // Int
+    frequent_hotspot_name?: string | null; // String
+    frequent_hotspot_type?: string | null; // String
+    key_population_type?: string | null; // String
+    location_id?: number | null; // Int
+    program_name?: string | null; // String
+    unique_identifier?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: string | null; // String
+    year_started_drugs?: string | null; // String
+    year_started_sex_with_men?: string | null; // String
+    year_started_sex_work?: string | null; // String
   }
   ContactsLinked: { // root type
     baseline_hiv_status?: string | null; // String
@@ -612,15 +639,15 @@ export interface NexusGenFieldTypes {
     year_started_sex_with_men: string | null; // String
   }
   ClientTrace: { // field return type
-    appointment_date: number | null; // Int
+    appointment_date: string | null; // String
     client_id: number | null; // Int
     contact_type: string | null; // String
-    date_created: number | null; // Int
-    date_last_modified: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
     encounter_date: string | null; // String
     facility_linked_to: number | null; // Int
     health_worker_handed_to: string | null; // String
-    remarks: number | null; // Int
+    remarks: string | null; // String
     status: string | null; // String
     unique_patient_no: string | null; // String
     uuid: string | null; // String
@@ -748,6 +775,33 @@ export interface NexusGenFieldTypes {
     vl_results: string | null; // String
     vl_test_done: string | null; // String
     voided: number | null; // Int
+  }
+  Contact: { // field return type
+    avg_daily_drug_injections: string | null; // String
+    avg_weekly_anal_sex_acts: string | null; // String
+    avg_weekly_sex_acts: string | null; // String
+    client_id: number | null; // Int
+    contact_person_alias: string | null; // String
+    contact_person_name: string | null; // String
+    contact_person_phone: string | null; // String
+    contacted_by_peducator: string | null; // String
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    encounter_provider: number | null; // Int
+    frequent_hotspot_name: string | null; // String
+    frequent_hotspot_type: string | null; // String
+    key_population_type: string | null; // String
+    location_id: number | null; // Int
+    program_name: string | null; // String
+    unique_identifier: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: string | null; // String
+    year_started_drugs: string | null; // String
+    year_started_sex_with_men: string | null; // String
+    year_started_sex_work: string | null; // String
   }
   ContactsLinked: { // field return type
     baseline_hiv_status: string | null; // String
@@ -878,10 +932,11 @@ export interface NexusGenFieldTypes {
     getCccDefaulterTracing: Array<NexusGenRootTypes['CccDefaulterTracing'] | null> | null; // [CccDefaulterTracing]
     getCervicalCancerScreening: Array<NexusGenRootTypes['CervicalCancerScreening'] | null> | null; // [CervicalCancerScreening]
     getClientEnrollment: Array<NexusGenRootTypes['ClientEnrollment'] | null> | null; // [ClientEnrollment]
-    getClientTrace: NexusGenRootTypes['ClientTrace'][]; // [ClientTrace!]!
-    getClinicalVisit: NexusGenRootTypes['ClinicalVisit'][]; // [ClinicalVisit!]!
-    getContactsLinked: NexusGenRootTypes['ContactsLinked'][]; // [ContactsLinked!]!
-    getCovid19Assessment: NexusGenRootTypes['Covid19Assessment'][]; // [Covid19Assessment!]!
+    getClientTrace: Array<NexusGenRootTypes['ClientTrace'] | null> | null; // [ClientTrace]
+    getClinicalVisit: Array<NexusGenRootTypes['ClinicalVisit'] | null> | null; // [ClinicalVisit]
+    getContact: Array<NexusGenRootTypes['Contact'] | null> | null; // [Contact]
+    getContactsLinked: Array<NexusGenRootTypes['ContactsLinked'] | null> | null; // [ContactsLinked]
+    getCovid19Assessment: Array<NexusGenRootTypes['Covid19Assessment'] | null> | null; // [Covid19Assessment]
     getCurrentInCare: NexusGenRootTypes['EtlCurrentInCare'][]; // [EtlCurrentInCare!]!
     getHtsTest: NexusGenRootTypes['ETLHtsTest'][]; // [ETLHtsTest!]!
   }
@@ -1046,15 +1101,15 @@ export interface NexusGenFieldTypeNames {
     year_started_sex_with_men: 'String'
   }
   ClientTrace: { // field return type name
-    appointment_date: 'Int'
+    appointment_date: 'String'
     client_id: 'Int'
     contact_type: 'String'
-    date_created: 'Int'
-    date_last_modified: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
     encounter_date: 'String'
     facility_linked_to: 'Int'
     health_worker_handed_to: 'String'
-    remarks: 'Int'
+    remarks: 'String'
     status: 'String'
     unique_patient_no: 'String'
     uuid: 'String'
@@ -1182,6 +1237,33 @@ export interface NexusGenFieldTypeNames {
     vl_results: 'String'
     vl_test_done: 'String'
     voided: 'Int'
+  }
+  Contact: { // field return type name
+    avg_daily_drug_injections: 'String'
+    avg_weekly_anal_sex_acts: 'String'
+    avg_weekly_sex_acts: 'String'
+    client_id: 'Int'
+    contact_person_alias: 'String'
+    contact_person_name: 'String'
+    contact_person_phone: 'String'
+    contacted_by_peducator: 'String'
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    encounter_provider: 'Int'
+    frequent_hotspot_name: 'String'
+    frequent_hotspot_type: 'String'
+    key_population_type: 'String'
+    location_id: 'Int'
+    program_name: 'String'
+    unique_identifier: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'String'
+    year_started_drugs: 'String'
+    year_started_sex_with_men: 'String'
+    year_started_sex_work: 'String'
   }
   ContactsLinked: { // field return type name
     baseline_hiv_status: 'String'
@@ -1314,6 +1396,7 @@ export interface NexusGenFieldTypeNames {
     getClientEnrollment: 'ClientEnrollment'
     getClientTrace: 'ClientTrace'
     getClinicalVisit: 'ClinicalVisit'
+    getContact: 'Contact'
     getContactsLinked: 'ContactsLinked'
     getCovid19Assessment: 'Covid19Assessment'
     getCurrentInCare: 'EtlCurrentInCare'
