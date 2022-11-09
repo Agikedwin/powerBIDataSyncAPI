@@ -458,6 +458,99 @@ model Covid19Assessment {
 
   @@map("etl_covid19_assessment")
 }
+
+
+
+// etl_default_facility_info
+model DefaultFacilityInfo {
+  id_auto Int @id @default(autoincrement())
+  siteCode Int 
+  FacilityName String?
+
+  @@map("etl_default_facility_info")
+}
+// etl_depression_screening
+ 
+model DepressionScreening {
+  id_auto Int @id @default(autoincrement())
+  uuid String?
+  provider Int?
+  mfl_code Int
+  patient_id Int 
+  visit_id Int?
+  visit_date DateTime @db.Date
+  location_id Int?
+  encounter_id Int?
+  PHQ_9_rating String?
+  date_created DateTime? @db.Date
+  date_last_modified DateTime? @db.Date
+  voided Int?
+  @@map("etl_depression_screening")
+
+}
+//etl_drug_event
+model DrugEvent {
+  id_auto Int @id @default(autoincrement())
+  uuid String?
+  mfl_code Int
+  patient_id Int?
+  date_started DateTime? @db.Date
+  visit_date DateTime? @db.Date
+  provider  Int?
+  encounter_id  Int?
+  
+  program String?
+  regimen String?
+  regimen_name String?
+  regimen_line String?
+  discontinued  Int?
+  regimen_discontinued String?
+  date_discontinued DateTime? @db.Date
+  reason_discontinued  Int?
+  reason_discontinued_other String?
+  date_created DateTime? @db.Date
+  date_last_modified DateTime? @db.Date
+  voided  Int?
+
+  @@map("etl_drug_event")
+}
+
+//etl_drug_order
+model DrugOrder {
+  id_auto Int @id @default(autoincrement())
+  uuid String?
+  encounter_id Int?
+  order_group_id Int?
+  mfl_code Int
+  patient_id Int 
+  location_id Int?
+  visit_date DateTime? @db.Date
+  visit_id Int?
+  provider Int?
+  order_id Int?
+  urgency  String?
+  drug_concept_id String?
+  drug_short_name String?
+  drug_name String?
+  frequency String?
+  enc_name String?
+  dose String?
+  dose_units String?
+  quantity String?
+  quantity_units String?
+  dosing_instructions String?
+  duration Int?
+  duration_units String?
+  instructions String?
+  route String?
+  voided Int?
+  date_voided DateTime? @db.Date
+  date_created DateTime? @db.Date
+  date_last_modified DateTime? @db.Date
+
+  @@map("etl_drug_order")
+}
+
  
 model Link {
   id          Int      @id @default(autoincrement())   // 4
@@ -502,53 +595,600 @@ model EtlCurrentInCare {
     @@map("etl_current_in_care")
 }
 
-model ETLHtsTest {
-    id Int @id @default(autoincrement())
-    visit_id Int
-    patient_id Int
-    encounter_id Int
-    encounter_uuid String
-    mfl_code Int
-    encounter_location Int
-    creator String
-    date_created String
-    date_last_modified String
-    visit_date String
-    test_type String
-    population_type String
-    key_population_type String
-    ever_tested_for_hiv String
-    months_since_last_test String
-    patient_disabled String
-    disability_type String
-    patient_consented String
-    client_tested_as String
-    setting String
-    approach String
-    test_strategy String
-    hts_entry_point String
-    test_1_kit_name String
-    test_1_kit_lot_no String
-    test_1_kit_expiry String
-    test_1_result String
-    test_2_kit_name String
-    test_2_kit_lot_no String
-    test_2_kit_expiry String
-    test_2_result String
-    final_test_result String
-    syphillis_test_result String
-    patient_given_result String
-    couple_discordant String
-    referral_for String
-    referral_facility String
-    other_referral_facility String
-    neg_referral_for String
-    neg_referral_specify String
-    tb_screening String
-    patient_had_hiv_self_test String
-    remarks String
-    voided String
+
+// Schema models E to L starts here ===============================================|***|============================================================||
+
+model EnhancedAdherence {
+  patient_id Int @id
+  visit_id Int?
+  visit_date  DateTime?  @db.Date   
+  encounter_id Int? 
+  provider Int?
+  session_number Int?
+  first_session_date  DateTime?  @db.Date  
+  pill_count Int?
+  arv_adherence String?
+  has_vl_results String?
+  vl_results_suppressed String?
+  vl_results_feeling String?
+  cause_of_high_vl String?
+  way_forward String?
+  patient_hiv_knowledge String?
+  patient_drugs_uptake String?
+  patient_drugs_reminder_tools String?
+  patient_drugs_uptake_during_travels String?
+  patient_drugs_side_effects_response String?
+  patient_drugs_uptake_most_difficult_times String?
+  patient_drugs_daily_uptake_feeling String?
+  patient_ambitions String?
+  patient_has_people_to_talk String?
+  patient_enlisting_social_support String?
+  patient_income_sources String?
+  patient_challenges_reaching_clinic String?
+  patient_worried_of_accidental_disclosure String?
+  patient_treated_differently String?
+  stigma_hinders_adherence String?
+  patient_tried_faith_healing String?
+  patient_adherence_improved String?
+  patient_doses_missed String?
+  review_and_barriers_to_adherence String?
+  other_referrals String?
+  appoIntments_honoured String?
+  referral_experience String?
+  home_visit_benefit String?
+  adherence_plan String?
+  next_appoIntment_date DateTime?  @db.Date  
+  date_created DateTime?  @db.Date  
+  date_last_modified DateTime?  @db.Date  
+
+  @@map("etl_enhanced_adherence")
+  
 
 }
 
+model GbvScreening {
+ uuid String?
+  provider DateTime?  @db.Date   
+  patient_id Int @id
+  visit_id Int? 
+  visit_date DateTime?  @db.Date   
+  location_id Int? 
+  encounter_id Int? 
+  ipv String?
+  physical_ipv String?
+  emotional_ipv String?
+  sexual_ipv String?
+  ipv_relationship String?
+  date_created DateTime?  @db.Date   
+  date_last_modified DateTime?  @db.Date   
+  voided DateTime?  @db.Date  
+  
+  @@map("etl_gbv_screening")
+
+}
+//etl_gbv_screening_action
+model GbvScreeningAction {
+  uuid String?
+  provider Int?
+  patient_id Int @id
+  visit_id Int?
+  visit_date DateTime?  @db.Date 
+  location_id Int?
+  obs_id Int?
+  help_provider String?
+  action_taken String?
+  reason_for_not_reporting String?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  voided Int?
+
+  @@map("etl_gbv_screening_action")
+  
+}
+
+model HeiEnrollment {
+  uuid String?
+  provider Int?
+  patient_id Int @id
+   visit_id Int?
+  visit_date DateTime?  @db.Date 
+  location_id Int?
+  encounter_id Int?
+  child_exposed Int?
+  hei_id_number String?
+  spd_number String?
+  birth_weight Int?
+  gestation_at_birth Int?
+  birth_type String?
+  date_first_seen DateTime?  @db.Date 
+  birth_notification_number String?
+  birth_certificate_number String?
+  need_for_special_care Int?
+  reason_for_special_care Int?
+  referral_source Int?
+  transfer_in Int?
+  transfer_in_date DateTime?  @db.Date 
+  facility_transferred_from String?
+  district_transferred_from String?
+  date_first_enrolled_in_hei_care DateTime?  @db.Date 
+  arv_prophylaxis Int?
+  mother_breastfeeding Int?
+  mother_on_NVP_during_breastfeeding Int?
+  TB_contact_history_in_household Int?
+  infant_mother_link Int?
+  mother_alive Int?
+  mother_on_pmtct_drugs Int?
+  mother_on_drug Int?
+  mother_on_art_at_infant_enrollment Int?
+  mother_drug_regimen Int?
+  infant_prophylaxis Int?
+  parent_ccc_number String?
+  mode_of_delivery Int?
+  place_of_delivery Int?
+  birth_length Int?
+  birth_order Int?
+  health_facility_name String?
+  date_of_birth_notification DateTime?  @db.Date 
+  date_of_birth_registration DateTime?  @db.Date 
+  birth_registration_place String?
+  permanent_registration_serial String?
+  mother_facility_registered String?
+  exit_date DateTime?  @db.Date 
+  exit_reason Int?
+  hiv_status_at_exit String?
+  date_created  DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+
+  @@map("etl_hei_enrollment")
+}
+
+model HeiFollowUpVisit {
+
+  uuid String?
+  patient_id Int @id
+  visit_id Int?
+  visit_date DateTime?  @db.Date 
+  location_id Int?
+  encounter_id Int?
+  weight Int?
+  height Int?
+  muac Int?
+  primary_caregiver Int?
+  infant_feeding Int?
+  stunted Int?
+  tb_assessment_outcome Int?
+  social_smile_milestone Int?
+  head_control_milestone Int?
+  response_to_sound_milestone Int?
+  hand_extension_milestone Int?
+  sitting_milestone Int?
+  walking_milestone Int?
+  standing_milestone Int?
+  talking_milestone Int?
+  review_of_systems_developmental Int?
+  weight_category Int?
+  followup_type Int?
+  dna_pcr_sample_date DateTime?  @db.Date 
+  dna_pcr_contextual_status Int?
+  dna_pcr_result Int?
+  dna_pcr_dbs_sample_code String?
+  dna_pcr_results_date DateTime?  @db.Date 
+  azt_given Int?
+  nvp_given Int?
+  ctx_given Int?
+  multi_vitamin_given Int?
+  first_antibody_sample_date DateTime?  @db.Date 
+  first_antibody_result Int?
+  first_antibody_dbs_sample_code String?
+  first_antibody_result_date DateTime?  @db.Date 
+  final_antibody_sample_date DateTime?  @db.Date 
+  final_antibody_result Int?
+  final_antibody_dbs_sample_code String?
+  final_antibody_result_date DateTime?  @db.Date 
+  tetracycline_ointment_given Int?
+  pupil_examination Int?
+  sight_examination Int?
+  squint Int?
+  deworming_drug Int?
+  dosage Int?
+  unit String?
+  vitaminA_given Int?
+  disability Int?
+  next_appointment_date DateTime?  @db.Date 
+  comments String?
+  referred_from Int?
+  referred_to Int?
+  counselled_on Int?
+  MNPS_Supplementation Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+
+  @@map("etl_hei_follow_up_visit")
+}
+
+model HeiImmunization {
+
+  encounter_id Int?
+  patient_id Int @id
+  visit_date DateTime?  @db.Date 
+  date_created DateTime?  @db.Date
+  date_last_modified DateTime?  @db.Date
+  created_by Int?
+  BCG String?
+  OPV_birth String?
+  OPV_1 String?
+  OPV_2 String?
+  OPV_3 String?
+  IPV String?
+  DPT_Hep_B_Hib_1 String?
+  DPT_Hep_B_Hib_2 String?
+  DPT_Hep_B_Hib_3 String?
+  PCV_10_1 String?
+  PCV_10_2 String?
+  PCV_10_3 String?
+  ROTA_1 String?
+  ROTA_2 String?
+  Measles_rubella_1 String?
+  Measles_rubella_2 String?
+  Yellow_fever String?
+  Measles_6_months String?
+  VitaminA_6_months String?
+  VitaminA_1_yr String?
+  VitaminA_1_and_half_yr String?
+  VitaminA_2_yr String?
+  VitaminA_2_to_5_yr String?
+  fully_immunized DateTime?  @db.Date 
+
+  @@map("etl_hei_immunization")
+}
+
+model  HivEnrollment{
+  uuid String?
+  patient_id Int @id
+  visit_id Int?
+  visit_date  DateTime?  @db.Date 
+  location_id Int?
+  encounter_id Int?
+  encounter_provider Int?
+  patient_type Int?
+  date_first_enrolled_in_care  DateTime?  @db.Date 
+  entry_point Int?
+  transfer_in_date  DateTime?  @db.Date 
+  facility_transferred_from String?
+  district_transferred_from String?
+  date_started_art_at_transferring_facility  DateTime?  @db.Date 
+  date_confirmed_hiv_positive  DateTime?  @db.Date 
+  facility_confirmed_hiv_positive String?
+  previous_regimen String?
+  arv_status Int?
+  ever_on_pmtct Int?
+  ever_on_pep Int?
+  ever_on_prep Int?
+  ever_on_haart Int?
+  name_of_treatment_supporter String?
+  relationship_of_treatment_supporter Int?
+  treatment_supporter_telephone String?
+  treatment_supporter_address String?
+  in_school Int?
+  orphan Int?
+  date_of_discontinuation DateTime?  @db.Date 
+  discontinuation_reason Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  voided Int?
+
+  @@map("etl_hiv_enrollment")
+}
+
+model HtsContacts {
+  id Int?
+  patient_id Int @id
+  relationship_type Int?
+  baseline_hiv_status String?
+  visit_date DateTime?  @db.Date 
+  test_type Int?
+  test_1_result String?
+  test_2_result String?
+  final_test_result String?
+
+@@map("etl_hts_contacts")
+}
+
+model HtsEligibilityScreening {
+
+  patient_id Int @id
+  visit_id Int?
+  encounter_id Int?
+  uuid String?
+  location_id Int?
+  provider Int?
+  visit_date DateTime?  @db.Date 
+  population_type String?
+  key_population_type String?
+  priority_population_type String?
+  department Int?
+  patient_type Int?
+  is_health_worker Int?
+  relationship_with_contact String?
+  mother_hiv_status Int?
+  tested_hiv_before Int?
+  who_performed_test Int?
+  test_results Int?
+  date_tested DateTime?  @db.Date 
+  started_on_art Int?
+  upn_number String?
+  ever_had_sex Int?
+  sexually_active Int?
+  new_partner Int?
+  partner_hiv_status Int?
+  couple_discordant Int?
+  multiple_partners Int?
+  number_partners Int?
+  alcohol_sex Int?
+  money_sex Int?
+  condom_burst Int?
+  unknown_status_partner Int?
+  known_status_partner Int?
+  experienced_gbv Int?
+  type_of_gbv String?
+  service_received String?
+  currently_on_prep Int?
+  recently_on_pep Int?
+  recently_had_sti Int?
+  tb_screened Int?
+  cough Int?
+  fever Int?
+  weight_loss Int?
+  night_sweats Int?
+  contact_with_tb_case Int?
+  lethargy Int?
+  tb_status Int?
+  shared_needle Int?
+  needle_stick_injuries Int?
+  traditional_procedures Int?
+  child_reasons_for_ineligibility String?
+  pregnant Int?
+  breastfeeding_mother Int?
+  eligible_for_test Int?
+  referred_for_testing Int?
+  reasons_for_ineligibility String?
+  specific_reason_for_ineligibility String?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  voided Int?
+
+  @@map("etl_hts_eligibility_screening")
+}
+
+model HtsLinkageTracing {
+
+  uuid String?
+  encounter_id Int?
+  patient_id Int @id
+  location_id Int?
+  visit_date DateTime?  @db.Date 
+  encounter_provider Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  tracing_type Int?
+  tracing_outcome Int?
+  reason_not_contacted Int?
+  voided Int?
+  @@map("etl_hts_linkage_tracing")
+}
+
+model HtsReferral {
+
+  patient_id Int?
+  visit_id Int @id
+  encounter_id Int?
+  encounter_uuid String?
+  encounter_location Int?
+  creator Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  visit_date DateTime?  @db.Date 
+  facility_referred_to String?
+  date_to_enrol DateTime?  @db.Date 
+  remarks String?
+  voided Int?
+  
+  @@map("etl_hts_referral")
+
+}
+
+model HtsReferralAndLinkage {
+
+  patient_id Int @id
+  visit_id Int?
+  encounter_id Int?
+  encounter_uuid String?
+  encounter_location Int?
+  creator Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  visit_date DateTime?  @db.Date 
+  tracing_type String?
+  tracing_status String?
+  ccc_number String?
+  referral_facility String?
+  facility_linked_to String?
+  enrollment_date DateTime?  @db.Date 
+  art_start_date DateTime?  @db.Date 
+  provider_handed_to String?
+  cadre String?
+  voided Int?
+
+  @@map("etl_hts_referral_and_linkage")
+}
+
+model ETLHtsTest {
+    visit_id Int?
+    patient_id Int @id
+    encounter_id Int?
+    encounter_uuid String?
+    mfl_code Int?
+    encounter_location Int?
+    creator String?
+    date_created String?
+    date_last_modified String?
+    visit_date DateTime?  @db.Date 
+    test_type String?
+    population_type String?
+    key_population_type String?
+    ever_tested_for_hiv String?
+    months_since_last_test String?
+    patient_disabled String?
+    disability_type String?
+    patient_consented String?
+    client_tested_as String?
+    setting String?
+    approach String?
+    test_strategy String?
+    hts_entry_point String?
+    test_1_kit_name String?
+    test_1_kit_lot_no String?
+    test_1_kit_expiry String?
+    test_1_result String?
+    test_2_kit_name String?
+    test_2_kit_lot_no String?
+    test_2_kit_expiry String?
+    test_2_result String?
+    final_test_result String?
+    syphillis_test_result String?
+    patient_given_result String?
+    couple_discordant String?
+    referral_for String?
+    referral_facility String?
+    other_referral_facility String?
+    neg_referral_for String?
+    neg_referral_specify String?
+    tb_screening String?
+    patient_had_hiv_self_test String?
+    remarks String?
+    voided String?
+
+    @@map("etl_hts_test")
+
+}
+
+model IptFollowUp {
+
+  uuid String?
+  patient_id Int @id
+  visit_id Int?
+  visit_date DateTime?  @db.Date 
+  location_id Int?
+  encounter_id Int?
+  provider Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  ipt_due_date DateTime?  @db.Date 
+  date_collected_ipt DateTime?  @db.Date 
+  weight DateTime?  @db.Date 
+  hepatotoxity String?
+  peripheral_neuropathy String?
+  rash String?
+  adherence String?
+  action_taken String?
+  voided Int?
+
+  @@map("etl_ipt_follow_up")
+  
+
+}
+
+model IptInitiation {
+uuid String?
+  encounter_id Int?
+  patient_id Int @id
+  location_id Int?
+  visit_date DateTime?  @db.Date 
+  encounter_provider Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  ipt_indication Int?
+  sub_county_reg_number String?
+  sub_county_reg_date DateTime?  @db.Date 
+  voided Int?
+
+  @@map("etl_ipt_initiation")
+}
+
+model IptOutcome {
+
+  uuid String?
+  encounter_id Int?
+  patient_id Int @id
+  location_id Int?
+  visit_date DateTime?  @db.Date 
+  encounter_provider Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  outcome Int?
+  voided Int?
+
+  @@map("etl_ipt_outcome")
+}
+
+model IptScreening{
+    uuid String?
+    provider DateTime?  @db.Date 
+    patient_id Int @id
+    visit_id Int?
+    visit_date DateTime?  @db.Date 
+    location_id Int?
+    encounter_id Int?
+    obs_id Int?
+    cough Int?
+    fever Int?
+    weight_loss_poor_gain Int?
+    night_sweats Int?
+    contact_with_tb_case Int?
+    lethargy Int?
+    yellow_urine Int?
+    numbness_bs_hands_feet Int?
+    eyes_yellowness Int?
+    upper_rightQ_abdomen_tenderness Int?
+    date_created DateTime?  @db.Date 
+    date_last_modified DateTime?  @db.Date 
+    voided Int?
+
+    @@map("etl_ipt_screening")
+  
+}
+
+model LaboratoryExtract{
+  uuid String?
+  encounter_id  Int?
+  patient_id  Int @id
+  location_id  Int?
+  visit_date DateTime?  @db.Date 
+  visit_id  Int?
+  order_id String?
+  lab_test String?
+  urgency String?
+  order_reason String?
+  test_result String?
+  date_test_requested DateTime?  @db.Date 
+  date_test_result_received DateTime?  @db.Date 
+  test_requested_by  Int?
+  date_created DateTime?  @db.Date 
+  date_last_modified DateTime?  @db.Date 
+  created_by  Int?
+
+  @@map("etl_laboratory_extract")
+}
+
+model LastMonthNewlyEnrolledInCare {
+   patient_id  Int @id
+
+   @@map("etl_last_month_newly_enrolled_in_care")
+
+}
+
+model LastMonthNewlyOnArt{
+ patient_id  Int @id
+@@map("etl_last_month_newly_on_art")
+}
 

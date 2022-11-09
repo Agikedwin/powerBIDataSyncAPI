@@ -22,12 +22,8 @@ export const ContactsLinkedQuery = extendType({
         t.nullable.list.nullable.field("getContactsLinked", {
             type: "ContactsLinked",
             resolve(parent, args, context) {  
-                
-               context.prisma.contactsLinked.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)                     
-                });             
-                return resData;
+                console.log("Fetching ContactsLinked ...");
+                return  context.prisma.contactsLinked.findMany();
             },
         });
     },

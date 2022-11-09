@@ -373,6 +373,79 @@ export interface NexusGenObjects {
     visit_id?: number | null; // Int
     voided?: number | null; // Int
   }
+  DefaultFacilityInfo: { // root type
+    FacilityName?: string | null; // String
+    siteCode?: number | null; // Int
+  }
+  DepressionScreening: { // root type
+    PHQ_9_rating?: string | null; // String
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    id_auto?: string | null; // String
+    location_id?: number | null; // Int
+    mfl_code?: number | null; // Int
+    patient_id?: number | null; // Int
+    provider?: number | null; // Int
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id: number; // Int!
+    voided?: number | null; // Int
+  }
+  DrugEvent: { // root type
+    date_created?: string | null; // String
+    date_discontinued?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_started?: string | null; // String
+    date_voided?: string | null; // String
+    discontinued?: number | null; // Int
+    encounter_id?: number | null; // Int
+    mfl_code: number; // Int!
+    patient_id?: number | null; // Int
+    program?: string | null; // String
+    provider?: number | null; // Int
+    reason_discontinued?: string | null; // String
+    reason_discontinued_other?: string | null; // String
+    regimen?: string | null; // String
+    regimen_discontinued?: string | null; // String
+    regimen_line?: string | null; // String
+    regimen_name?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+  }
+  DrugOrder: { // root type
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_voided?: string | null; // String
+    dose?: string | null; // String
+    dose_units?: string | null; // String
+    dosing_instructions?: string | null; // String
+    drug_concept_id?: string | null; // String
+    drug_name?: string | null; // String
+    drug_short_name?: string | null; // String
+    duration?: number | null; // Int
+    duration_units?: string | null; // String
+    enc_name?: string | null; // String
+    encounter_id?: string | null; // String
+    frequency?: string | null; // String
+    instructions?: string | null; // String
+    location_id?: string | null; // String
+    mfl_code: string; // String!
+    order_group_id?: string | null; // String
+    order_id?: string | null; // String
+    patient_id?: string | null; // String
+    provider?: string | null; // String
+    quantity?: string | null; // String
+    quantity_units?: string | null; // String
+    route?: string | null; // String
+    urgency?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: string | null; // String
+    voided?: string | null; // String
+  }
   ETLHtsTest: { // root type
     approach: string; // String!
     client_tested_as: string; // String!
@@ -808,6 +881,79 @@ export interface NexusGenFieldTypes {
     visit_id: number | null; // Int
     voided: number | null; // Int
   }
+  DefaultFacilityInfo: { // field return type
+    FacilityName: string | null; // String
+    siteCode: number | null; // Int
+  }
+  DepressionScreening: { // field return type
+    PHQ_9_rating: string | null; // String
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    id_auto: string | null; // String
+    location_id: number | null; // Int
+    mfl_code: number | null; // Int
+    patient_id: number | null; // Int
+    provider: number | null; // Int
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number; // Int!
+    voided: number | null; // Int
+  }
+  DrugEvent: { // field return type
+    date_created: string | null; // String
+    date_discontinued: string | null; // String
+    date_last_modified: string | null; // String
+    date_started: string | null; // String
+    date_voided: string | null; // String
+    discontinued: number | null; // Int
+    encounter_id: number | null; // Int
+    mfl_code: number; // Int!
+    patient_id: number | null; // Int
+    program: string | null; // String
+    provider: number | null; // Int
+    reason_discontinued: string | null; // String
+    reason_discontinued_other: string | null; // String
+    regimen: string | null; // String
+    regimen_discontinued: string | null; // String
+    regimen_line: string | null; // String
+    regimen_name: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+  }
+  DrugOrder: { // field return type
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    date_voided: string | null; // String
+    dose: string | null; // String
+    dose_units: string | null; // String
+    dosing_instructions: string | null; // String
+    drug_concept_id: string | null; // String
+    drug_name: string | null; // String
+    drug_short_name: string | null; // String
+    duration: number | null; // Int
+    duration_units: string | null; // String
+    enc_name: string | null; // String
+    encounter_id: string | null; // String
+    frequency: string | null; // String
+    instructions: string | null; // String
+    location_id: string | null; // String
+    mfl_code: string; // String!
+    order_group_id: string | null; // String
+    order_id: string | null; // String
+    patient_id: string | null; // String
+    provider: string | null; // String
+    quantity: string | null; // String
+    quantity_units: string | null; // String
+    route: string | null; // String
+    urgency: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: string | null; // String
+    voided: string | null; // String
+  }
   ETLHtsTest: { // field return type
     approach: string; // String!
     client_tested_as: string; // String!
@@ -896,6 +1042,10 @@ export interface NexusGenFieldTypes {
     postContactsLinked: NexusGenRootTypes['ContactsLinked']; // ContactsLinked!
     postCovid19Assessment: NexusGenRootTypes['Covid19Assessment'] | null; // Covid19Assessment
     postCurrentInCare: NexusGenRootTypes['EtlCurrentInCare'] | null; // EtlCurrentInCare
+    postDefaultFacilityInfo: NexusGenRootTypes['DefaultFacilityInfo'] | null; // DefaultFacilityInfo
+    postDepressionScreening: NexusGenRootTypes['DepressionScreening'] | null; // DepressionScreening
+    postDrugEvent: NexusGenRootTypes['DrugEvent'] | null; // DrugEvent
+    postDrugOrder: NexusGenRootTypes['DrugOrder'] | null; // DrugOrder
     postHtsTest: NexusGenRootTypes['ETLHtsTest']; // ETLHtsTest!
     postProgram: NexusGenRootTypes['EtlPatientProgram']; // EtlPatientProgram!
   }
@@ -1251,6 +1401,79 @@ export interface NexusGenFieldTypeNames {
     visit_id: 'Int'
     voided: 'Int'
   }
+  DefaultFacilityInfo: { // field return type name
+    FacilityName: 'String'
+    siteCode: 'Int'
+  }
+  DepressionScreening: { // field return type name
+    PHQ_9_rating: 'String'
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    id_auto: 'String'
+    location_id: 'Int'
+    mfl_code: 'Int'
+    patient_id: 'Int'
+    provider: 'Int'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
+  DrugEvent: { // field return type name
+    date_created: 'String'
+    date_discontinued: 'String'
+    date_last_modified: 'String'
+    date_started: 'String'
+    date_voided: 'String'
+    discontinued: 'Int'
+    encounter_id: 'Int'
+    mfl_code: 'Int'
+    patient_id: 'Int'
+    program: 'String'
+    provider: 'Int'
+    reason_discontinued: 'String'
+    reason_discontinued_other: 'String'
+    regimen: 'String'
+    regimen_discontinued: 'String'
+    regimen_line: 'String'
+    regimen_name: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
+  DrugOrder: { // field return type name
+    date_created: 'String'
+    date_last_modified: 'String'
+    date_voided: 'String'
+    dose: 'String'
+    dose_units: 'String'
+    dosing_instructions: 'String'
+    drug_concept_id: 'String'
+    drug_name: 'String'
+    drug_short_name: 'String'
+    duration: 'Int'
+    duration_units: 'String'
+    enc_name: 'String'
+    encounter_id: 'String'
+    frequency: 'String'
+    instructions: 'String'
+    location_id: 'String'
+    mfl_code: 'String'
+    order_group_id: 'String'
+    order_id: 'String'
+    patient_id: 'String'
+    provider: 'String'
+    quantity: 'String'
+    quantity_units: 'String'
+    route: 'String'
+    urgency: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'String'
+    voided: 'String'
+  }
   ETLHtsTest: { // field return type name
     approach: 'String'
     client_tested_as: 'String'
@@ -1339,6 +1562,10 @@ export interface NexusGenFieldTypeNames {
     postContactsLinked: 'ContactsLinked'
     postCovid19Assessment: 'Covid19Assessment'
     postCurrentInCare: 'EtlCurrentInCare'
+    postDefaultFacilityInfo: 'DefaultFacilityInfo'
+    postDepressionScreening: 'DepressionScreening'
+    postDrugEvent: 'DrugEvent'
+    postDrugOrder: 'DrugOrder'
     postHtsTest: 'ETLHtsTest'
     postProgram: 'EtlPatientProgram'
   }
@@ -1683,16 +1910,18 @@ export interface NexusGenArgTypes {
       hospital_admission?: string | null; // String
       location_id?: number | null; // Int
       mfl_code?: number | null; // Int
-      obs_id?: number | null; // Int
+      obs_id?: string | null; // String
       on_oxygen_supplement?: string | null; // String
       on_ventillator?: string | null; // String
       patient_id?: number | null; // Int
+      provider?: number | null; // Int
       second_dose?: string | null; // String
       second_dose_date?: string | null; // String
       second_vaccination_verified?: string | null; // String
       second_vaccine_type?: string | null; // String
       symptomatic?: string | null; // String
-      visit_date?: number | null; // Int
+      uuid?: string | null; // String
+      visit_date?: string | null; // String
       visit_id?: number | null; // Int
       voided?: number | null; // Int
     }
@@ -1710,6 +1939,77 @@ export interface NexusGenArgTypes {
       patient_id?: number | null; // Int
       stability?: string | null; // String
       started_on_drugs?: number | null; // Int
+    }
+    postDefaultFacilityInfo: { // args
+      FacilityName?: string | null; // String
+      siteCode?: number | null; // Int
+    }
+    postDepressionScreening: { // args
+      PHQ_9_rating?: string | null; // String
+      date_created?: string | null; // String
+      date_last_modified?: string | null; // String
+      encounter_id?: number | null; // Int
+      id_auto?: number | null; // Int
+      location_id?: number | null; // Int
+      mfl_code?: number | null; // Int
+      patient_id?: number | null; // Int
+      provider?: number | null; // Int
+      uuid?: string | null; // String
+      visit_date?: string | null; // String
+      visit_id?: number | null; // Int
+      voided?: number | null; // Int
+    }
+    postDrugEvent: { // args
+      date_created?: string | null; // String
+      date_discontinued?: string | null; // String
+      date_last_modified?: string | null; // String
+      date_started?: string | null; // String
+      discontinued?: number | null; // Int
+      encounter_id?: number | null; // Int
+      mfl_code?: string | null; // String
+      patient_id?: number | null; // Int
+      program?: string | null; // String
+      provider?: number | null; // Int
+      reason_discontinued?: number | null; // Int
+      reason_discontinued_other?: string | null; // String
+      regimen?: string | null; // String
+      regimen_discontinued?: string | null; // String
+      regimen_line?: string | null; // String
+      regimen_name?: string | null; // String
+      uuid?: string | null; // String
+      visit_date?: string | null; // String
+      voided?: number | null; // Int
+    }
+    postDrugOrder: { // args
+      date_created?: string | null; // String
+      date_last_modified?: string | null; // String
+      date_voided?: string | null; // String
+      dose?: string | null; // String
+      dose_units?: string | null; // String
+      dosing_instructions?: string | null; // String
+      drug_concept_id?: string | null; // String
+      drug_name?: string | null; // String
+      drug_short_name?: string | null; // String
+      duration?: number | null; // Int
+      duration_units?: string | null; // String
+      enc_name?: string | null; // String
+      encounter_id?: number | null; // Int
+      frequency?: string | null; // String
+      instructions?: string | null; // String
+      location_id?: number | null; // Int
+      mfl_code?: number | null; // Int
+      order_group_id?: number | null; // Int
+      order_id?: number | null; // Int
+      patient_id?: number | null; // Int
+      provider?: number | null; // Int
+      quantity?: string | null; // String
+      quantity_units?: string | null; // String
+      route?: string | null; // String
+      urgency?: string | null; // String
+      uuid?: string | null; // String
+      visit_date?: string | null; // String
+      visit_id?: number | null; // Int
+      voided?: number | null; // Int
     }
     postHtsTest: { // args
       approach?: string | null; // String

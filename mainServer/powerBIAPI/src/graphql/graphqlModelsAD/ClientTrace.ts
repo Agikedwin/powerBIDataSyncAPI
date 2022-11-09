@@ -31,16 +31,8 @@ export const ClientTraceQuery = extendType({
         t.nullable.list.nullable.field("getClientTrace", {
             type: "ClientTrace",
             resolve(parent, args, context) {  
-                
-               context.prisma.clientTrace.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
-                return resData;
+                console.log("Fetching ClientTrace ...");
+               return context.prisma.clientTrace.findMany();
             },
         });
     },

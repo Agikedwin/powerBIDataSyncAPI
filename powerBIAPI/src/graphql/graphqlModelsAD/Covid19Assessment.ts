@@ -52,12 +52,14 @@ export const Covid19AssessmentMutation = extendType({  // 1
             type: "Covid19Assessment",
              args: {
                 patient_id : nullable(intArg()),
+                provider : nullable(intArg()),
+                uuid: nullable(stringArg()),
                 visit_id : nullable(intArg()), 
                 mfl_code: nullable(intArg()),
-                visit_date : nullable(intArg()), 
+                visit_date : nullable(stringArg()), 
                 location_id : nullable(intArg()), 
                 encounter_id : nullable(intArg()), 
-                obs_id : nullable(intArg()), 
+                obs_id : nullable(stringArg()), 
                 ever_vaccinated : nullable(stringArg()), 
                 first_vaccine_type : nullable(stringArg()), 
                 second_vaccine_type : nullable(stringArg()),  
@@ -92,8 +94,10 @@ export const Covid19AssessmentMutation = extendType({  // 1
                     const post = context.prisma.covid19Assessment.create({  
                     
                         data:{
-                            provider: args.provider,
+                            
                             patient_id: args.patient_id,
+                            provider: args.provider,
+                            uuid: args.uuid,
                             visit_id: args.visit_id,
                             visit_date: args.visit_date != null ? (new Date(args.visit_date * 1).toISOString()) : null, 
                             encounter_id: args.encounter_id,
@@ -104,8 +108,8 @@ export const Covid19AssessmentMutation = extendType({  // 1
                             second_vaccine_type: args.second_vaccine_type, 
                             first_dose: args.first_dose, 
                             second_dose: args.second_dose, 
-                            first_dose_date: args.first_dose_date != null ? (new Date(args.first_dose_date * 1).toISOString()) : null, 
-                            second_dose_date: args.second_dose_date != null ? (new Date(args.second_dose_date * 1).toISOString()) : null,  
+                            first_dose_date: args.first_dose_date, 
+                            second_dose_date: args.second_dose_date, 
                             first_vaccination_verified: args.first_vaccination_verified, 
                             second_vaccination_verified: args.second_vaccination_verified, 
                             final_vaccination_status: args.final_vaccination_status, 

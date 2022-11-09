@@ -12,7 +12,6 @@ export const ClientEnrollment = objectType({
        t.nullable.int("visit_id"); 
        t.nullable.string("visit_date"); 
        t.nullable.int("location_id"); 
-       t.nullable.int("fml_code");
        t.nullable.int("encounter_provider"); 
        t.nullable.int("encounter_id"); 
        t.nullable.string("contacted_for_prevention"); 
@@ -52,16 +51,8 @@ export const ClientEnrollmentQuery = extendType({
         t.nullable.list.nullable.field("getClientEnrollment", {
             type: "ClientEnrollment",
             resolve(parent, args, context) {  
-                
-               context.prisma.clientEnrollment.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
-                return resData;
+                console.log("Fetching ClientEnrollment ...");
+               return context.prisma.clientEnrollment.findMany();
             },
         });
     },

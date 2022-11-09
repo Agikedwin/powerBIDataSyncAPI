@@ -6,7 +6,6 @@ export const ETLHtsTest = objectType({
     definition(t) {
         t.nonNull.int("id"); 
         t.nonNull.int("patient_id");  
-        t.nonNull.int("fml_code");
         t.nonNull.int("visit_id"); 
         t.nonNull.string("encounter_uuid"); 
         t.nonNull.int("encounter_id"); 
@@ -75,7 +74,6 @@ export const ETLHtsTestMutation = extendType({  // 1
             args: { 
                 
     visit_id: nonNull(intArg()), 
-    fml_code: nonNull(intArg()),
     patient_id: nonNull(intArg()),
     encounter_id: nonNull(intArg()),
     encounter_uuid: nonNull(stringArg()),
@@ -131,7 +129,6 @@ export const ETLHtsTestMutation = extendType({  // 1
                         visit_id: args.visit_id,
                         encounter_id: args.encounter_id,
                         encounter_uuid: args.encounter_uuid,
-                        fml_code: args.fml_code,
                         encounter_location: args.encounter_location,
                         creator: args.creator,
                         visit_date: args.visit_date,

@@ -39,10 +39,6 @@ export const Contact = objectType({
        t.nullable.string("contact_person_alias");
        t.nullable.string("contact_person_phone");
        t.nullable.string("voided");
-
-
-
-     
        
        
 
@@ -58,16 +54,8 @@ export const ContactQuery = extendType({
         t.nullable.list.nullable.field("getContact", {
             type: "Contact",
             resolve(parent, args, context) {  
-                
-               context.prisma.contact.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
-                return resData;
+                console.log("Fetching Contact ...");
+             return  context.prisma.contact.findMany();
             },
         });
     },

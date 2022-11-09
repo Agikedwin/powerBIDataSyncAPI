@@ -51,15 +51,8 @@ export const Covid19AssessmentQuery = extendType({
         t.nullable.list.nullable.field("getCovid19Assessment", {
             type: "Covid19Assessment",
             resolve(parent, args, context) {  
-                
-                  context.prisma.covid19Assessment.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                }).catch(error =>{
-                    console.log(error);
-                });
-               
-                return resData;
+                console.log("Fetching Covid19Assessment ...");
+                return  context.prisma.covid19Assessment.findMany();
             },
         });
     },

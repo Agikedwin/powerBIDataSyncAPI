@@ -29,15 +29,8 @@ export const EtlCurrentInCareQuery = extendType({
         t.nonNull.list.nonNull.field("getCurrentInCare", {
             type: "EtlCurrentInCare",
             resolve(parent, args, context) {  
-                
-               context.prisma.etlCurrentInCare.findMany().then(data =>{
-                    resData = data;             
-                    
-                });  
-                console.log(resData)
-                console.log("we are at current in care")
-               
-                return resData;
+                console.log("Fetching EtlCurrentInCare ...");
+                return  context.prisma.etlCurrentInCare.findMany()
             },
         });
     },

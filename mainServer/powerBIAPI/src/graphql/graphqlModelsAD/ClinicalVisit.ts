@@ -141,16 +141,8 @@ export const ClinicalVisitQuery = extendType({
         t.nullable.list.nullable.field("getClinicalVisit", {
             type: "ClinicalVisit",
             resolve(parent, args, context) {  
-                
-               context.prisma.clinicalVisit.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
-                return resData;
+                console.log("Fetching ClinicalVisit ...");
+               return context.prisma.clinicalVisit.findMany();
             },
         });
     },

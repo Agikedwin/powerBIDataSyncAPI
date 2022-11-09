@@ -27,7 +27,7 @@ let resData:any ;
 export const EtlCurrentInCareQuery = extendType({
     type: "Query",
     definition(t) {
-        t.nonNull.list.nonNull.field("getInCare", {
+        t.nullable.list.nullable.field("getInCare", {
             type: "EtlCurrentInCare",
             resolve(parent, args, context) {  
                 

@@ -7,7 +7,6 @@ export const EtlPatientProgram = objectType({
         t.nonNull.int("id"); 
         t.nonNull.string("uuid"); 
         t.nonNull.int("patient_id"); 
-        t.nonNull.int("fml_code"); 
         t.nonNull.int("location_id"); 
         t.nonNull.string("program"); 
         t.nonNull.string("date_enrolled"); 
@@ -43,7 +42,6 @@ export const EtlPatientProgramMutation = extendType({  // 1
             args: {
                 uuid: nonNull(stringArg()),
                 patient_id: nonNull(intArg()),
-                fml_code: nullable(intArg()),
                 location_id: nullable(intArg()),
                 program: nullable(stringArg()),
                 date_created: nullable(stringArg()),
@@ -64,7 +62,6 @@ export const EtlPatientProgramMutation = extendType({  // 1
                      {
                         uuid: args.uuid,
                         patient_id: args.patient_id,
-                        fml_code: args.fml_code,
                         location_id: args.location_id,
                         program: args.program,
                         date_created: args.date_created,

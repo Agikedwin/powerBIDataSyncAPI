@@ -436,7 +436,6 @@ CREATE TABLE `EtlPatientProgram` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `uuid` VARCHAR(191) NOT NULL,
     `patient_id` INTEGER NOT NULL,
-    `fml_code` INTEGER NOT NULL,
     `location_id` INTEGER NOT NULL,
     `program` VARCHAR(191) NOT NULL,
     `date_enrolled` VARCHAR(191) NOT NULL,

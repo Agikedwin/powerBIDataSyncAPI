@@ -42,16 +42,8 @@ export const CervicalCancerScreeningQuery = extendType({
         t.nullable.list.nullable.field("getCervicalCancerScreening", {
             type: "CervicalCancerScreening",
             resolve(parent, args, context) {  
-                
-               context.prisma.cervicalCancerScreening.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
-                return resData;
+               console.log("CervicalCancerScreening");
+               return context.prisma.cervicalCancerScreening.findMany();
             },
         });
     },

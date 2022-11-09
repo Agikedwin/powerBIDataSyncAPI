@@ -36,16 +36,8 @@ export const AllergyChronicIllnessQuery = extendType({
         t.nullable.list.nullable.field("getAllergyChronicIllness", {
             type: "AllergyChronicIllness",
             resolve(parent, args, context) {  
-                
-               context.prisma.allergyChronicIllness.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
-                return resData;
+                console.log("Fetching AllergyChronicIllness...");
+              return context.prisma.allergyChronicIllness.findMany();
             },
         });
     },

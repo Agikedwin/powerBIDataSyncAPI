@@ -39,16 +39,9 @@ export const CccDefaulterTracingQuery = extendType({
         t.nullable.list.nullable.field("getCccDefaulterTracing", {
             type: "CccDefaulterTracing",
             resolve(parent, args, context) {  
+                console.log("Fetching CccDefaulterTracing...");  
                 
-               context.prisma.cccDefaulterTracing.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
-               
-                return resData;
+              return context.prisma.cccDefaulterTracing.findMany();
             },
         });
     },

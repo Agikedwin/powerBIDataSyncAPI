@@ -45,7 +45,6 @@ ALTER TABLE `ETLHtsTest` DROP PRIMARY KEY,
 -- AlterTable
 ALTER TABLE `EtlPatientProgram` DROP PRIMARY KEY,
     DROP COLUMN `id`,
-    MODIFY `fml_code` INTEGER NULL,
     MODIFY `location_id` INTEGER NULL,
     MODIFY `program` VARCHAR(191) NULL,
     MODIFY `date_enrolled` VARCHAR(191) NULL,

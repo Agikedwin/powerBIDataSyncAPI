@@ -45,15 +45,8 @@ export const ARTPreparationCareQuery = extendType({
         t.nullable.list.nullable.field("getARTPreparation", {
             type: "ARTPreparation",
             resolve(parent, args, context) {  
-                console.log("In art prep query")
-                
-               context.prisma.aRTPreparation.findMany().then(data =>{
-                    resData = data;
-                    console.log(data);
-                    
-                });  
-               
-                return resData;
+                console.log("Fetching getARTPreparation...");  
+              return context.prisma.aRTPreparation.findMany();
             },
         });
     },

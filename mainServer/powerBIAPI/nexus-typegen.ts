@@ -166,7 +166,6 @@ export interface NexusGenObjects {
     encounter_id?: number | null; // Int
     encounter_provider?: number | null; // Int
     ever_tested_for_hiv?: string | null; // String
-    fml_code?: number | null; // Int
     has_expereienced_physical_violence?: string | null; // String
     has_expereienced_sexual_violence?: string | null; // String
     has_regular_free_sex_partner?: string | null; // String
@@ -392,11 +391,81 @@ export interface NexusGenObjects {
     visit_id?: number | null; // Int
     voided?: number | null; // Int
   }
+  DefaultFacilityInfo: { // root type
+    FacilityName?: string | null; // String
+    siteCode?: number | null; // Int
+  }
+  DepressionScreening: { // root type
+    PHQ_9_rating?: string | null; // String
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    id_auto?: number | null; // Int
+    location_id: number; // Int!
+    patient_id?: number | null; // Int
+    provider?: number | null; // Int
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id: number; // Int!
+    voided?: number | null; // Int
+  }
+  DrugEvent: { // root type
+    date_created?: string | null; // String
+    date_discontinued?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_started?: string | null; // String
+    date_voided?: string | null; // String
+    discontinued?: string | null; // String
+    encounter_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    program?: string | null; // String
+    provider?: number | null; // Int
+    reason_discontinued?: string | null; // String
+    reason_discontinued_other?: string | null; // String
+    regimen?: string | null; // String
+    regimen_discontinued?: string | null; // String
+    regimen_line?: string | null; // String
+    regimen_name?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+  }
+  DrugOrder: { // root type
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_voided?: string | null; // String
+    dose?: string | null; // String
+    dose_units?: string | null; // String
+    dosing_instructions?: string | null; // String
+    drug_concept_id?: string | null; // String
+    drug_name?: string | null; // String
+    drug_short_name?: string | null; // String
+    duration?: number | null; // Int
+    duration_units?: string | null; // String
+    enc_name?: string | null; // String
+    encounter_id?: number | null; // Int
+    frequency?: string | null; // String
+    instructions?: string | null; // String
+    location_id?: number | null; // Int
+    order_group_id?: number | null; // Int
+    order_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    provider?: number | null; // Int
+    quantity?: string | null; // String
+    quantity_units?: string | null; // String
+    route?: string | null; // String
+    urgency?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+  }
   ETLHtsTest: { // root type
     approach: string; // String!
     client_tested_as: string; // String!
     couple_discordant: string; // String!
-    creator: string; // String!
+    creator: number; // Int!
     date_created: string; // String!
     date_last_modified: string; // String!
     disability_type: string; // String!
@@ -405,7 +474,6 @@ export interface NexusGenObjects {
     encounter_uuid: string; // String!
     ever_tested_for_hiv: string; // String!
     final_test_result: string; // String!
-    fml_code: number; // Int!
     hts_entry_point: string; // String!
     id: number; // Int!
     months_since_last_test: string; // String!
@@ -438,6 +506,49 @@ export interface NexusGenObjects {
     visit_id: number; // Int!
     voided: string; // String!
   }
+  EnhancedAdherence: { // root type
+    adherence_plan?: string | null; // String
+    appoIntments_honoured?: string | null; // String
+    arv_adherence?: string | null; // String
+    cause_of_high_vl?: string | null; // String
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    first_session_date?: string | null; // String
+    has_vl_results?: string | null; // String
+    home_visit_benefit?: string | null; // String
+    next_appoIntment_date?: string | null; // String
+    other_referrals?: string | null; // String
+    patient_adherence_improved?: string | null; // String
+    patient_ambitions?: string | null; // String
+    patient_challenges_reaching_clinic?: string | null; // String
+    patient_doses_missed?: string | null; // String
+    patient_drugs_daily_uptake_feeling?: string | null; // String
+    patient_drugs_reminder_tools?: string | null; // String
+    patient_drugs_side_effects_response?: string | null; // String
+    patient_drugs_uptake?: string | null; // String
+    patient_drugs_uptake_during_travels?: string | null; // String
+    patient_drugs_uptake_most_difficult_times?: string | null; // String
+    patient_enlisting_social_support?: string | null; // String
+    patient_has_people_to_talk?: string | null; // String
+    patient_hiv_knowledge?: string | null; // String
+    patient_id?: number | null; // Int
+    patient_income_sources?: string | null; // String
+    patient_treated_differently?: string | null; // String
+    patient_tried_faith_healing?: string | null; // String
+    patient_worried_of_accidental_disclosure?: string | null; // String
+    pill_count?: number | null; // Int
+    provider?: number | null; // Int
+    referral_experience?: string | null; // String
+    review_and_barriers_to_adherence?: string | null; // String
+    session_number?: number | null; // Int
+    stigma_hinders_adherence?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    vl_results_feeling?: string | null; // String
+    vl_results_suppressed?: string | null; // String
+    way_forward?: string | null; // String
+  }
   EtlCurrentInCare: { // root type
     date_discontinued?: string | null; // String
     disc_patient?: string | null; // String
@@ -457,7 +568,6 @@ export interface NexusGenObjects {
     date_created: string; // String!
     date_enrolled: string; // String!
     date_last_modified: string; // String!
-    fml_code: number; // Int!
     id: number; // Int!
     location_id: number; // Int!
     outcome: string; // String!
@@ -465,6 +575,407 @@ export interface NexusGenObjects {
     program: string; // String!
     uuid: string; // String!
     voided: string; // String!
+  }
+  GbvScreening: { // root type
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    emotional_ipv?: string | null; // String
+    encounter_id?: number | null; // Int
+    ipv?: string | null; // String
+    ipv_relationship?: string | null; // String
+    location_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    physical_ipv?: string | null; // String
+    provider?: string | null; // String
+    sexual_ipv?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: string | null; // String
+  }
+  GbvScreeningAction: { // root type
+    action_taken?: string | null; // String
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    help_provider?: string | null; // String
+    location_id?: number | null; // Int
+    obs_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    provider?: number | null; // Int
+    reason_for_not_reporting?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+  }
+  HeiEnrollment: { // root type
+    TB_contact_history_in_household?: number | null; // Int
+    arv_prophylaxis?: number | null; // Int
+    birth_certificate_number?: string | null; // String
+    birth_length?: number | null; // Int
+    birth_notification_number?: string | null; // String
+    birth_order?: number | null; // Int
+    birth_registration_place?: string | null; // String
+    birth_type?: number | null; // Int
+    birth_weight?: number | null; // Int
+    child_exposed?: number | null; // Int
+    date_created?: string | null; // String
+    date_first_enrolled_in_hei_care?: string | null; // String
+    date_first_seen?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_of_birth_notification?: string | null; // String
+    date_of_birth_registration?: string | null; // String
+    district_transferred_from?: string | null; // String
+    encounter_id?: number | null; // Int
+    exit_date?: string | null; // String
+    exit_reason?: number | null; // Int
+    facility_transferred_from?: string | null; // String
+    gestation_at_birth?: number | null; // Int
+    health_facility_name?: string | null; // String
+    hei_id_number?: string | null; // String
+    hiv_status_at_exit?: string | null; // String
+    infant_mother_link?: number | null; // Int
+    infant_prophylaxis?: number | null; // Int
+    location_id?: number | null; // Int
+    mode_of_delivery?: number | null; // Int
+    mother_alive?: number | null; // Int
+    mother_breastfeeding?: number | null; // Int
+    mother_drug_regimen?: number | null; // Int
+    mother_facility_registered?: string | null; // String
+    mother_on_NVP_during_breastfeeding?: number | null; // Int
+    mother_on_art_at_infant_enrollment?: number | null; // Int
+    mother_on_drug?: number | null; // Int
+    mother_on_pmtct_drugs?: number | null; // Int
+    need_for_special_care?: number | null; // Int
+    parent_ccc_number?: string | null; // String
+    patient_id?: number | null; // Int
+    permanent_registration_serial?: string | null; // String
+    place_of_delivery?: number | null; // Int
+    provider?: number | null; // Int
+    reason_for_special_care?: number | null; // Int
+    referral_source?: number | null; // Int
+    spd_number?: number | null; // Int
+    transfer_in?: number | null; // Int
+    transfer_in_date?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+  }
+  HeiFollowUpVisit: { // root type
+    TB_contact_history_in_household?: number | null; // Int
+    arv_prophylaxis?: number | null; // Int
+    birth_certificate_number?: string | null; // String
+    birth_length?: number | null; // Int
+    birth_notification_number?: string | null; // String
+    birth_order?: number | null; // Int
+    birth_registration_place?: string | null; // String
+    birth_type?: number | null; // Int
+    birth_weight?: number | null; // Int
+    child_exposed?: number | null; // Int
+    date_created?: string | null; // String
+    date_first_enrolled_in_hei_care?: string | null; // String
+    date_first_seen?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_of_birth_notification?: string | null; // String
+    date_of_birth_registration?: string | null; // String
+    district_transferred_from?: string | null; // String
+    encounter_id?: number | null; // Int
+    exit_date?: string | null; // String
+    exit_reason?: number | null; // Int
+    facility_transferred_from?: string | null; // String
+    gestation_at_birth?: number | null; // Int
+    health_facility_name?: string | null; // String
+    hei_id_number?: string | null; // String
+    hiv_status_at_exit?: string | null; // String
+    infant_mother_link?: number | null; // Int
+    infant_prophylaxis?: number | null; // Int
+    location_id?: number | null; // Int
+    mode_of_delivery?: number | null; // Int
+    mother_alive?: number | null; // Int
+    mother_breastfeeding?: number | null; // Int
+    mother_drug_regimen?: number | null; // Int
+    mother_facility_registered?: string | null; // String
+    mother_on_NVP_during_breastfeeding?: number | null; // Int
+    mother_on_art_at_infant_enrollment?: number | null; // Int
+    mother_on_drug?: number | null; // Int
+    mother_on_pmtct_drugs?: number | null; // Int
+    need_for_special_care?: number | null; // Int
+    parent_ccc_number?: string | null; // String
+    patient_id?: number | null; // Int
+    permanent_registration_serial?: string | null; // String
+    place_of_delivery?: number | null; // Int
+    provider?: number | null; // Int
+    reason_for_special_care?: number | null; // Int
+    referral_source?: number | null; // Int
+    spd_number?: number | null; // Int
+    transfer_in?: number | null; // Int
+    transfer_in_date?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+  }
+  HeiImmunization: { // root type
+    BCG?: number | null; // Int
+    DPT_Hep_B_Hib_1?: string | null; // String
+    DPT_Hep_B_Hib_2?: string | null; // String
+    DPT_Hep_B_Hib_3?: string | null; // String
+    IPV?: string | null; // String
+    Measles_6_months?: string | null; // String
+    Measles_rubella_1?: string | null; // String
+    Measles_rubella_2?: string | null; // String
+    OPV_1?: string | null; // String
+    OPV_2?: string | null; // String
+    OPV_3?: string | null; // String
+    OPV_birth?: string | null; // String
+    PCV_10_1?: string | null; // String
+    PCV_10_2?: string | null; // String
+    PCV_10_3?: string | null; // String
+    ROTA_1?: string | null; // String
+    ROTA_2?: string | null; // String
+    VitaminA_1_and_half_yr?: string | null; // String
+    VitaminA_1_yr?: string | null; // String
+    VitaminA_2_to_5_yr?: string | null; // String
+    VitaminA_2_yr?: string | null; // String
+    VitaminA_6_months?: string | null; // String
+    Yellow_fever?: string | null; // String
+    created_by?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    fully_immunized?: string | null; // String
+    patient_id?: number | null; // Int
+    visit_date?: string | null; // String
+  }
+  HivEnrollment: { // root type
+    arv_status?: number | null; // Int
+    date_confirmed_hiv_positive?: string | null; // String
+    date_created?: string | null; // String
+    date_first_enrolled_in_care?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_of_discontinuation?: string | null; // String
+    date_started_art_at_transferring_facility?: string | null; // String
+    discontinuation_reason?: string | null; // String
+    district_transferred_from?: string | null; // String
+    encounter_id?: number | null; // Int
+    encounter_provider?: number | null; // Int
+    entry_point?: number | null; // Int
+    ever_on_haart?: number | null; // Int
+    ever_on_pep?: number | null; // Int
+    ever_on_pmtct?: number | null; // Int
+    ever_on_prep?: number | null; // Int
+    facility_confirmed_hiv_positive?: string | null; // String
+    facility_transferred_from?: string | null; // String
+    in_school?: number | null; // Int
+    location_id?: number | null; // Int
+    name_of_treatment_supporter?: string | null; // String
+    orphan?: number | null; // Int
+    patient_id?: number | null; // Int
+    patient_type?: number | null; // Int
+    previous_regimen?: string | null; // String
+    relationship_of_treatment_supporter?: number | null; // Int
+    transfer_in_date?: string | null; // String
+    treatment_supporter_address?: string | null; // String
+    treatment_supporter_telephone?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+  }
+  HtsContacts: { // root type
+    baseline_hiv_status?: string | null; // String
+    final_test_result?: string | null; // String
+    id?: string | null; // String
+    patient_id?: string | null; // String
+    relationship_type?: string | null; // String
+    test_1_result?: string | null; // String
+    test_2_result?: string | null; // String
+    test_type?: string | null; // String
+    visit_date?: string | null; // String
+  }
+  HtsEligibilityScreening: { // root type
+    alcohol_sex?: number | null; // Int
+    breastfeeding_mother?: number | null; // Int
+    child_reasons_for_ineligibility?: string | null; // String
+    condom_burst?: number | null; // Int
+    contact_with_tb_case?: number | null; // Int
+    cough?: number | null; // Int
+    couple_discordant?: number | null; // Int
+    currently_on_prep?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_tested?: string | null; // String
+    department?: number | null; // Int
+    eligible_for_test?: number | null; // Int
+    encounter_id?: number | null; // Int
+    ever_had_sex?: number | null; // Int
+    experienced_gbv?: number | null; // Int
+    fever?: number | null; // Int
+    is_health_worker?: number | null; // Int
+    key_population_type?: string | null; // String
+    known_status_partner?: number | null; // Int
+    lethargy?: number | null; // Int
+    location_id?: number | null; // Int
+    money_sex?: number | null; // Int
+    mother_hiv_status?: number | null; // Int
+    multiple_partners?: number | null; // Int
+    needle_stick_injuries?: number | null; // Int
+    new_partner?: number | null; // Int
+    night_sweats?: number | null; // Int
+    number_partners?: number | null; // Int
+    partner_hiv_status?: number | null; // Int
+    patient_id?: number | null; // Int
+    patient_type?: number | null; // Int
+    population_type?: string | null; // String
+    pregnant?: number | null; // Int
+    priority_population_type?: string | null; // String
+    provider?: number | null; // Int
+    reasons_for_ineligibility?: string | null; // String
+    recently_had_sti?: number | null; // Int
+    recently_on_pep?: number | null; // Int
+    referred_for_testing?: number | null; // Int
+    relationship_with_contact?: string | null; // String
+    service_received?: string | null; // String
+    sexually_active?: number | null; // Int
+    shared_needle?: number | null; // Int
+    specific_reason_for_ineligibility?: string | null; // String
+    started_on_art?: number | null; // Int
+    tb_screened?: number | null; // Int
+    tb_status?: number | null; // Int
+    test_results?: number | null; // Int
+    tested_hiv_before?: number | null; // Int
+    traditional_procedures?: number | null; // Int
+    type_of_gbv?: string | null; // String
+    unknown_status_partner?: number | null; // Int
+    upn_number?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+    weight_loss?: number | null; // Int
+    who_performed_test?: number | null; // Int
+  }
+  HtsLinkageTracing: { // root type
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    encounter_provider?: number | null; // Int
+    location_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    reason_not_contacted?: number | null; // Int
+    tracing_outcome?: number | null; // Int
+    tracing_type?: number | null; // Int
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    voided?: number | null; // Int
+  }
+  HtsReferral: { // root type
+    creator?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_to_enrol?: string | null; // String
+    encounter_id?: number | null; // Int
+    encounter_location?: number | null; // Int
+    encounter_uuid?: string | null; // String
+    facility_referred_to?: string | null; // String
+    patient_id?: string | null; // String
+    remarks?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+  }
+  IptFollowUp: { // root type
+    action_taken?: string | null; // String
+    adherence?: string | null; // String
+    date_collected_ipt?: string | null; // String
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    hepatotoxity?: string | null; // String
+    ipt_due_date?: string | null; // String
+    location_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    peripheral_neuropathy?: string | null; // String
+    provider?: number | null; // Int
+    rash?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+    weight?: string | null; // String
+  }
+  IptInitiation: { // root type
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    encounter_provider?: number | null; // Int
+    ipt_indication?: number | null; // Int
+    location_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    sub_county_reg_date?: string | null; // String
+    sub_county_reg_number?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    voided?: number | null; // Int
+  }
+  IptOutcome: { // root type
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    encounter_provider?: number | null; // Int
+    location_id?: number | null; // Int
+    outcome?: number | null; // Int
+    patient_id?: number | null; // Int
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    voided?: number | null; // Int
+  }
+  IptScreening: { // root type
+    contact_with_tb_case?: number | null; // Int
+    cough?: number | null; // Int
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    encounter_id?: number | null; // Int
+    eyes_yellowness?: number | null; // Int
+    fever?: number | null; // Int
+    lethargy?: number | null; // Int
+    location_id?: number | null; // Int
+    night_sweats?: number | null; // Int
+    numbness_bs_hands_feet?: number | null; // Int
+    obs_id?: number | null; // Int
+    patient_id?: number | null; // Int
+    provider?: string | null; // String
+    upper_rightQ_abdomen_tenderness?: number | null; // Int
+    uuid?: number | null; // Int
+    visit_date?: string | null; // String
+    visit_id?: number | null; // Int
+    voided?: number | null; // Int
+    weight_loss_poor_gain?: number | null; // Int
+    yellow_urine?: number | null; // Int
+  }
+  LaboratoryExtract: { // root type
+    created_by?: string | null; // String
+    date_created?: string | null; // String
+    date_last_modified?: string | null; // String
+    date_test_requested?: string | null; // String
+    date_test_result_received?: string | null; // String
+    encounter_id?: string | null; // String
+    lab_test?: string | null; // String
+    location_id?: string | null; // String
+    order_id?: string | null; // String
+    order_reason?: string | null; // String
+    patient_id?: string | null; // String
+    test_requested_by?: string | null; // String
+    test_result?: string | null; // String
+    urgency?: string | null; // String
+    uuid?: string | null; // String
+    visit_date?: string | null; // String
+    visit_id?: string | null; // String
+  }
+  LastMonthNewlyEnrolledInCare: { // root type
+    patient_id?: string | null; // String
+  }
+  LastMonthNewlyOnArt: { // root type
+    patient_id?: string | null; // String
   }
   Mutation: {};
   Query: {};
@@ -619,7 +1130,6 @@ export interface NexusGenFieldTypes {
     encounter_id: number | null; // Int
     encounter_provider: number | null; // Int
     ever_tested_for_hiv: string | null; // String
-    fml_code: number | null; // Int
     has_expereienced_physical_violence: string | null; // String
     has_expereienced_sexual_violence: string | null; // String
     has_regular_free_sex_partner: string | null; // String
@@ -845,11 +1355,81 @@ export interface NexusGenFieldTypes {
     visit_id: number | null; // Int
     voided: number | null; // Int
   }
+  DefaultFacilityInfo: { // field return type
+    FacilityName: string | null; // String
+    siteCode: number | null; // Int
+  }
+  DepressionScreening: { // field return type
+    PHQ_9_rating: string | null; // String
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    id_auto: number | null; // Int
+    location_id: number; // Int!
+    patient_id: number | null; // Int
+    provider: number | null; // Int
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number; // Int!
+    voided: number | null; // Int
+  }
+  DrugEvent: { // field return type
+    date_created: string | null; // String
+    date_discontinued: string | null; // String
+    date_last_modified: string | null; // String
+    date_started: string | null; // String
+    date_voided: string | null; // String
+    discontinued: string | null; // String
+    encounter_id: number | null; // Int
+    patient_id: number | null; // Int
+    program: string | null; // String
+    provider: number | null; // Int
+    reason_discontinued: string | null; // String
+    reason_discontinued_other: string | null; // String
+    regimen: string | null; // String
+    regimen_discontinued: string | null; // String
+    regimen_line: string | null; // String
+    regimen_name: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+  }
+  DrugOrder: { // field return type
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    date_voided: string | null; // String
+    dose: string | null; // String
+    dose_units: string | null; // String
+    dosing_instructions: string | null; // String
+    drug_concept_id: string | null; // String
+    drug_name: string | null; // String
+    drug_short_name: string | null; // String
+    duration: number | null; // Int
+    duration_units: string | null; // String
+    enc_name: string | null; // String
+    encounter_id: number | null; // Int
+    frequency: string | null; // String
+    instructions: string | null; // String
+    location_id: number | null; // Int
+    order_group_id: number | null; // Int
+    order_id: number | null; // Int
+    patient_id: number | null; // Int
+    provider: number | null; // Int
+    quantity: string | null; // String
+    quantity_units: string | null; // String
+    route: string | null; // String
+    urgency: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+  }
   ETLHtsTest: { // field return type
     approach: string; // String!
     client_tested_as: string; // String!
     couple_discordant: string; // String!
-    creator: string; // String!
+    creator: number; // Int!
     date_created: string; // String!
     date_last_modified: string; // String!
     disability_type: string; // String!
@@ -858,7 +1438,6 @@ export interface NexusGenFieldTypes {
     encounter_uuid: string; // String!
     ever_tested_for_hiv: string; // String!
     final_test_result: string; // String!
-    fml_code: number; // Int!
     hts_entry_point: string; // String!
     id: number; // Int!
     months_since_last_test: string; // String!
@@ -891,6 +1470,49 @@ export interface NexusGenFieldTypes {
     visit_id: number; // Int!
     voided: string; // String!
   }
+  EnhancedAdherence: { // field return type
+    adherence_plan: string | null; // String
+    appoIntments_honoured: string | null; // String
+    arv_adherence: string | null; // String
+    cause_of_high_vl: string | null; // String
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    first_session_date: string | null; // String
+    has_vl_results: string | null; // String
+    home_visit_benefit: string | null; // String
+    next_appoIntment_date: string | null; // String
+    other_referrals: string | null; // String
+    patient_adherence_improved: string | null; // String
+    patient_ambitions: string | null; // String
+    patient_challenges_reaching_clinic: string | null; // String
+    patient_doses_missed: string | null; // String
+    patient_drugs_daily_uptake_feeling: string | null; // String
+    patient_drugs_reminder_tools: string | null; // String
+    patient_drugs_side_effects_response: string | null; // String
+    patient_drugs_uptake: string | null; // String
+    patient_drugs_uptake_during_travels: string | null; // String
+    patient_drugs_uptake_most_difficult_times: string | null; // String
+    patient_enlisting_social_support: string | null; // String
+    patient_has_people_to_talk: string | null; // String
+    patient_hiv_knowledge: string | null; // String
+    patient_id: number | null; // Int
+    patient_income_sources: string | null; // String
+    patient_treated_differently: string | null; // String
+    patient_tried_faith_healing: string | null; // String
+    patient_worried_of_accidental_disclosure: string | null; // String
+    pill_count: number | null; // Int
+    provider: number | null; // Int
+    referral_experience: string | null; // String
+    review_and_barriers_to_adherence: string | null; // String
+    session_number: number | null; // Int
+    stigma_hinders_adherence: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    vl_results_feeling: string | null; // String
+    vl_results_suppressed: string | null; // String
+    way_forward: string | null; // String
+  }
   EtlCurrentInCare: { // field return type
     date_discontinued: string | null; // String
     disc_patient: string | null; // String
@@ -910,7 +1532,6 @@ export interface NexusGenFieldTypes {
     date_created: string; // String!
     date_enrolled: string; // String!
     date_last_modified: string; // String!
-    fml_code: number; // Int!
     id: number; // Int!
     location_id: number; // Int!
     outcome: string; // String!
@@ -919,8 +1540,408 @@ export interface NexusGenFieldTypes {
     uuid: string; // String!
     voided: string; // String!
   }
+  GbvScreening: { // field return type
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    emotional_ipv: string | null; // String
+    encounter_id: number | null; // Int
+    ipv: string | null; // String
+    ipv_relationship: string | null; // String
+    location_id: number | null; // Int
+    patient_id: number | null; // Int
+    physical_ipv: string | null; // String
+    provider: string | null; // String
+    sexual_ipv: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: string | null; // String
+  }
+  GbvScreeningAction: { // field return type
+    action_taken: string | null; // String
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    help_provider: string | null; // String
+    location_id: number | null; // Int
+    obs_id: number | null; // Int
+    patient_id: number | null; // Int
+    provider: number | null; // Int
+    reason_for_not_reporting: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+  }
+  HeiEnrollment: { // field return type
+    TB_contact_history_in_household: number | null; // Int
+    arv_prophylaxis: number | null; // Int
+    birth_certificate_number: string | null; // String
+    birth_length: number | null; // Int
+    birth_notification_number: string | null; // String
+    birth_order: number | null; // Int
+    birth_registration_place: string | null; // String
+    birth_type: number | null; // Int
+    birth_weight: number | null; // Int
+    child_exposed: number | null; // Int
+    date_created: string | null; // String
+    date_first_enrolled_in_hei_care: string | null; // String
+    date_first_seen: string | null; // String
+    date_last_modified: string | null; // String
+    date_of_birth_notification: string | null; // String
+    date_of_birth_registration: string | null; // String
+    district_transferred_from: string | null; // String
+    encounter_id: number | null; // Int
+    exit_date: string | null; // String
+    exit_reason: number | null; // Int
+    facility_transferred_from: string | null; // String
+    gestation_at_birth: number | null; // Int
+    health_facility_name: string | null; // String
+    hei_id_number: string | null; // String
+    hiv_status_at_exit: string | null; // String
+    infant_mother_link: number | null; // Int
+    infant_prophylaxis: number | null; // Int
+    location_id: number | null; // Int
+    mode_of_delivery: number | null; // Int
+    mother_alive: number | null; // Int
+    mother_breastfeeding: number | null; // Int
+    mother_drug_regimen: number | null; // Int
+    mother_facility_registered: string | null; // String
+    mother_on_NVP_during_breastfeeding: number | null; // Int
+    mother_on_art_at_infant_enrollment: number | null; // Int
+    mother_on_drug: number | null; // Int
+    mother_on_pmtct_drugs: number | null; // Int
+    need_for_special_care: number | null; // Int
+    parent_ccc_number: string | null; // String
+    patient_id: number | null; // Int
+    permanent_registration_serial: string | null; // String
+    place_of_delivery: number | null; // Int
+    provider: number | null; // Int
+    reason_for_special_care: number | null; // Int
+    referral_source: number | null; // Int
+    spd_number: number | null; // Int
+    transfer_in: number | null; // Int
+    transfer_in_date: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+  }
+  HeiFollowUpVisit: { // field return type
+    TB_contact_history_in_household: number | null; // Int
+    arv_prophylaxis: number | null; // Int
+    birth_certificate_number: string | null; // String
+    birth_length: number | null; // Int
+    birth_notification_number: string | null; // String
+    birth_order: number | null; // Int
+    birth_registration_place: string | null; // String
+    birth_type: number | null; // Int
+    birth_weight: number | null; // Int
+    child_exposed: number | null; // Int
+    date_created: string | null; // String
+    date_first_enrolled_in_hei_care: string | null; // String
+    date_first_seen: string | null; // String
+    date_last_modified: string | null; // String
+    date_of_birth_notification: string | null; // String
+    date_of_birth_registration: string | null; // String
+    district_transferred_from: string | null; // String
+    encounter_id: number | null; // Int
+    exit_date: string | null; // String
+    exit_reason: number | null; // Int
+    facility_transferred_from: string | null; // String
+    gestation_at_birth: number | null; // Int
+    health_facility_name: string | null; // String
+    hei_id_number: string | null; // String
+    hiv_status_at_exit: string | null; // String
+    infant_mother_link: number | null; // Int
+    infant_prophylaxis: number | null; // Int
+    location_id: number | null; // Int
+    mode_of_delivery: number | null; // Int
+    mother_alive: number | null; // Int
+    mother_breastfeeding: number | null; // Int
+    mother_drug_regimen: number | null; // Int
+    mother_facility_registered: string | null; // String
+    mother_on_NVP_during_breastfeeding: number | null; // Int
+    mother_on_art_at_infant_enrollment: number | null; // Int
+    mother_on_drug: number | null; // Int
+    mother_on_pmtct_drugs: number | null; // Int
+    need_for_special_care: number | null; // Int
+    parent_ccc_number: string | null; // String
+    patient_id: number | null; // Int
+    permanent_registration_serial: string | null; // String
+    place_of_delivery: number | null; // Int
+    provider: number | null; // Int
+    reason_for_special_care: number | null; // Int
+    referral_source: number | null; // Int
+    spd_number: number | null; // Int
+    transfer_in: number | null; // Int
+    transfer_in_date: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+  }
+  HeiImmunization: { // field return type
+    BCG: number | null; // Int
+    DPT_Hep_B_Hib_1: string | null; // String
+    DPT_Hep_B_Hib_2: string | null; // String
+    DPT_Hep_B_Hib_3: string | null; // String
+    IPV: string | null; // String
+    Measles_6_months: string | null; // String
+    Measles_rubella_1: string | null; // String
+    Measles_rubella_2: string | null; // String
+    OPV_1: string | null; // String
+    OPV_2: string | null; // String
+    OPV_3: string | null; // String
+    OPV_birth: string | null; // String
+    PCV_10_1: string | null; // String
+    PCV_10_2: string | null; // String
+    PCV_10_3: string | null; // String
+    ROTA_1: string | null; // String
+    ROTA_2: string | null; // String
+    VitaminA_1_and_half_yr: string | null; // String
+    VitaminA_1_yr: string | null; // String
+    VitaminA_2_to_5_yr: string | null; // String
+    VitaminA_2_yr: string | null; // String
+    VitaminA_6_months: string | null; // String
+    Yellow_fever: string | null; // String
+    created_by: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    fully_immunized: string | null; // String
+    patient_id: number | null; // Int
+    visit_date: string | null; // String
+  }
+  HivEnrollment: { // field return type
+    arv_status: number | null; // Int
+    date_confirmed_hiv_positive: string | null; // String
+    date_created: string | null; // String
+    date_first_enrolled_in_care: string | null; // String
+    date_last_modified: string | null; // String
+    date_of_discontinuation: string | null; // String
+    date_started_art_at_transferring_facility: string | null; // String
+    discontinuation_reason: string | null; // String
+    district_transferred_from: string | null; // String
+    encounter_id: number | null; // Int
+    encounter_provider: number | null; // Int
+    entry_point: number | null; // Int
+    ever_on_haart: number | null; // Int
+    ever_on_pep: number | null; // Int
+    ever_on_pmtct: number | null; // Int
+    ever_on_prep: number | null; // Int
+    facility_confirmed_hiv_positive: string | null; // String
+    facility_transferred_from: string | null; // String
+    in_school: number | null; // Int
+    location_id: number | null; // Int
+    name_of_treatment_supporter: string | null; // String
+    orphan: number | null; // Int
+    patient_id: number | null; // Int
+    patient_type: number | null; // Int
+    previous_regimen: string | null; // String
+    relationship_of_treatment_supporter: number | null; // Int
+    transfer_in_date: string | null; // String
+    treatment_supporter_address: string | null; // String
+    treatment_supporter_telephone: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+  }
+  HtsContacts: { // field return type
+    baseline_hiv_status: string | null; // String
+    final_test_result: string | null; // String
+    id: string | null; // String
+    patient_id: string | null; // String
+    relationship_type: string | null; // String
+    test_1_result: string | null; // String
+    test_2_result: string | null; // String
+    test_type: string | null; // String
+    visit_date: string | null; // String
+  }
+  HtsEligibilityScreening: { // field return type
+    alcohol_sex: number | null; // Int
+    breastfeeding_mother: number | null; // Int
+    child_reasons_for_ineligibility: string | null; // String
+    condom_burst: number | null; // Int
+    contact_with_tb_case: number | null; // Int
+    cough: number | null; // Int
+    couple_discordant: number | null; // Int
+    currently_on_prep: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    date_tested: string | null; // String
+    department: number | null; // Int
+    eligible_for_test: number | null; // Int
+    encounter_id: number | null; // Int
+    ever_had_sex: number | null; // Int
+    experienced_gbv: number | null; // Int
+    fever: number | null; // Int
+    is_health_worker: number | null; // Int
+    key_population_type: string | null; // String
+    known_status_partner: number | null; // Int
+    lethargy: number | null; // Int
+    location_id: number | null; // Int
+    money_sex: number | null; // Int
+    mother_hiv_status: number | null; // Int
+    multiple_partners: number | null; // Int
+    needle_stick_injuries: number | null; // Int
+    new_partner: number | null; // Int
+    night_sweats: number | null; // Int
+    number_partners: number | null; // Int
+    partner_hiv_status: number | null; // Int
+    patient_id: number | null; // Int
+    patient_type: number | null; // Int
+    population_type: string | null; // String
+    pregnant: number | null; // Int
+    priority_population_type: string | null; // String
+    provider: number | null; // Int
+    reasons_for_ineligibility: string | null; // String
+    recently_had_sti: number | null; // Int
+    recently_on_pep: number | null; // Int
+    referred_for_testing: number | null; // Int
+    relationship_with_contact: string | null; // String
+    service_received: string | null; // String
+    sexually_active: number | null; // Int
+    shared_needle: number | null; // Int
+    specific_reason_for_ineligibility: string | null; // String
+    started_on_art: number | null; // Int
+    tb_screened: number | null; // Int
+    tb_status: number | null; // Int
+    test_results: number | null; // Int
+    tested_hiv_before: number | null; // Int
+    traditional_procedures: number | null; // Int
+    type_of_gbv: string | null; // String
+    unknown_status_partner: number | null; // Int
+    upn_number: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+    weight_loss: number | null; // Int
+    who_performed_test: number | null; // Int
+  }
+  HtsLinkageTracing: { // field return type
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    encounter_provider: number | null; // Int
+    location_id: number | null; // Int
+    patient_id: number | null; // Int
+    reason_not_contacted: number | null; // Int
+    tracing_outcome: number | null; // Int
+    tracing_type: number | null; // Int
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    voided: number | null; // Int
+  }
+  HtsReferral: { // field return type
+    creator: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    date_to_enrol: string | null; // String
+    encounter_id: number | null; // Int
+    encounter_location: number | null; // Int
+    encounter_uuid: string | null; // String
+    facility_referred_to: string | null; // String
+    patient_id: string | null; // String
+    remarks: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+  }
+  IptFollowUp: { // field return type
+    action_taken: string | null; // String
+    adherence: string | null; // String
+    date_collected_ipt: string | null; // String
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    hepatotoxity: string | null; // String
+    ipt_due_date: string | null; // String
+    location_id: number | null; // Int
+    patient_id: number | null; // Int
+    peripheral_neuropathy: string | null; // String
+    provider: number | null; // Int
+    rash: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+    weight: string | null; // String
+  }
+  IptInitiation: { // field return type
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    encounter_provider: number | null; // Int
+    ipt_indication: number | null; // Int
+    location_id: number | null; // Int
+    patient_id: number | null; // Int
+    sub_county_reg_date: string | null; // String
+    sub_county_reg_number: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    voided: number | null; // Int
+  }
+  IptOutcome: { // field return type
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    encounter_provider: number | null; // Int
+    location_id: number | null; // Int
+    outcome: number | null; // Int
+    patient_id: number | null; // Int
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    voided: number | null; // Int
+  }
+  IptScreening: { // field return type
+    contact_with_tb_case: number | null; // Int
+    cough: number | null; // Int
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    encounter_id: number | null; // Int
+    eyes_yellowness: number | null; // Int
+    fever: number | null; // Int
+    lethargy: number | null; // Int
+    location_id: number | null; // Int
+    night_sweats: number | null; // Int
+    numbness_bs_hands_feet: number | null; // Int
+    obs_id: number | null; // Int
+    patient_id: number | null; // Int
+    provider: string | null; // String
+    upper_rightQ_abdomen_tenderness: number | null; // Int
+    uuid: number | null; // Int
+    visit_date: string | null; // String
+    visit_id: number | null; // Int
+    voided: number | null; // Int
+    weight_loss_poor_gain: number | null; // Int
+    yellow_urine: number | null; // Int
+  }
+  LaboratoryExtract: { // field return type
+    created_by: string | null; // String
+    date_created: string | null; // String
+    date_last_modified: string | null; // String
+    date_test_requested: string | null; // String
+    date_test_result_received: string | null; // String
+    encounter_id: string | null; // String
+    lab_test: string | null; // String
+    location_id: string | null; // String
+    order_id: string | null; // String
+    order_reason: string | null; // String
+    patient_id: string | null; // String
+    test_requested_by: string | null; // String
+    test_result: string | null; // String
+    urgency: string | null; // String
+    uuid: string | null; // String
+    visit_date: string | null; // String
+    visit_id: string | null; // String
+  }
+  LastMonthNewlyEnrolledInCare: { // field return type
+    patient_id: string | null; // String
+  }
+  LastMonthNewlyOnArt: { // field return type
+    patient_id: string | null; // String
+  }
   Mutation: { // field return type
-    postHtsTest: NexusGenRootTypes['ETLHtsTest']; // ETLHtsTest!
     postProgram: NexusGenRootTypes['EtlPatientProgram']; // EtlPatientProgram!
   }
   Query: { // field return type
@@ -938,7 +1959,29 @@ export interface NexusGenFieldTypes {
     getContactsLinked: Array<NexusGenRootTypes['ContactsLinked'] | null> | null; // [ContactsLinked]
     getCovid19Assessment: Array<NexusGenRootTypes['Covid19Assessment'] | null> | null; // [Covid19Assessment]
     getCurrentInCare: NexusGenRootTypes['EtlCurrentInCare'][]; // [EtlCurrentInCare!]!
-    getHtsTest: NexusGenRootTypes['ETLHtsTest'][]; // [ETLHtsTest!]!
+    getDefaultFacilityInfo: Array<NexusGenRootTypes['DefaultFacilityInfo'] | null> | null; // [DefaultFacilityInfo]
+    getDepressionScreening: Array<NexusGenRootTypes['DepressionScreening'] | null> | null; // [DepressionScreening]
+    getDrugEvent: Array<NexusGenRootTypes['DrugEvent'] | null> | null; // [DrugEvent]
+    getDrugOrder: Array<NexusGenRootTypes['DrugOrder'] | null> | null; // [DrugOrder]
+    getEnhancedAdherence: Array<NexusGenRootTypes['EnhancedAdherence'] | null> | null; // [EnhancedAdherence]
+    getGbvScreening: Array<NexusGenRootTypes['GbvScreening'] | null> | null; // [GbvScreening]
+    getGbvScreeningAction: Array<NexusGenRootTypes['GbvScreeningAction'] | null> | null; // [GbvScreeningAction]
+    getHeiEnrollment: Array<NexusGenRootTypes['HeiEnrollment'] | null> | null; // [HeiEnrollment]
+    getHeiFollowUpVisit: Array<NexusGenRootTypes['HeiFollowUpVisit'] | null> | null; // [HeiFollowUpVisit]
+    getHeiImmunization: Array<NexusGenRootTypes['HeiImmunization'] | null> | null; // [HeiImmunization]
+    getHivEnrollment: Array<NexusGenRootTypes['HivEnrollment'] | null> | null; // [HivEnrollment]
+    getHtsContacts: Array<NexusGenRootTypes['HtsContacts'] | null> | null; // [HtsContacts]
+    getHtsEligibilityScreening: Array<NexusGenRootTypes['HtsEligibilityScreening'] | null> | null; // [HtsEligibilityScreening]
+    getHtsLinkageTracing: Array<NexusGenRootTypes['HtsLinkageTracing'] | null> | null; // [HtsLinkageTracing]
+    getHtsReferral: Array<NexusGenRootTypes['HtsReferral'] | null> | null; // [HtsReferral]
+    getHtsTest: Array<NexusGenRootTypes['ETLHtsTest'] | null> | null; // [ETLHtsTest]
+    getIptFollowUp: Array<NexusGenRootTypes['IptFollowUp'] | null> | null; // [IptFollowUp]
+    getIptInitiation: Array<NexusGenRootTypes['IptInitiation'] | null> | null; // [IptInitiation]
+    getIptOutcome: Array<NexusGenRootTypes['IptOutcome'] | null> | null; // [IptOutcome]
+    getIptScreening: Array<NexusGenRootTypes['IptScreening'] | null> | null; // [IptScreening]
+    getLaboratoryExtract: Array<NexusGenRootTypes['LaboratoryExtract'] | null> | null; // [LaboratoryExtract]
+    getLastMonthNewlyEnrolledInCare: Array<NexusGenRootTypes['LastMonthNewlyEnrolledInCare'] | null> | null; // [LastMonthNewlyEnrolledInCare]
+    getLastMonthNewlyOnArt: Array<NexusGenRootTypes['LastMonthNewlyOnArt'] | null> | null; // [LastMonthNewlyOnArt]
   }
 }
 
@@ -1081,7 +2124,6 @@ export interface NexusGenFieldTypeNames {
     encounter_id: 'Int'
     encounter_provider: 'Int'
     ever_tested_for_hiv: 'String'
-    fml_code: 'Int'
     has_expereienced_physical_violence: 'String'
     has_expereienced_sexual_violence: 'String'
     has_regular_free_sex_partner: 'String'
@@ -1307,11 +2349,81 @@ export interface NexusGenFieldTypeNames {
     visit_id: 'Int'
     voided: 'Int'
   }
+  DefaultFacilityInfo: { // field return type name
+    FacilityName: 'String'
+    siteCode: 'Int'
+  }
+  DepressionScreening: { // field return type name
+    PHQ_9_rating: 'String'
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    id_auto: 'Int'
+    location_id: 'Int'
+    patient_id: 'Int'
+    provider: 'Int'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
+  DrugEvent: { // field return type name
+    date_created: 'String'
+    date_discontinued: 'String'
+    date_last_modified: 'String'
+    date_started: 'String'
+    date_voided: 'String'
+    discontinued: 'String'
+    encounter_id: 'Int'
+    patient_id: 'Int'
+    program: 'String'
+    provider: 'Int'
+    reason_discontinued: 'String'
+    reason_discontinued_other: 'String'
+    regimen: 'String'
+    regimen_discontinued: 'String'
+    regimen_line: 'String'
+    regimen_name: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
+  DrugOrder: { // field return type name
+    date_created: 'String'
+    date_last_modified: 'String'
+    date_voided: 'String'
+    dose: 'String'
+    dose_units: 'String'
+    dosing_instructions: 'String'
+    drug_concept_id: 'String'
+    drug_name: 'String'
+    drug_short_name: 'String'
+    duration: 'Int'
+    duration_units: 'String'
+    enc_name: 'String'
+    encounter_id: 'Int'
+    frequency: 'String'
+    instructions: 'String'
+    location_id: 'Int'
+    order_group_id: 'Int'
+    order_id: 'Int'
+    patient_id: 'Int'
+    provider: 'Int'
+    quantity: 'String'
+    quantity_units: 'String'
+    route: 'String'
+    urgency: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
   ETLHtsTest: { // field return type name
     approach: 'String'
     client_tested_as: 'String'
     couple_discordant: 'String'
-    creator: 'String'
+    creator: 'Int'
     date_created: 'String'
     date_last_modified: 'String'
     disability_type: 'String'
@@ -1320,7 +2432,6 @@ export interface NexusGenFieldTypeNames {
     encounter_uuid: 'String'
     ever_tested_for_hiv: 'String'
     final_test_result: 'String'
-    fml_code: 'Int'
     hts_entry_point: 'String'
     id: 'Int'
     months_since_last_test: 'String'
@@ -1353,6 +2464,49 @@ export interface NexusGenFieldTypeNames {
     visit_id: 'Int'
     voided: 'String'
   }
+  EnhancedAdherence: { // field return type name
+    adherence_plan: 'String'
+    appoIntments_honoured: 'String'
+    arv_adherence: 'String'
+    cause_of_high_vl: 'String'
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    first_session_date: 'String'
+    has_vl_results: 'String'
+    home_visit_benefit: 'String'
+    next_appoIntment_date: 'String'
+    other_referrals: 'String'
+    patient_adherence_improved: 'String'
+    patient_ambitions: 'String'
+    patient_challenges_reaching_clinic: 'String'
+    patient_doses_missed: 'String'
+    patient_drugs_daily_uptake_feeling: 'String'
+    patient_drugs_reminder_tools: 'String'
+    patient_drugs_side_effects_response: 'String'
+    patient_drugs_uptake: 'String'
+    patient_drugs_uptake_during_travels: 'String'
+    patient_drugs_uptake_most_difficult_times: 'String'
+    patient_enlisting_social_support: 'String'
+    patient_has_people_to_talk: 'String'
+    patient_hiv_knowledge: 'String'
+    patient_id: 'Int'
+    patient_income_sources: 'String'
+    patient_treated_differently: 'String'
+    patient_tried_faith_healing: 'String'
+    patient_worried_of_accidental_disclosure: 'String'
+    pill_count: 'Int'
+    provider: 'Int'
+    referral_experience: 'String'
+    review_and_barriers_to_adherence: 'String'
+    session_number: 'Int'
+    stigma_hinders_adherence: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    vl_results_feeling: 'String'
+    vl_results_suppressed: 'String'
+    way_forward: 'String'
+  }
   EtlCurrentInCare: { // field return type name
     date_discontinued: 'String'
     disc_patient: 'String'
@@ -1372,7 +2526,6 @@ export interface NexusGenFieldTypeNames {
     date_created: 'String'
     date_enrolled: 'String'
     date_last_modified: 'String'
-    fml_code: 'Int'
     id: 'Int'
     location_id: 'Int'
     outcome: 'String'
@@ -1381,8 +2534,408 @@ export interface NexusGenFieldTypeNames {
     uuid: 'String'
     voided: 'String'
   }
+  GbvScreening: { // field return type name
+    date_created: 'String'
+    date_last_modified: 'String'
+    emotional_ipv: 'String'
+    encounter_id: 'Int'
+    ipv: 'String'
+    ipv_relationship: 'String'
+    location_id: 'Int'
+    patient_id: 'Int'
+    physical_ipv: 'String'
+    provider: 'String'
+    sexual_ipv: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'String'
+  }
+  GbvScreeningAction: { // field return type name
+    action_taken: 'String'
+    date_created: 'String'
+    date_last_modified: 'String'
+    help_provider: 'String'
+    location_id: 'Int'
+    obs_id: 'Int'
+    patient_id: 'Int'
+    provider: 'Int'
+    reason_for_not_reporting: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
+  HeiEnrollment: { // field return type name
+    TB_contact_history_in_household: 'Int'
+    arv_prophylaxis: 'Int'
+    birth_certificate_number: 'String'
+    birth_length: 'Int'
+    birth_notification_number: 'String'
+    birth_order: 'Int'
+    birth_registration_place: 'String'
+    birth_type: 'Int'
+    birth_weight: 'Int'
+    child_exposed: 'Int'
+    date_created: 'String'
+    date_first_enrolled_in_hei_care: 'String'
+    date_first_seen: 'String'
+    date_last_modified: 'String'
+    date_of_birth_notification: 'String'
+    date_of_birth_registration: 'String'
+    district_transferred_from: 'String'
+    encounter_id: 'Int'
+    exit_date: 'String'
+    exit_reason: 'Int'
+    facility_transferred_from: 'String'
+    gestation_at_birth: 'Int'
+    health_facility_name: 'String'
+    hei_id_number: 'String'
+    hiv_status_at_exit: 'String'
+    infant_mother_link: 'Int'
+    infant_prophylaxis: 'Int'
+    location_id: 'Int'
+    mode_of_delivery: 'Int'
+    mother_alive: 'Int'
+    mother_breastfeeding: 'Int'
+    mother_drug_regimen: 'Int'
+    mother_facility_registered: 'String'
+    mother_on_NVP_during_breastfeeding: 'Int'
+    mother_on_art_at_infant_enrollment: 'Int'
+    mother_on_drug: 'Int'
+    mother_on_pmtct_drugs: 'Int'
+    need_for_special_care: 'Int'
+    parent_ccc_number: 'String'
+    patient_id: 'Int'
+    permanent_registration_serial: 'String'
+    place_of_delivery: 'Int'
+    provider: 'Int'
+    reason_for_special_care: 'Int'
+    referral_source: 'Int'
+    spd_number: 'Int'
+    transfer_in: 'Int'
+    transfer_in_date: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+  }
+  HeiFollowUpVisit: { // field return type name
+    TB_contact_history_in_household: 'Int'
+    arv_prophylaxis: 'Int'
+    birth_certificate_number: 'String'
+    birth_length: 'Int'
+    birth_notification_number: 'String'
+    birth_order: 'Int'
+    birth_registration_place: 'String'
+    birth_type: 'Int'
+    birth_weight: 'Int'
+    child_exposed: 'Int'
+    date_created: 'String'
+    date_first_enrolled_in_hei_care: 'String'
+    date_first_seen: 'String'
+    date_last_modified: 'String'
+    date_of_birth_notification: 'String'
+    date_of_birth_registration: 'String'
+    district_transferred_from: 'String'
+    encounter_id: 'Int'
+    exit_date: 'String'
+    exit_reason: 'Int'
+    facility_transferred_from: 'String'
+    gestation_at_birth: 'Int'
+    health_facility_name: 'String'
+    hei_id_number: 'String'
+    hiv_status_at_exit: 'String'
+    infant_mother_link: 'Int'
+    infant_prophylaxis: 'Int'
+    location_id: 'Int'
+    mode_of_delivery: 'Int'
+    mother_alive: 'Int'
+    mother_breastfeeding: 'Int'
+    mother_drug_regimen: 'Int'
+    mother_facility_registered: 'String'
+    mother_on_NVP_during_breastfeeding: 'Int'
+    mother_on_art_at_infant_enrollment: 'Int'
+    mother_on_drug: 'Int'
+    mother_on_pmtct_drugs: 'Int'
+    need_for_special_care: 'Int'
+    parent_ccc_number: 'String'
+    patient_id: 'Int'
+    permanent_registration_serial: 'String'
+    place_of_delivery: 'Int'
+    provider: 'Int'
+    reason_for_special_care: 'Int'
+    referral_source: 'Int'
+    spd_number: 'Int'
+    transfer_in: 'Int'
+    transfer_in_date: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+  }
+  HeiImmunization: { // field return type name
+    BCG: 'Int'
+    DPT_Hep_B_Hib_1: 'String'
+    DPT_Hep_B_Hib_2: 'String'
+    DPT_Hep_B_Hib_3: 'String'
+    IPV: 'String'
+    Measles_6_months: 'String'
+    Measles_rubella_1: 'String'
+    Measles_rubella_2: 'String'
+    OPV_1: 'String'
+    OPV_2: 'String'
+    OPV_3: 'String'
+    OPV_birth: 'String'
+    PCV_10_1: 'String'
+    PCV_10_2: 'String'
+    PCV_10_3: 'String'
+    ROTA_1: 'String'
+    ROTA_2: 'String'
+    VitaminA_1_and_half_yr: 'String'
+    VitaminA_1_yr: 'String'
+    VitaminA_2_to_5_yr: 'String'
+    VitaminA_2_yr: 'String'
+    VitaminA_6_months: 'String'
+    Yellow_fever: 'String'
+    created_by: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    fully_immunized: 'String'
+    patient_id: 'Int'
+    visit_date: 'String'
+  }
+  HivEnrollment: { // field return type name
+    arv_status: 'Int'
+    date_confirmed_hiv_positive: 'String'
+    date_created: 'String'
+    date_first_enrolled_in_care: 'String'
+    date_last_modified: 'String'
+    date_of_discontinuation: 'String'
+    date_started_art_at_transferring_facility: 'String'
+    discontinuation_reason: 'String'
+    district_transferred_from: 'String'
+    encounter_id: 'Int'
+    encounter_provider: 'Int'
+    entry_point: 'Int'
+    ever_on_haart: 'Int'
+    ever_on_pep: 'Int'
+    ever_on_pmtct: 'Int'
+    ever_on_prep: 'Int'
+    facility_confirmed_hiv_positive: 'String'
+    facility_transferred_from: 'String'
+    in_school: 'Int'
+    location_id: 'Int'
+    name_of_treatment_supporter: 'String'
+    orphan: 'Int'
+    patient_id: 'Int'
+    patient_type: 'Int'
+    previous_regimen: 'String'
+    relationship_of_treatment_supporter: 'Int'
+    transfer_in_date: 'String'
+    treatment_supporter_address: 'String'
+    treatment_supporter_telephone: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
+  HtsContacts: { // field return type name
+    baseline_hiv_status: 'String'
+    final_test_result: 'String'
+    id: 'String'
+    patient_id: 'String'
+    relationship_type: 'String'
+    test_1_result: 'String'
+    test_2_result: 'String'
+    test_type: 'String'
+    visit_date: 'String'
+  }
+  HtsEligibilityScreening: { // field return type name
+    alcohol_sex: 'Int'
+    breastfeeding_mother: 'Int'
+    child_reasons_for_ineligibility: 'String'
+    condom_burst: 'Int'
+    contact_with_tb_case: 'Int'
+    cough: 'Int'
+    couple_discordant: 'Int'
+    currently_on_prep: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
+    date_tested: 'String'
+    department: 'Int'
+    eligible_for_test: 'Int'
+    encounter_id: 'Int'
+    ever_had_sex: 'Int'
+    experienced_gbv: 'Int'
+    fever: 'Int'
+    is_health_worker: 'Int'
+    key_population_type: 'String'
+    known_status_partner: 'Int'
+    lethargy: 'Int'
+    location_id: 'Int'
+    money_sex: 'Int'
+    mother_hiv_status: 'Int'
+    multiple_partners: 'Int'
+    needle_stick_injuries: 'Int'
+    new_partner: 'Int'
+    night_sweats: 'Int'
+    number_partners: 'Int'
+    partner_hiv_status: 'Int'
+    patient_id: 'Int'
+    patient_type: 'Int'
+    population_type: 'String'
+    pregnant: 'Int'
+    priority_population_type: 'String'
+    provider: 'Int'
+    reasons_for_ineligibility: 'String'
+    recently_had_sti: 'Int'
+    recently_on_pep: 'Int'
+    referred_for_testing: 'Int'
+    relationship_with_contact: 'String'
+    service_received: 'String'
+    sexually_active: 'Int'
+    shared_needle: 'Int'
+    specific_reason_for_ineligibility: 'String'
+    started_on_art: 'Int'
+    tb_screened: 'Int'
+    tb_status: 'Int'
+    test_results: 'Int'
+    tested_hiv_before: 'Int'
+    traditional_procedures: 'Int'
+    type_of_gbv: 'String'
+    unknown_status_partner: 'Int'
+    upn_number: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+    weight_loss: 'Int'
+    who_performed_test: 'Int'
+  }
+  HtsLinkageTracing: { // field return type name
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    encounter_provider: 'Int'
+    location_id: 'Int'
+    patient_id: 'Int'
+    reason_not_contacted: 'Int'
+    tracing_outcome: 'Int'
+    tracing_type: 'Int'
+    uuid: 'String'
+    visit_date: 'String'
+    voided: 'Int'
+  }
+  HtsReferral: { // field return type name
+    creator: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
+    date_to_enrol: 'String'
+    encounter_id: 'Int'
+    encounter_location: 'Int'
+    encounter_uuid: 'String'
+    facility_referred_to: 'String'
+    patient_id: 'String'
+    remarks: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+  }
+  IptFollowUp: { // field return type name
+    action_taken: 'String'
+    adherence: 'String'
+    date_collected_ipt: 'String'
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    hepatotoxity: 'String'
+    ipt_due_date: 'String'
+    location_id: 'Int'
+    patient_id: 'Int'
+    peripheral_neuropathy: 'String'
+    provider: 'Int'
+    rash: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+    weight: 'String'
+  }
+  IptInitiation: { // field return type name
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    encounter_provider: 'Int'
+    ipt_indication: 'Int'
+    location_id: 'Int'
+    patient_id: 'Int'
+    sub_county_reg_date: 'String'
+    sub_county_reg_number: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    voided: 'Int'
+  }
+  IptOutcome: { // field return type name
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    encounter_provider: 'Int'
+    location_id: 'Int'
+    outcome: 'Int'
+    patient_id: 'Int'
+    uuid: 'String'
+    visit_date: 'String'
+    voided: 'Int'
+  }
+  IptScreening: { // field return type name
+    contact_with_tb_case: 'Int'
+    cough: 'Int'
+    date_created: 'String'
+    date_last_modified: 'String'
+    encounter_id: 'Int'
+    eyes_yellowness: 'Int'
+    fever: 'Int'
+    lethargy: 'Int'
+    location_id: 'Int'
+    night_sweats: 'Int'
+    numbness_bs_hands_feet: 'Int'
+    obs_id: 'Int'
+    patient_id: 'Int'
+    provider: 'String'
+    upper_rightQ_abdomen_tenderness: 'Int'
+    uuid: 'Int'
+    visit_date: 'String'
+    visit_id: 'Int'
+    voided: 'Int'
+    weight_loss_poor_gain: 'Int'
+    yellow_urine: 'Int'
+  }
+  LaboratoryExtract: { // field return type name
+    created_by: 'String'
+    date_created: 'String'
+    date_last_modified: 'String'
+    date_test_requested: 'String'
+    date_test_result_received: 'String'
+    encounter_id: 'String'
+    lab_test: 'String'
+    location_id: 'String'
+    order_id: 'String'
+    order_reason: 'String'
+    patient_id: 'String'
+    test_requested_by: 'String'
+    test_result: 'String'
+    urgency: 'String'
+    uuid: 'String'
+    visit_date: 'String'
+    visit_id: 'String'
+  }
+  LastMonthNewlyEnrolledInCare: { // field return type name
+    patient_id: 'String'
+  }
+  LastMonthNewlyOnArt: { // field return type name
+    patient_id: 'String'
+  }
   Mutation: { // field return type name
-    postHtsTest: 'ETLHtsTest'
     postProgram: 'EtlPatientProgram'
   }
   Query: { // field return type name
@@ -1400,65 +2953,40 @@ export interface NexusGenFieldTypeNames {
     getContactsLinked: 'ContactsLinked'
     getCovid19Assessment: 'Covid19Assessment'
     getCurrentInCare: 'EtlCurrentInCare'
+    getDefaultFacilityInfo: 'DefaultFacilityInfo'
+    getDepressionScreening: 'DepressionScreening'
+    getDrugEvent: 'DrugEvent'
+    getDrugOrder: 'DrugOrder'
+    getEnhancedAdherence: 'EnhancedAdherence'
+    getGbvScreening: 'GbvScreening'
+    getGbvScreeningAction: 'GbvScreeningAction'
+    getHeiEnrollment: 'HeiEnrollment'
+    getHeiFollowUpVisit: 'HeiFollowUpVisit'
+    getHeiImmunization: 'HeiImmunization'
+    getHivEnrollment: 'HivEnrollment'
+    getHtsContacts: 'HtsContacts'
+    getHtsEligibilityScreening: 'HtsEligibilityScreening'
+    getHtsLinkageTracing: 'HtsLinkageTracing'
+    getHtsReferral: 'HtsReferral'
     getHtsTest: 'ETLHtsTest'
+    getIptFollowUp: 'IptFollowUp'
+    getIptInitiation: 'IptInitiation'
+    getIptOutcome: 'IptOutcome'
+    getIptScreening: 'IptScreening'
+    getLaboratoryExtract: 'LaboratoryExtract'
+    getLastMonthNewlyEnrolledInCare: 'LastMonthNewlyEnrolledInCare'
+    getLastMonthNewlyOnArt: 'LastMonthNewlyOnArt'
   }
 }
 
 export interface NexusGenArgTypes {
   Mutation: {
-    postHtsTest: { // args
-      approach?: string | null; // String
-      client_tested_as?: string | null; // String
-      couple_discordant?: string | null; // String
-      creator?: string | null; // String
-      date_created?: string | null; // String
-      date_last_modified?: string | null; // String
-      disability_type?: string | null; // String
-      encounter_id: number; // Int!
-      encounter_location?: number | null; // Int
-      encounter_uuid: string; // String!
-      ever_tested_for_hiv?: string | null; // String
-      final_test_result?: string | null; // String
-      fml_code: number; // Int!
-      hts_entry_point?: string | null; // String
-      key_population_type?: string | null; // String
-      months_since_last_test?: string | null; // String
-      neg_referral_for?: string | null; // String
-      neg_referral_specify?: string | null; // String
-      other_referral_facility?: string | null; // String
-      patient_consented?: string | null; // String
-      patient_disabled?: string | null; // String
-      patient_given_result?: string | null; // String
-      patient_had_hiv_self_test?: string | null; // String
-      patient_id: number; // Int!
-      population_type?: string | null; // String
-      referral_facility?: string | null; // String
-      referral_for?: string | null; // String
-      remarks?: string | null; // String
-      setting?: string | null; // String
-      syphillis_test_result?: string | null; // String
-      tb_screening?: string | null; // String
-      test_1_kit_expiry?: string | null; // String
-      test_1_kit_lot_no?: string | null; // String
-      test_1_kit_name?: string | null; // String
-      test_1_result?: string | null; // String
-      test_2_kit_expiry?: string | null; // String
-      test_2_kit_lot_no?: string | null; // String
-      test_2_kit_name?: string | null; // String
-      test_2_result?: string | null; // String
-      test_strategy?: string | null; // String
-      test_type?: string | null; // String
-      visit_date?: string | null; // String
-      visit_id: number; // Int!
-      voided?: string | null; // String
-    }
     postProgram: { // args
       date_completed?: string | null; // String
       date_created?: string | null; // String
       date_enrolled?: string | null; // String
       date_last_modified?: string | null; // String
       date_modified?: string | null; // String
-      fml_code?: number | null; // Int
       location_id?: number | null; // Int
       outcome?: string | null; // String
       patient_id: number; // Int!

@@ -315,45 +315,48 @@ postContactsLinked($baseline_hiv_status: String, $final_test_result: String, $mf
 
 export const postCovid19Assessment = ` mutation 
 postCovid19Assessment(
-  $provider Int ,
-  $mfl_code Int ,
-  $patient_id Int,
-  $visit_id Int ,
-  $visit_date String , 
-  $location_id Int ,
-  $encounter_id Int ,
-  $obs_id String, 
-  $ever_vaccinated String , 
-  $first_vaccine_type String , 
-  $second_vaccine_type String , 
-  $first_dose String , 
-  $second_dose String , 
-  $first_dose_date String , 
-  $second_dose_date String , 
-  $first_vaccination_verified String , 
-  $second_vaccination_verified String , 
-  $final_vaccination_status String , 
-  $ever_received_booster String , 
-  $booster_vaccine_taken String , 
-  $date_taken_booster_vaccine String , 
-  $booster_sequence String , 
-  $booster_dose_verified String , 
-  $ever_tested_covid_19_positive String , 
-  $symptomatic String , 
-  $date_tested_positive String , 
-  $hospital_admission String , 
-  $admission_unit String , 
-  $on_ventillator String , 
-  $on_oxygen_supplement String , 
-  $date_created String,
-  $date_last_modified String,
-  $voided Int){
+  $provider: Int ,
+  $mfl_code: Int,
+  $uuid: String,
+  $patient_id: Int ,
+  $visit_id: Int  ,
+  $visit_date: String  , 
+  $location_id: Int  ,  
+  $encounter_id: Int ,
+  $obs_id :  String,  
+  $ever_vaccinated :  String , 
+  $first_vaccine_type :  String , 
+  $second_vaccine_type :  String ,
+  $first_dose :  String , 
+  $second_dose :  String ,  
+  $first_dose_date :  String , 
+  $second_dose_date :  String , 
+  $first_vaccination_verified :  String , 
+  $second_vaccination_verified :  String , 
+  $final_vaccination_status :  String , 
+  $ever_received_booster :  String , 
+  $booster_vaccine_taken :  String , 
+  $date_taken_booster_vaccine :  String , 
+  $booster_sequence :  String , 
+  $booster_dose_verified :  String , 
+  $ever_tested_covid_19_positive :  String , 
+  $symptomatic :  String , 
+  $date_tested_positive :  String , 
+  $hospital_admission :  String , 
+  $admission_unit :  String , 
+  $on_ventillator :  String , 
+  $on_oxygen_supplement :  String , 
+  $date_created :  String,
+  $date_last_modified :  String,
+  $voided : Int
+  ){
 
     postCovid19Assessment(
       provider: $provider  ,
       mfl_code: $mfl_code,
       patient_id: $patient_id ,
       visit_id: $visit_id  ,
+      uuid: $uuid,
       visit_date: $visit_date  , 
       location_id: $location_id  ,
       encounter_id: $encounter_id  ,
@@ -390,6 +393,177 @@ postCovid19Assessment(
 }
 `
 
+// 13
+
+
+export const postDefaultFacilityInfo = ` mutation  
+postDefaultFacilityInfo($FacilityName: String, $siteCode: Int){
+
+    postDefaultFacilityInfo(FacilityName: $FacilityName, siteCode : $siteCode){
+      FacilityName
+      siteCode
+
+    }
+  }
+`
+   
+
+export const postDepressionScreening  = ` mutation  
+postDepressionScreening(
+  
+  $encounter_id: Int,
+  $patient_id: Int,
+  $provider: Int,
+  $visit_id: Int,
+  $visit_date: String,
+  $location_id: Int,
+  $date_last_modified: String,
+  $PHQ_9_rating:  String ,
+  $uuid: String,
+  $date_created: String,
+  $voided: Int
+){
+
+    postDepressionScreening(
+      uuid : $uuid,
+      provider : $provider,
+      patient_id :  $patient_id,
+      visit_id : $visit_id,
+      visit_date : $visit_date,
+      location_id : $location_id,
+      encounter_id : $encounter_id,
+      PHQ_9_rating : $PHQ_9_rating,
+      date_created : $date_created,
+      date_last_modified : $date_last_modified,
+      voided : $voided,
+    ){
+      uuid
+      patient_id
+    }
+  }
+`
+   export const postDrugEvent  = ` mutation  
+   postDrugEvent(
+  $date_created: String,
+  $date_discontinued: String,
+  $date_last_modified: String,
+  $date_started: String,
+  $discontinued: Int,
+  $encounter_id: Int
+  $patient_id: Int
+  $program: String,
+  $provider: Int
+  $reason_discontinued: Int
+  $reason_discontinued_other: String,
+  $regimen: String,
+  $regimen_discontinued: String,
+  $regimen_line: String,
+  $regimen_name: String,
+  $uuid: String,
+  $visit_date: String,
+  $voided: Int
+   )
+   {
+   
+      postDrugEvent(
+      date_created: $date_created,
+      date_discontinued: $date_discontinued,
+      date_last_modified: $date_last_modified,
+      date_started: $date_started,
+      discontinued: $discontinued,
+      encounter_id: $encounter_id
+      patient_id: $patient_id
+      program: $program,
+      provider: $provider,
+      reason_discontinued: $reason_discontinued
+      reason_discontinued_other: $reason_discontinued_other,
+      regimen: $regimen,
+      regimen_discontinued: $regimen_discontinued,
+      regimen_line: $regimen_line,
+      regimen_name: $regimen_name,
+      uuid: $uuid,
+      visit_date: $visit_date,
+      voided: $voided
+      ){
+        patient_id
+        uuid
+
+
+      }
+     }
+   `
+
+      export const postDrugOrder  = ` mutation  
+      postDrugOrder(
+        $uuid:  String,
+        $encounter_id: Int,
+        $order_group_id: Int,
+        $patient_id: Int ,
+        $location_id: Int,
+        $visit_date:  String,
+        $visit_id: Int,
+        $provider: Int,
+        $order_id: Int,
+        $urgency: String,
+        $drug_concept_id:  String,
+        $drug_short_name: String,
+        $drug_name: String,
+        $frequency: String,
+        $enc_name: String,
+        $dose: String,
+        $dose_units: String,
+        $quantity:  String,
+        $quantity_units: String,
+        $dosing_instructions: String,
+        $duration: Int,
+        $duration_units: String,
+        $instructions: String,
+        $route: String,
+        $voided: Int,
+        $date_voided: String,
+        $date_created: String,
+        $date_last_modified: String,
+      ){
+      
+          postDrugOrder(
+
+            uuid : $uuid,
+            encounter_id : $encounter_id,
+            order_group_id : $order_group_id,
+            patient_id : $patient_id ,
+            location_id : $location_id,
+            visit_date : $visit_date,
+            visit_id : $visit_id,
+            provider : $provider,
+            order_id : $order_id,
+            urgency  : $urgency,
+            drug_concept_id : $drug_concept_id,
+            drug_short_name : $drug_short_name,
+            drug_name : $drug_name,
+            frequency : $frequency,
+            enc_name : $enc_name,
+            dose : $dose,
+            dose_units : $dose_units,
+            quantity : $quantity,
+            quantity_units : $quantity_units,
+            dosing_instructions : $dosing_instructions,
+            duration : $duration,
+            duration_units : $duration_units,
+            instructions : $instructions,
+            route : $route,
+            voided : $voided,
+            date_voided : $date_voided,
+            date_created : $date_created,
+            date_last_modified : $date_last_modified
+
+          ){
+            uuid
+          }
+        }
+      `
+
+
+
 export const postHtsTest = `mutation 
 postHtsTest($approach: String, $client_tested_as: String, $couple_discordant: String, $creator: String, $date_created: String,
    $date_last_modified: String, $disability_type: String, $encounter_id: Int!, $encounter_location: Int, $encounter_uuid: String!,
@@ -416,6 +590,8 @@ postHtsTest($approach: String, $client_tested_as: String, $couple_discordant: St
    }
 
 `
+
+
 
 export const postProgram = `mutation 
 postProgram($date_completed: String, $date_created: String, $date_enrolled: String, $date_last_modified: String, 

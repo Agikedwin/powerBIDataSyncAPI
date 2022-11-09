@@ -33,9 +33,15 @@ export const AlcoholDrugAbuseScreeningQuery = extendType({
         t.nullable.list.nullable.field("getAlcoholDrugAbuseScreening", {
             type: "AlcoholDrugAbuseScreening",
             resolve(parent, args, context) {  
-                console.log("Adding data here -------");
-               return context.prisma.alcoholDrugAbuseScreening.findMany();
-              
+                
+              try {
+                console.log("Fetching AlcoholDrugAbuseScreening...")
+                return context.prisma.alcoholDrugAbuseScreening.findMany();
+                
+              } catch (error) {
+                
+              } 
+               console.log(" AdverseEvents Fetched ...")
                
             },
         });

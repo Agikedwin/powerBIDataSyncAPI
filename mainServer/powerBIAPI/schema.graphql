@@ -146,7 +146,6 @@ type ClientEnrollment {
   encounter_id: Int
   encounter_provider: Int
   ever_tested_for_hiv: String
-  fml_code: Int
   has_expereienced_physical_violence: String
   has_expereienced_sexual_violence: String
   has_regular_free_sex_partner: String
@@ -378,11 +377,85 @@ type Covid19Assessment {
   voided: Int
 }
 
+type DefaultFacilityInfo {
+  FacilityName: String
+  siteCode: Int
+}
+
+type DepressionScreening {
+  PHQ_9_rating: String
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  id_auto: Int
+  location_id: Int!
+  patient_id: Int
+  provider: Int
+  uuid: String
+  visit_date: String
+  visit_id: Int!
+  voided: Int
+}
+
+type DrugEvent {
+  date_created: String
+  date_discontinued: String
+  date_last_modified: String
+  date_started: String
+  date_voided: String
+  discontinued: String
+  encounter_id: Int
+  patient_id: Int
+  program: String
+  provider: Int
+  reason_discontinued: String
+  reason_discontinued_other: String
+  regimen: String
+  regimen_discontinued: String
+  regimen_line: String
+  regimen_name: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: Int
+}
+
+type DrugOrder {
+  date_created: String
+  date_last_modified: String
+  date_voided: String
+  dose: String
+  dose_units: String
+  dosing_instructions: String
+  drug_concept_id: String
+  drug_name: String
+  drug_short_name: String
+  duration: Int
+  duration_units: String
+  enc_name: String
+  encounter_id: Int
+  frequency: String
+  instructions: String
+  location_id: Int
+  order_group_id: Int
+  order_id: Int
+  patient_id: Int
+  provider: Int
+  quantity: String
+  quantity_units: String
+  route: String
+  urgency: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: Int
+}
+
 type ETLHtsTest {
   approach: String!
   client_tested_as: String!
   couple_discordant: String!
-  creator: String!
+  creator: Int!
   date_created: String!
   date_last_modified: String!
   disability_type: String!
@@ -391,7 +464,6 @@ type ETLHtsTest {
   encounter_uuid: String!
   ever_tested_for_hiv: String!
   final_test_result: String!
-  fml_code: Int!
   hts_entry_point: String!
   id: Int!
   months_since_last_test: String!
@@ -425,6 +497,50 @@ type ETLHtsTest {
   voided: String!
 }
 
+type EnhancedAdherence {
+  adherence_plan: String
+  appoIntments_honoured: String
+  arv_adherence: String
+  cause_of_high_vl: String
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  first_session_date: String
+  has_vl_results: String
+  home_visit_benefit: String
+  next_appoIntment_date: String
+  other_referrals: String
+  patient_adherence_improved: String
+  patient_ambitions: String
+  patient_challenges_reaching_clinic: String
+  patient_doses_missed: String
+  patient_drugs_daily_uptake_feeling: String
+  patient_drugs_reminder_tools: String
+  patient_drugs_side_effects_response: String
+  patient_drugs_uptake: String
+  patient_drugs_uptake_during_travels: String
+  patient_drugs_uptake_most_difficult_times: String
+  patient_enlisting_social_support: String
+  patient_has_people_to_talk: String
+  patient_hiv_knowledge: String
+  patient_id: Int
+  patient_income_sources: String
+  patient_treated_differently: String
+  patient_tried_faith_healing: String
+  patient_worried_of_accidental_disclosure: String
+  pill_count: Int
+  provider: Int
+  referral_experience: String
+  review_and_barriers_to_adherence: String
+  session_number: Int
+  stigma_hinders_adherence: String
+  visit_date: String
+  visit_id: Int
+  vl_results_feeling: String
+  vl_results_suppressed: String
+  way_forward: String
+}
+
 type EtlCurrentInCare {
   date_discontinued: String
   disc_patient: String
@@ -445,7 +561,6 @@ type EtlPatientProgram {
   date_created: String!
   date_enrolled: String!
   date_last_modified: String!
-  fml_code: Int!
   id: Int!
   location_id: Int!
   outcome: String!
@@ -455,9 +570,426 @@ type EtlPatientProgram {
   voided: String!
 }
 
+type GbvScreening {
+  date_created: String
+  date_last_modified: String
+  emotional_ipv: String
+  encounter_id: Int
+  ipv: String
+  ipv_relationship: String
+  location_id: Int
+  patient_id: Int
+  physical_ipv: String
+  provider: String
+  sexual_ipv: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: String
+}
+
+type GbvScreeningAction {
+  action_taken: String
+  date_created: String
+  date_last_modified: String
+  help_provider: String
+  location_id: Int
+  obs_id: Int
+  patient_id: Int
+  provider: Int
+  reason_for_not_reporting: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: Int
+}
+
+type HeiEnrollment {
+  TB_contact_history_in_household: Int
+  arv_prophylaxis: Int
+  birth_certificate_number: String
+  birth_length: Int
+  birth_notification_number: String
+  birth_order: Int
+  birth_registration_place: String
+  birth_type: Int
+  birth_weight: Int
+  child_exposed: Int
+  date_created: String
+  date_first_enrolled_in_hei_care: String
+  date_first_seen: String
+  date_last_modified: String
+  date_of_birth_notification: String
+  date_of_birth_registration: String
+  district_transferred_from: String
+  encounter_id: Int
+  exit_date: String
+  exit_reason: Int
+  facility_transferred_from: String
+  gestation_at_birth: Int
+  health_facility_name: String
+  hei_id_number: String
+  hiv_status_at_exit: String
+  infant_mother_link: Int
+  infant_prophylaxis: Int
+  location_id: Int
+  mode_of_delivery: Int
+  mother_alive: Int
+  mother_breastfeeding: Int
+  mother_drug_regimen: Int
+  mother_facility_registered: String
+  mother_on_NVP_during_breastfeeding: Int
+  mother_on_art_at_infant_enrollment: Int
+  mother_on_drug: Int
+  mother_on_pmtct_drugs: Int
+  need_for_special_care: Int
+  parent_ccc_number: String
+  patient_id: Int
+  permanent_registration_serial: String
+  place_of_delivery: Int
+  provider: Int
+  reason_for_special_care: Int
+  referral_source: Int
+  spd_number: Int
+  transfer_in: Int
+  transfer_in_date: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+}
+
+type HeiFollowUpVisit {
+  TB_contact_history_in_household: Int
+  arv_prophylaxis: Int
+  birth_certificate_number: String
+  birth_length: Int
+  birth_notification_number: String
+  birth_order: Int
+  birth_registration_place: String
+  birth_type: Int
+  birth_weight: Int
+  child_exposed: Int
+  date_created: String
+  date_first_enrolled_in_hei_care: String
+  date_first_seen: String
+  date_last_modified: String
+  date_of_birth_notification: String
+  date_of_birth_registration: String
+  district_transferred_from: String
+  encounter_id: Int
+  exit_date: String
+  exit_reason: Int
+  facility_transferred_from: String
+  gestation_at_birth: Int
+  health_facility_name: String
+  hei_id_number: String
+  hiv_status_at_exit: String
+  infant_mother_link: Int
+  infant_prophylaxis: Int
+  location_id: Int
+  mode_of_delivery: Int
+  mother_alive: Int
+  mother_breastfeeding: Int
+  mother_drug_regimen: Int
+  mother_facility_registered: String
+  mother_on_NVP_during_breastfeeding: Int
+  mother_on_art_at_infant_enrollment: Int
+  mother_on_drug: Int
+  mother_on_pmtct_drugs: Int
+  need_for_special_care: Int
+  parent_ccc_number: String
+  patient_id: Int
+  permanent_registration_serial: String
+  place_of_delivery: Int
+  provider: Int
+  reason_for_special_care: Int
+  referral_source: Int
+  spd_number: Int
+  transfer_in: Int
+  transfer_in_date: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+}
+
+type HeiImmunization {
+  BCG: Int
+  DPT_Hep_B_Hib_1: String
+  DPT_Hep_B_Hib_2: String
+  DPT_Hep_B_Hib_3: String
+  IPV: String
+  Measles_6_months: String
+  Measles_rubella_1: String
+  Measles_rubella_2: String
+  OPV_1: String
+  OPV_2: String
+  OPV_3: String
+  OPV_birth: String
+  PCV_10_1: String
+  PCV_10_2: String
+  PCV_10_3: String
+  ROTA_1: String
+  ROTA_2: String
+  VitaminA_1_and_half_yr: String
+  VitaminA_1_yr: String
+  VitaminA_2_to_5_yr: String
+  VitaminA_2_yr: String
+  VitaminA_6_months: String
+  Yellow_fever: String
+  created_by: Int
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  fully_immunized: String
+  patient_id: Int
+  visit_date: String
+}
+
+type HivEnrollment {
+  arv_status: Int
+  date_confirmed_hiv_positive: String
+  date_created: String
+  date_first_enrolled_in_care: String
+  date_last_modified: String
+  date_of_discontinuation: String
+  date_started_art_at_transferring_facility: String
+  discontinuation_reason: String
+  district_transferred_from: String
+  encounter_id: Int
+  encounter_provider: Int
+  entry_point: Int
+  ever_on_haart: Int
+  ever_on_pep: Int
+  ever_on_pmtct: Int
+  ever_on_prep: Int
+  facility_confirmed_hiv_positive: String
+  facility_transferred_from: String
+  in_school: Int
+  location_id: Int
+  name_of_treatment_supporter: String
+  orphan: Int
+  patient_id: Int
+  patient_type: Int
+  previous_regimen: String
+  relationship_of_treatment_supporter: Int
+  transfer_in_date: String
+  treatment_supporter_address: String
+  treatment_supporter_telephone: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: Int
+}
+
+type HtsContacts {
+  baseline_hiv_status: String
+  final_test_result: String
+  id: String
+  patient_id: String
+  relationship_type: String
+  test_1_result: String
+  test_2_result: String
+  test_type: String
+  visit_date: String
+}
+
+type HtsEligibilityScreening {
+  alcohol_sex: Int
+  breastfeeding_mother: Int
+  child_reasons_for_ineligibility: String
+  condom_burst: Int
+  contact_with_tb_case: Int
+  cough: Int
+  couple_discordant: Int
+  currently_on_prep: Int
+  date_created: String
+  date_last_modified: String
+  date_tested: String
+  department: Int
+  eligible_for_test: Int
+  encounter_id: Int
+  ever_had_sex: Int
+  experienced_gbv: Int
+  fever: Int
+  is_health_worker: Int
+  key_population_type: String
+  known_status_partner: Int
+  lethargy: Int
+  location_id: Int
+  money_sex: Int
+  mother_hiv_status: Int
+  multiple_partners: Int
+  needle_stick_injuries: Int
+  new_partner: Int
+  night_sweats: Int
+  number_partners: Int
+  partner_hiv_status: Int
+  patient_id: Int
+  patient_type: Int
+  population_type: String
+  pregnant: Int
+  priority_population_type: String
+  provider: Int
+  reasons_for_ineligibility: String
+  recently_had_sti: Int
+  recently_on_pep: Int
+  referred_for_testing: Int
+  relationship_with_contact: String
+  service_received: String
+  sexually_active: Int
+  shared_needle: Int
+  specific_reason_for_ineligibility: String
+  started_on_art: Int
+  tb_screened: Int
+  tb_status: Int
+  test_results: Int
+  tested_hiv_before: Int
+  traditional_procedures: Int
+  type_of_gbv: String
+  unknown_status_partner: Int
+  upn_number: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: Int
+  weight_loss: Int
+  who_performed_test: Int
+}
+
+type HtsLinkageTracing {
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  encounter_provider: Int
+  location_id: Int
+  patient_id: Int
+  reason_not_contacted: Int
+  tracing_outcome: Int
+  tracing_type: Int
+  uuid: String
+  visit_date: String
+  voided: Int
+}
+
+type HtsReferral {
+  creator: Int
+  date_created: String
+  date_last_modified: String
+  date_to_enrol: String
+  encounter_id: Int
+  encounter_location: Int
+  encounter_uuid: String
+  facility_referred_to: String
+  patient_id: String
+  remarks: String
+  visit_date: String
+  visit_id: Int
+  voided: Int
+}
+
+type IptFollowUp {
+  action_taken: String
+  adherence: String
+  date_collected_ipt: String
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  hepatotoxity: String
+  ipt_due_date: String
+  location_id: Int
+  patient_id: Int
+  peripheral_neuropathy: String
+  provider: Int
+  rash: String
+  uuid: String
+  visit_date: String
+  visit_id: Int
+  voided: Int
+  weight: String
+}
+
+type IptInitiation {
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  encounter_provider: Int
+  ipt_indication: Int
+  location_id: Int
+  patient_id: Int
+  sub_county_reg_date: String
+  sub_county_reg_number: String
+  uuid: String
+  visit_date: String
+  voided: Int
+}
+
+type IptOutcome {
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  encounter_provider: Int
+  location_id: Int
+  outcome: Int
+  patient_id: Int
+  uuid: String
+  visit_date: String
+  voided: Int
+}
+
+type IptScreening {
+  contact_with_tb_case: Int
+  cough: Int
+  date_created: String
+  date_last_modified: String
+  encounter_id: Int
+  eyes_yellowness: Int
+  fever: Int
+  lethargy: Int
+  location_id: Int
+  night_sweats: Int
+  numbness_bs_hands_feet: Int
+  obs_id: Int
+  patient_id: Int
+  provider: String
+  upper_rightQ_abdomen_tenderness: Int
+  uuid: Int
+  visit_date: String
+  visit_id: Int
+  voided: Int
+  weight_loss_poor_gain: Int
+  yellow_urine: Int
+}
+
+type LaboratoryExtract {
+  created_by: String
+  date_created: String
+  date_last_modified: String
+  date_test_requested: String
+  date_test_result_received: String
+  encounter_id: String
+  lab_test: String
+  location_id: String
+  order_id: String
+  order_reason: String
+  patient_id: String
+  test_requested_by: String
+  test_result: String
+  urgency: String
+  uuid: String
+  visit_date: String
+  visit_id: String
+}
+
+type LastMonthNewlyEnrolledInCare {
+  patient_id: String
+}
+
+type LastMonthNewlyOnArt {
+  patient_id: String
+}
+
 type Mutation {
-  postHtsTest(approach: String, client_tested_as: String, couple_discordant: String, creator: String, date_created: String, date_last_modified: String, disability_type: String, encounter_id: Int!, encounter_location: Int, encounter_uuid: String!, ever_tested_for_hiv: String, final_test_result: String, fml_code: Int!, hts_entry_point: String, key_population_type: String, months_since_last_test: String, neg_referral_for: String, neg_referral_specify: String, other_referral_facility: String, patient_consented: String, patient_disabled: String, patient_given_result: String, patient_had_hiv_self_test: String, patient_id: Int!, population_type: String, referral_facility: String, referral_for: String, remarks: String, setting: String, syphillis_test_result: String, tb_screening: String, test_1_kit_expiry: String, test_1_kit_lot_no: String, test_1_kit_name: String, test_1_result: String, test_2_kit_expiry: String, test_2_kit_lot_no: String, test_2_kit_name: String, test_2_result: String, test_strategy: String, test_type: String, visit_date: String, visit_id: Int!, voided: String): ETLHtsTest!
-  postProgram(date_completed: String, date_created: String, date_enrolled: String, date_last_modified: String, date_modified: String, fml_code: Int, location_id: Int, outcome: String, patient_id: Int!, program: String, uuid: String!, voided: String): EtlPatientProgram!
+  postProgram(date_completed: String, date_created: String, date_enrolled: String, date_last_modified: String, date_modified: String, location_id: Int, outcome: String, patient_id: Int!, program: String, uuid: String!, voided: String): EtlPatientProgram!
 }
 
 type Query {
@@ -475,5 +1007,27 @@ type Query {
   getContactsLinked: [ContactsLinked]
   getCovid19Assessment: [Covid19Assessment]
   getCurrentInCare: [EtlCurrentInCare!]!
-  getHtsTest: [ETLHtsTest!]!
+  getDefaultFacilityInfo: [DefaultFacilityInfo]
+  getDepressionScreening: [DepressionScreening]
+  getDrugEvent: [DrugEvent]
+  getDrugOrder: [DrugOrder]
+  getEnhancedAdherence: [EnhancedAdherence]
+  getGbvScreening: [GbvScreening]
+  getGbvScreeningAction: [GbvScreeningAction]
+  getHeiEnrollment: [HeiEnrollment]
+  getHeiFollowUpVisit: [HeiFollowUpVisit]
+  getHeiImmunization: [HeiImmunization]
+  getHivEnrollment: [HivEnrollment]
+  getHtsContacts: [HtsContacts]
+  getHtsEligibilityScreening: [HtsEligibilityScreening]
+  getHtsLinkageTracing: [HtsLinkageTracing]
+  getHtsReferral: [HtsReferral]
+  getHtsTest: [ETLHtsTest]
+  getIptFollowUp: [IptFollowUp]
+  getIptInitiation: [IptInitiation]
+  getIptOutcome: [IptOutcome]
+  getIptScreening: [IptScreening]
+  getLaboratoryExtract: [LaboratoryExtract]
+  getLastMonthNewlyEnrolledInCare: [LastMonthNewlyEnrolledInCare]
+  getLastMonthNewlyOnArt: [LastMonthNewlyOnArt]
 }

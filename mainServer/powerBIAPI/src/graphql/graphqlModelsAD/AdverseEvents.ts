@@ -6,7 +6,7 @@ export const AdverseEvents = objectType({
     name: "AdverseEvents", // <- Name of your type
     definition(t) {
        // t.nonNull.int("id"); 
-        t.nullable.string("uuid")
+        t.nullable.string("uuid"); 
         t.nullable.int("patient_id"); 
         t.nullable.string("form"); 
         t.nullable.int("provider"); 
@@ -37,15 +37,17 @@ export const AdverseEventsQuery = extendType({
             type: "AdverseEvents",
             resolve(parent, args, context) {  
                 
-               context.prisma.adverseEvents.findMany().then(data =>{
-                    resData = data;
-                    console.log(data)
-                    
-                    
-
-                });  
+               try {
+                console.log("Fetching AdverseEvents...")
+                return context.prisma.adverseEvents.findMany();
+                
+               } catch (error) {
+                
+                
+               }
                
-                return resData;
+               
+
             },
         });
     },

@@ -13,4 +13,10 @@ export * from "./graphqlModelsAD/ContactsLinked"
 export * from "./graphqlModelsAD/Covid19Assessment"
 export * from "./graphqlModelsAD/EtlPatientProgram";
 export * from "./graphqlModelsAD/EtlCurrentInCare"
+
+export * from "./graphqlModelsAD/DefaultFacilityInfo"
+export * from "./graphqlModelsAD/DepressionScreening"
+export * from "./graphqlModelsAD/DrugEvent"
+export * from "./graphqlModelsAD/DrugOrder"
+
 export * from "./graphqlModelsAD/ETLHtsTest"

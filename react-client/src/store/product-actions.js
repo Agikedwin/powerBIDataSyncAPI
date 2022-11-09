@@ -18,8 +18,10 @@ export const fetchProductData = () => {
     return async (dispatch) => {
 
      // loops thru all the graphql queries 
-      for (let i = 12; i < 13; i++) { // graphqlQueryEntries.length
-        for (let j = 12; j < 13; j++) { //graphqlQueryEntries[i].length
+     // 0 -- 17 A to D
+     // 17 -- E to E
+      for (let i = 15; i < 17; i++) { // graphqlQueryEntries.length
+        for (let j = 15; j < 17; j++) { //graphqlQueryEntries[i].length
           console.log("Query deff  ---- ", graphqlQueryEntries[i][1])
           
         
@@ -87,9 +89,12 @@ export const fetchProductData = () => {
 const sendToGraphQL = async (mutationName, variableName) => {
  
 
-  console.log("-------AGIK---------start ", mutationName)
+  console.log("-------AGIK---------start ", variableName[0])
   const postMutation = graphQlMutations[mutationName];
   console.log(postMutation)
+
+  // post data to remote API only if not null
+  if(variableName[0] !== undefined){
   
     for (let i = 0; i < variableName[0].length; i++) { //variableName[0].length
    
@@ -105,19 +110,18 @@ const sendToGraphQL = async (mutationName, variableName) => {
      // 2 dimensions array with all the elements at index 0, then loop the rest using i
       variables: variableName[0][i],
     })
-  })
-    .then(r => r.json())
+  }).then(r => r.json())
     .then(data => {
-     // console.log(data)
-      console.log('Successfully posted :',mutationName)
+      console.log(data)   
       
+    }).then(() => {
+      console.log('Successfully posted :',mutationName)
     })
     .catch(error => {
       console.log(error)
     });
-
-    break;
- 
+    //break;
+  }
   }
  
  }

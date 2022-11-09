@@ -13,4 +13,34 @@ export * from "./graphqlModelsAD/ContactsLinked"
 export * from "./graphqlModelsAD/Covid19Assessment"
 export * from "./graphqlModelsAD/EtlPatientProgram"
 export * from "./graphqlModelsAD/EtlCurrentInCare"
-export * from "./graphqlModelsAD/ETLHtsTest"
+
+export * from "./graphqlModelsAD/DefaultFacilityInfo"
+export * from "./graphqlModelsAD/DepressionScreening"
+export * from "./graphqlModelsAD/DrugEvent"
+export * from "./graphqlModelsAD/DrugOrder"
+
+// E to L
+export * from "./graphqlModelsEL/EnhancedAdherence"
+export * from "./graphqlModelsEL/GbvScreening"
+export * from "./graphqlModelsEL/GbvScreeningAction"
+export * from "./graphqlModelsEL/HeiEnrollment"
+export * from "./graphqlModelsEL/HeiFollowUpVisit"
+export * from "./graphqlModelsEL/HeiImmunization"
+export * from "./graphqlModelsEL/HeiEnrollment"
+export * from "./graphqlModelsEL/HivEnrollment"
+export * from "./graphqlModelsEL/HtsContacts"
+export * from "./graphqlModelsEL/HtsEligibilityScreening"
+export * from "./graphqlModelsEL/HtsLinkageTracing"
+export * from "./graphqlModelsEL/HtsReferral"
+export * from "./graphqlModelsEL/HtsTest"
+export * from "./graphqlModelsEL/IptFollowUp"
+export * from "./graphqlModelsEL/IptInitiation"
+export * from "./graphqlModelsEL/IptOutcome"
+
+export * from "./graphqlModelsEL/IptScreening"
+export * from "./graphqlModelsEL/LaboratoryExtract"
+export * from "./graphqlModelsEL/LastMonthNewlyEnrolledInCare"
+export * from "./graphqlModelsEL/LastMonthNewlyOnArt"
+
+
+
